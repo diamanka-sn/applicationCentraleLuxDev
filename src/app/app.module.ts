@@ -44,6 +44,7 @@ import { CreerCommandeComponent } from './composants/commandeDeMedicaments/creer
 import { ListeCommandeComponent } from './composants/commandeDeMedicaments/liste-commande/liste-commande.component';
 import { DetailCommandeComponent } from './composants/commandeDeMedicaments/detail-commande/detail-commande.component';
 import { AuthentificationComponent } from './composants/authentification/authentification.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { AuthentificationComponent } from './composants/authentification/authent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

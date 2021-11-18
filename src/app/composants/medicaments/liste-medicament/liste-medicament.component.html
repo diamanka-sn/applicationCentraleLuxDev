@@ -1,1 +1,168 @@
-<p>liste-medicament works!</p>
+<style>
+    .paginate_button {
+        background-color: green;
+    }
+</style>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Liste des medicaments
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Ajouter medicament</a>
+
+        </div>
+        <div class="card-body">
+            <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                        <th>Age</th>
+                        <th colspan="">details</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="personne?.length !=0">
+                    <tr *ngFor="let p of personne">
+                        <td>{{ p.nom }}</td>
+                        <td>{{ p.adresse }}</td>
+                        <td>{{ p.ville }}</td>
+                        <td>{{ p.age }}</td>
+                        <td>
+                            <a class="btn btn-warning">voir</a>
+                            <a class="btn btn-primary ml-2">modifier</a>
+                            <a class="btn btn-danger ml-2">supprimer</a>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td>David BARBIER</td>
+                        <td>1 Rue Barye</td>
+                        <td>Poitiers</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Gillet ROYER</td>
+                        <td>5 Rue Barye</td>
+                        <td>Caen</td>
+                        <td>62</td>
+                    </tr>
+                    <tr>
+                        <td>Christine KLEIN</td>
+                        <td>18 Rue Barye</td>
+                        <td>Nantes</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Anne BOUVIER</td>
+                        <td>5 Rue Barye</td>
+                        <td>Rouen</td>
+                        <td>46</td>
+                    </tr>
+                    <tr>
+                        <td>Pierre COUSIN</td>
+                        <td>23 Rue Barye</td>
+                        <td>Bordeaux</td>
+                        <td>37</td>
+                    </tr>
+                    <tr>
+                        <td>Louis LAPORTE</td>
+                        <td>77 Rue Barye</td>
+                        <td>Lille</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>David ROUSSEL</td>
+                        <td>6 Rue Barye</td>
+                        <td>Marseille</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td>André GAUTIER</td>
+                        <td>15 Rue Barye</td>
+                        <td>Paris</td>
+                        <td>81</td>
+                    </tr>
+                    <tr>
+                        <td>Antoine MASSON</td>
+                        <td>36 Rue Barye</td>
+                        <td>Belleville</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>Pierre BOYER</td>
+                        <td>1 Rue Barye</td>
+                        <td>Lyon</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>Daniel LAMY</td>
+                        <td>2 Rue Barye</td>
+                        <td>Paris</td>
+                        <td>49</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog w-100">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Address 2</label>
+                        <input type="text" class="form-control" id="inputAddress2"
+                            placeholder="Apartment, studio, or floor">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">State</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputZip" class="form-label">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Check me out
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
