@@ -23,6 +23,7 @@ export class CreerCollaborationComponent implements OnInit {
       adresse: ['', [Validators.required, Validators.maxLength(100)]],
       telephone: ['', [Validators.required, Validators.min(9), Validators.max(9)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+      tauxPEC: ['', [Validators.required]]
     })
   }
 
