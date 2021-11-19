@@ -1,1 +1,42 @@
-<p>liste-collaboration works!</p>
+<style>
+    .paginate_button {
+        background-color: green;
+    }
+</style>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Liste des entreprises
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter fournisseur</a>
+
+        </div>
+        <div class="card-body">
+            <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>telephone</th>
+                        <th>Email</th>
+                        <th colspan="">details</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="entreprise?.length !=0">
+                    <tr *ngFor="let e of entreprise">
+                        <td>{{ e.nom }}</td>
+                        <td>{{ e.adresse }}</td>
+                        <td>{{ e.telephone }}</td>
+                        <td>{{ e.email }}</td>
+                        <td>
+                            <a class="btn btn-warning">voir</a>
+                            <a class="btn btn-primary ml-2">modifier</a>
+                            <a class="btn btn-danger ml-2">supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+<app-creer-collaboration></app-creer-collaboration>

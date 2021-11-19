@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-creer-collaboration',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreerCollaborationComponent implements OnInit {
 
-  constructor() { }
+  formGroup!: FormGroup
+
+  
+  constructor(private entrepriseFormGroup: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm()
+  }
+
+  initForm() {
+    this.formGroup = this.entrepriseFormGroup.group({
+      nomStructure: ['', [Validators.required, Validators.maxLength(100)]],
+      adresse: ['', [Validators.required, Validators.maxLength(100)]],
+      telephone: ['', [Validators.required, Validators.min(9), Validators.max(9)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+    })
+  }
+
+  submit() {
+    alert('valider')
   }
 
 }

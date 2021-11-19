@@ -1,1 +1,42 @@
-<p>liste-fournisseur works!</p>
+<style>
+    .paginate_button {
+        background-color: green;
+    }
+</style>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Liste des fournisseurs
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter fournisseur</a>
+
+        </div>
+        <div class="card-body">
+            <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
+                <thead>
+                    <tr>
+                        <th>Nom structure</th>
+                        <th>Adresse</th>
+                        <th>telephone</th>
+                        <th>Email</th>
+                        <th colspan="">details</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="fournisseur?.length !=0">
+                    <tr *ngFor="let f of fournisseur">
+                        <td>{{ f.nomStructure }}</td>
+                        <td>{{ f.adresse }}</td>
+                        <td>{{ f.telephone }}</td>
+                        <td>{{ f.email }}</td>
+                        <td>
+                            <a class="btn btn-warning">voir</a>
+                            <a class="btn btn-primary ml-2">modifier</a>
+                            <a class="btn btn-danger ml-2">supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+<app-creer-fournisseur></app-creer-fournisseur>
