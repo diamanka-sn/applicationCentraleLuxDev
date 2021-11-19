@@ -1,6 +1,6 @@
 <div id="sideBar"
-    class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
-    style="margin-top: 80px;">
+    class="relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
+    style="margin-top: 80px; background:#198754;color:white">
     <!-- sidebar content -->
     <div class="flex flex-col">
 
@@ -12,10 +12,16 @@
         </div>
         <!-- end sidebar toggle -->
 
-        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">Accueil</p>
+        <p class="uppercase text-xs text-white-600 mb-4 tracking-wider">Accueil</p>
+        <!-- link -->
+        <a routerLink="accueil" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-home text-xs mr-2"></i>
+            Accueil
+        </a>
 
         <!-- link -->
-        <a href="https://therichpost.com/best-angular-ecommerce-templates-free/" target="_blank"
+        <a href="#" routerLinkActive="router-link-active"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-chart-pie text-xs mr-2"></i>
             Statistiques des données
@@ -23,69 +29,77 @@
         <!-- end link -->
 
         <!-- link -->
-        <a href="https://therichpost.com/best-angular-ecommerce-templates-free/" target="_blank"
+        <a href="#" routerLinkActive="router-link-active"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-shopping-cart text-xs mr-2"></i>
             commandes
         </a>
         <!-- end link -->
 
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">apps</p>
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Medicament</p>
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="medicaments" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-envelope-open-text text-xs mr-2"></i>
             Medicament
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="categories" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-comments text-xs mr-2"></i>
             Categorie
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="rayons" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-shield-check text-xs mr-2"></i>
             Rayon
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="fournisseurs" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-calendar-edit text-xs mr-2"></i>
             Fournisseur
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="collaborations" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
             Collaboration
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="depenses" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-folder-open text-xs mr-2"></i>
             Depense
         </a>
         <!-- end link -->
 
 
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">UI Elements</p>
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Utilisateur</p>
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="utilisateurs" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-text text-xs mr-2"></i>
             Utilisateur
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a href="#" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-whistle text-xs mr-2"></i>
             Bon client
         </a>

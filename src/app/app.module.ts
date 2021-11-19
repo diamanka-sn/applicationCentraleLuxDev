@@ -45,6 +45,11 @@ import { ListeCommandeComponent } from './composants/commandeDeMedicaments/liste
 import { DetailCommandeComponent } from './composants/commandeDeMedicaments/detail-commande/detail-commande.component';
 import { AuthentificationComponent } from './composants/authentification/authentification.component';
 import { DataTablesModule } from 'angular-datatables';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceauthentificationService } from './services/serviceauthentification.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceutilisateurService } from './services/serviceutilisateur.service';
 
 @NgModule({
   declarations: [
@@ -94,9 +99,16 @@ import { DataTablesModule } from 'angular-datatables';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+    ServiceauthentificationService,
+    ServiceutilisateurService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

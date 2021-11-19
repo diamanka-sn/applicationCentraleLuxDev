@@ -1,1 +1,40 @@
-<p>liste-depense works!</p>
+<style>
+    .paginate_button {
+        background-color: green;
+    }
+</style>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Liste des dépenses
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter une dépense</a>
+
+        </div>
+        <div class="card-body">
+            <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>montant</th>
+                        <th>date</th>
+                        <th colspan="">details</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="depense?.length !=0">
+                    <tr *ngFor="let d of depense">
+                        <td>{{ d.description }}</td>
+                        <td>{{ d.montant }}</td>
+                        <td>{{ d.date }}</td>
+                        <td>
+                            <a class="btn btn-warning">voir</a>
+                            <a class="btn btn-primary ml-2">modifier</a>
+                            <a class="btn btn-danger ml-2">supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+<app-creer-depense></app-creer-depense>

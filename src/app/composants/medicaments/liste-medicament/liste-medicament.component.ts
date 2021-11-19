@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ServicemedicamentService } from 'src/app/services/servicemedicament.service';
 
 
 @Component({
@@ -9,16 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class ListeMedicamentComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  personne: any[] = [
-    {
-      nom: 'assane',
-      adresse: 'dakar',
-      ville: 'dakar',
-      age: 19
-
-    }
-  ]
-  constructor() {
+  medicaments!: any[];
+  subscribmedoc!: Subscription
+  constructor(private routes: Router, private servicemedoc: ServicemedicamentService) {
 
   }
 
@@ -34,6 +30,20 @@ export class ListeMedicamentComponent implements OnInit {
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
 
     }
+
+    this.getMedcament()
+
+  }
+
+  getMedcament() {
+    this.subscribmedoc = this.servicemedoc.medocsubject.subscribe((medocs: any[]) => {
+      this.medicaments = medocs
+    })
+    this.servicemedoc.getMedicament()
+  }
+
+  ngOnDestroy() {
+    this.subscribmedoc.unsubscribe()
   }
 
 }

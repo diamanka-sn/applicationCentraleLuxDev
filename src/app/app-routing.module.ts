@@ -75,7 +75,7 @@ const routes: Routes = [
   { path: 'depenses/:id', component: DetailDepenseComponent },
   { path: 'creer-depense', component: CreerDepenseComponent },
   { path: 'utilisateurs', component: ListeUtilisateurComponent },
-  { path: 'utilisateurs/id', component: DetailUtilisateurComponent },
+  { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
   { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
   { path: 'connexion', component: AuthentificationComponent },
   { path: '**', redirectTo: 'not-found' }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ServicemedicamentService } from 'src/app/services/servicemedicament.service';
 
 @Component({
   selector: 'app-creer-medicament',
@@ -7,9 +11,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreerMedicamentComponent implements OnInit {
 
-  constructor() { }
+  subcribMedoc!: Subscription
+
+  formGroup!: FormGroup
+
+  constructor(private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private routes: Router) {
+
+  }
 
   ngOnInit(): void {
+    this.subcribMedoc = this.servicemedoc.medocsubject.subscribe();
+    this.iniForm()
+  }
+
+  iniForm() {
+
+    this.formGroup = this.medicamentFormGroup.group({
+      libelle: ['', [Validators.required, Validators.maxLength(100)]],
+      prixSession: ['', [Validators.required, Validators.min(0)]],
+      coefficient: ['', [Validators.required, Validators.min(0)]],
+      tva: ['', [Validators.required]],
+      datePeremption: ['', [Validators.required]],
+      quantite: ['', [Validators.required]],
+      venteLibre: ['', [Validators.required]],
+      fournisseur: ['', [Validators.required]],
+      categorie: ['', [Validators.required]]
+    })
+  }
+
+  submit() {
+    const libelle = this.formGroup.value['libelle']
+    const prixSession = this.formGroup.value['prixSession']
+    const tva = this.formGroup.value['tva']
+    const coefficient = this.formGroup.value['coefficient']
+    const quantite = this.formGroup.value['quantite']
+    const venteLibre = this.formGroup.value['venteLibre']
+    const datePeremption = this.formGroup.value['datePeremption']
+    const med = {
+      libelle: libelle,
+      prixSession: prixSession,
+      coefficient: coefficient,
+      quantite: quantite,
+      venteLibre: venteLibre,
+      datePeremption: datePeremption,
+      tva: tva
+    }
+    this.servicemedoc.ajoutMedicament(med)
+    this.routes.navigate(['/medicaments'])
   }
 
 }
