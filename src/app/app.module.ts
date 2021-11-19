@@ -48,6 +48,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceauthentificationService } from './services/serviceauthentification.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceutilisateurService } from './services/serviceutilisateur.service';
 
 @NgModule({
   declarations: [
@@ -100,10 +102,12 @@ import { ServiceauthentificationService } from './services/serviceauthentificati
     DataTablesModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     NgxPaginationModule
   ],
   providers: [
-    ServiceauthentificationService
+    ServiceauthentificationService,
+    ServiceutilisateurService
   ],
   bootstrap: [AppComponent]
 })
