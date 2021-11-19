@@ -47,6 +47,7 @@ import { AuthentificationComponent } from './composants/authentification/authent
 import { DataTablesModule } from 'angular-datatables';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceauthentificationService } from './services/serviceauthentification.service';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+    ServiceauthentificationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
