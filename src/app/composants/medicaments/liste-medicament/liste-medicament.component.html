@@ -4,16 +4,17 @@
     }
 </style>
 <div class="container mt-4">
-    <div class="card">
+    <div class="card card-light">
         <div class="card-header">
             Liste des medicaments
             <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
                 data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter medicament</a>
 
         </div>
-        <div class="card-body">
-            <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
-                <thead>
+        <div class="card-body table-responsive">
+            <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
+                [dtOptions]="dtOptions">
+                <thead class="" style="background:#198754;color: white;">
                     <tr>
                         <th>#</th>
                         <th>Libelle</th>

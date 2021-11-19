@@ -11,8 +11,6 @@ import { ServicemedicamentService } from 'src/app/services/servicemedicament.ser
 })
 export class ListeMedicamentComponent implements OnInit {
 
-
-
   dtOptions: DataTables.Settings = {};
   medicaments!: any[];
   subscribmedoc!: Subscription
