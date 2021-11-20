@@ -38,7 +38,7 @@ import { ListeUtilisateurComponent } from './composants/utilisateurs/liste-utili
 import { CreerVenteComponent } from './composants/ventesMedicament/creer-vente/creer-vente.component';
 import { DetailVenteComponent } from './composants/ventesMedicament/detail-vente/detail-vente.component';
 import { ListeVenteComponent } from './composants/ventesMedicament/liste-vente/liste-vente.component';
-
+import {DashboardComponent } from './composants/dashboard/dashboard.component'
 const routes: Routes = [
   { path: "accueil", component: AccueilComponent },
   { path: '', component: AppComponent },
@@ -78,6 +78,7 @@ const routes: Routes = [
   { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
   { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
   { path: 'connexion', component: AuthentificationComponent },
+  { path: 'dashboard', component: DashboardComponent},
   { path: '**', redirectTo: 'not-found' }
 ];
 

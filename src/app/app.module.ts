@@ -50,6 +50,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceauthentificationService } from './services/serviceauthentification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceutilisateurService } from './services/serviceutilisateur.service';
+import { DashboardModule } from './composants/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { ServiceutilisateurService } from './services/serviceutilisateur.service
     CreerCommandeComponent,
     ListeCommandeComponent,
     DetailCommandeComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    // DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +105,8 @@ import { ServiceutilisateurService } from './services/serviceutilisateur.service
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    DashboardModule
   ],
   providers: [
     ServiceauthentificationService,
