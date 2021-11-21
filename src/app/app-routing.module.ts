@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccueilComponentApp } from './accueil/accueil.component';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './composants/accueil/accueil.component';
 import { AuthentificationComponent } from './composants/authentification/authentification.component';
@@ -38,45 +39,52 @@ import { ListeUtilisateurComponent } from './composants/utilisateurs/liste-utili
 import { CreerVenteComponent } from './composants/ventesMedicament/creer-vente/creer-vente.component';
 import { DetailVenteComponent } from './composants/ventesMedicament/detail-vente/detail-vente.component';
 import { ListeVenteComponent } from './composants/ventesMedicament/liste-vente/liste-vente.component';
+import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
 
 const routes: Routes = [
-  { path: "accueil", component: AccueilComponent },
-  { path: '', component: AppComponent },
+  // { path: '', component: AppComponent },
+  { path: '', component: AccueilComponentApp },
+  {
+
+    path: 'espace', component: EspaceAdminComponent, children: [
+      { path: "", component: AccueilComponent },
+      { path: 'medicaments', component: ListeMedicamentComponent },
+      { path: 'medicaments/:id', component: DetailMedicamentComponent },
+      { path: 'creer-medicament', component: CreerMedicamentComponent },
+      { path: 'categories', component: ListeCategorieComponent },
+      { path: 'categories/:id', component: DetailCategorieComponent },
+      { path: 'creer-categorie', component: CreerCategorieComponent },
+      { path: 'rayons', component: ListeRayonComponent },
+      { path: 'rayons/:id', component: DetailRayonComponent },
+      { path: 'creer-rayon', component: CreerRayonComponent },
+      { path: 'commander-medicament', component: ListeCommandeComponent },
+      { path: 'commander-medicament/:id', component: DetailCommandeComponent },
+      { path: 'creer-commande', component: CreerCommandeComponent },
+      { path: 'fournisseurs', component: ListeFournisseurComponent },
+      { path: 'fournisseurs/:id', component: DetailFournisseurComponent },
+      { path: 'creer-fournisseur', component: CreerFournisseurComponent },
+      { path: 'factures', component: ListeFactureComponent },
+      { path: 'factures/:id', component: DetailFactureComponent },
+      { path: 'ventes', component: ListeVenteComponent },
+      { path: 'ventes/:id', component: DetailVenteComponent },
+      { path: 'creer-vente', component: CreerVenteComponent },
+      { path: 'bon-client', component: ListeBonclientComponent },
+      { path: 'bon-client/:id', component: DetailBonclientComponent },
+      { path: 'creer-bon-client', component: CreerBonclientComponent },
+      { path: 'bon-de-livraison', component: ListeBonDeLivraisonComponent },
+      { path: 'bon-de-livraison/:id', component: DetailBonDeLivraisonComponent },
+      { path: 'collaborations', component: ListeCollaborationComponent },
+      { path: 'collaborations/:id', component: DetailCollaborationComponent },
+      { path: 'creer-collaboration', component: CreerCollaborationComponent },
+      { path: 'depenses', component: ListeDepenseComponent },
+      { path: 'depenses/:id', component: DetailDepenseComponent },
+      { path: 'creer-depense', component: CreerDepenseComponent },
+      { path: 'utilisateurs', component: ListeUtilisateurComponent },
+      { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
+      { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
+    ]
+  },
   { path: 'not-found', component: NotFoundComponent },
-  { path: 'medicaments', component: ListeMedicamentComponent },
-  { path: 'medicaments/:id', component: DetailMedicamentComponent },
-  { path: 'creer-medicament', component: CreerMedicamentComponent },
-  { path: 'categories', component: ListeCategorieComponent },
-  { path: 'categories/:id', component: DetailCategorieComponent },
-  { path: 'creer-categorie', component: CreerCategorieComponent },
-  { path: 'rayons', component: ListeRayonComponent },
-  { path: 'rayons/:id', component: DetailRayonComponent },
-  { path: 'creer-rayon', component: CreerRayonComponent },
-  { path: 'commander-medicament', component: ListeCommandeComponent },
-  { path: 'commander-medicament/:id', component: DetailCommandeComponent },
-  { path: 'creer-commande', component: CreerCommandeComponent },
-  { path: 'fournisseurs', component: ListeFournisseurComponent },
-  { path: 'fournisseurs/:id', component: DetailFournisseurComponent },
-  { path: 'creer-fournisseur', component: CreerFournisseurComponent },
-  { path: 'factures', component: ListeFactureComponent },
-  { path: 'factures/:id', component: DetailFactureComponent },
-  { path: 'ventes', component: ListeVenteComponent },
-  { path: 'ventes/:id', component: DetailVenteComponent },
-  { path: 'creer-vente', component: CreerVenteComponent },
-  { path: 'bon-client', component: ListeBonclientComponent },
-  { path: 'bon-client/:id', component: DetailBonclientComponent },
-  { path: 'creer-bon-client', component: CreerBonclientComponent },
-  { path: 'bon-de-livraison', component: ListeBonDeLivraisonComponent },
-  { path: 'bon-de-livraison/:id', component: DetailBonDeLivraisonComponent },
-  { path: 'collaborations', component: ListeCollaborationComponent },
-  { path: 'collaborations/:id', component: DetailCollaborationComponent },
-  { path: 'creer-collaboration', component: CreerCollaborationComponent },
-  { path: 'depenses', component: ListeDepenseComponent },
-  { path: 'depenses/:id', component: DetailDepenseComponent },
-  { path: 'creer-depense', component: CreerDepenseComponent },
-  { path: 'utilisateurs', component: ListeUtilisateurComponent },
-  { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
-  { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
   { path: 'connexion', component: AuthentificationComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

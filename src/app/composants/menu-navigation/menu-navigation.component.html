@@ -1,8 +1,8 @@
 <div id="sideBar"
-    class="relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
-    style="margin-top: 80px; background:#198754;color:white">
+    class="scrollarea relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
+    style="margin-top: 80px; background:#198754;color:white;">
     <!-- sidebar content -->
-    <div class="flex flex-col">
+    <div class="scrollarea flex flex-col">
 
         <!-- sidebar toggle -->
         <div class="text-right hidden md:block mb-4">
@@ -14,10 +14,10 @@
 
         <p class="uppercase text-xs text-white-600 mb-4 tracking-wider">Accueil</p>
         <!-- link -->
-        <a routerLink="accueil" routerLinkActive="router-link-active"
+        <a routerLink="/espace" routerLinkActive="router-link-active"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-home text-xs mr-2"></i>
-            Accueil
+            <i class="fad fa-dashboard text-xs mr-2"></i>
+            Tableau de bord
         </a>
 
         <!-- link -->

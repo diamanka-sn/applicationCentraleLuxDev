@@ -13,6 +13,8 @@ export class CreerMedicamentComponent implements OnInit {
 
   subcribMedoc!: Subscription
 
+  $: any
+
   formGroup!: FormGroup
 
   constructor(private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private routes: Router) {
@@ -22,6 +24,7 @@ export class CreerMedicamentComponent implements OnInit {
   ngOnInit(): void {
     this.subcribMedoc = this.servicemedoc.medocsubject.subscribe();
     this.iniForm()
+
   }
 
   iniForm() {
@@ -57,7 +60,8 @@ export class CreerMedicamentComponent implements OnInit {
       tva: tva
     }
     this.servicemedoc.ajoutMedicament(med)
-    this.routes.navigate(['/medicaments'])
+
+    this.routes.navigate(['espace/medicaments'])
   }
 
 }

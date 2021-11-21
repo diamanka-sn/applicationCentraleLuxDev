@@ -46,4 +46,8 @@ export class ListeMedicamentComponent implements OnInit {
     this.subscribmedoc.unsubscribe()
   }
 
+  afficher() {
+    $('#exampleModal').show()
+  }
+
 }

@@ -7,7 +7,8 @@
     <div class="card">
         <div class="card-header">
             Liste des entreprises
-            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter une collaboration</a>
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
+                data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter une collaboration</a>
 
         </div>
         <div class="card-body">
@@ -22,19 +23,21 @@
                     </tr>
                 </thead>
                 <tbody *ngIf="entreprise?.length !=0">
-                    <tr *ngFor="let e of entreprise">
+                    <tr *ngFor="let e of entreprise;let i=index">
                         <td>{{ e.nom }}</td>
                         <td>{{ e.adresse }}</td>
                         <td>{{ e.telephone }}</td>
                         <td>{{ e.email }}</td>
                         <td>
-                            <a class="btn btn-warning">voir</a>
-                            <a class="btn btn-primary ml-2">modifier</a>
-                            <a class="btn btn-danger ml-2">supprimer</a>
+                            <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
+                                    class="fa fa-eye"></i></a>
+                            <a class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></a>
                         </td>
+
                     </tr>
                 </tbody>
-                </table>
+            </table>
         </div>
     </div>
 </div>

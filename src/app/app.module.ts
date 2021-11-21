@@ -50,10 +50,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceauthentificationService } from './services/serviceauthentification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceutilisateurService } from './services/serviceutilisateur.service';
+import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
+import { AccueilComponentApp } from './accueil/accueil.component';
+import { ServicemedicamentService } from './services/servicemedicament.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AccueilComponentApp,
     HeaderComponent,
     MenuNavigationComponent,
     AccueilComponent,
@@ -94,7 +98,8 @@ import { ServiceutilisateurService } from './services/serviceutilisateur.service
     CreerCommandeComponent,
     ListeCommandeComponent,
     DetailCommandeComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    EspaceAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -106,8 +111,7 @@ import { ServiceutilisateurService } from './services/serviceutilisateur.service
     NgxPaginationModule
   ],
   providers: [
-    ServiceauthentificationService,
-    ServiceutilisateurService
+
   ],
   bootstrap: [AppComponent]
 })
