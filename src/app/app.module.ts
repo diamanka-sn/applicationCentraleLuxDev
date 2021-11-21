@@ -53,6 +53,10 @@ import { ServiceutilisateurService } from './services/serviceutilisateur.service
 import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
 import { AccueilComponentApp } from './accueil/accueil.component';
 import { ServicemedicamentService } from './services/servicemedicament.service';
+import { ServicecategorieService } from './services/servicecategorie.service';
+import { ServicerayonService } from './services/servicerayon.service';
+import { ServicecommandeService } from './services/servicecommande.service';
+import { ServicebonClientService } from './services/ServicebonClientService';
 
 @NgModule({
   declarations: [
@@ -112,6 +116,12 @@ import { ServicemedicamentService } from './services/servicemedicament.service';
   ],
   providers: [
 
+    ServiceauthentificationService,
+    ServiceutilisateurService,
+    ServicecategorieService,
+    ServicerayonService,
+    ServicebonClientService,
+    ServicecommandeService,
   ],
   bootstrap: [AppComponent]
 })
