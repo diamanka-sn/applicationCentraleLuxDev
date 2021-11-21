@@ -50,6 +50,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceauthentificationService } from './services/serviceauthentification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceutilisateurService } from './services/serviceutilisateur.service';
+import { ServicecategorieService } from './services/servicecategorie.service';
+import { ServicerayonService } from './services/servicerayon.service';
+import { ServicecommandeService } from './services/servicecommande.service';
+import { ServicebonClientService } from './services/ServicebonClientService';
 
 @NgModule({
   declarations: [
@@ -107,7 +111,11 @@ import { ServiceutilisateurService } from './services/serviceutilisateur.service
   ],
   providers: [
     ServiceauthentificationService,
-    ServiceutilisateurService
+    ServiceutilisateurService,
+    ServicecategorieService,
+    ServicerayonService,
+    ServicebonClientService,
+    ServicecommandeService,
   ],
   bootstrap: [AppComponent]
 })

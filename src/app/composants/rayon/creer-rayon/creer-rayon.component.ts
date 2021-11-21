@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ServicerayonService } from 'src/app/services/servicerayon.service';
 
 @Component({
   selector: 'app-creer-rayon',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreerRayonComponent implements OnInit {
 
-  constructor() { }
+  subcribrayon!: Subscription
+
+  formGroup!: FormGroup
+  constructor(private rayonFormGroup: FormBuilder, private servicerayon: ServicerayonService, private routes: Router) { }
 
   ngOnInit(): void {
+    this.subcribrayon = this.servicerayon.rayonsubject.subscribe();
+    this.iniForm()
+  }
+  iniForm() {
+
+    this.formGroup = this.rayonFormGroup.group({
+      nomRayon: ['', [Validators.required, Validators.maxLength(100)]],
+
+    })
   }
 
+  submit() {
+    const nomRayon = this.formGroup.value['nomRayon']
+    const newrayon = {
+      nomRayon: nomRayon,
+    }
+    this.servicerayon.ajoutrayon(newrayon)
+    this.routes.navigate(['/rayons'])
+  }
 }
