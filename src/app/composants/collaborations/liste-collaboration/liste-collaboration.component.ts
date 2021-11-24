@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ServiceCollaborationService } from 'src/app/services/service-collaboration.service';
 
 @Component({
   selector: 'app-liste-collaboration',
@@ -8,25 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class ListeCollaborationComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  entreprise: any[] = [
-    {
-      nom: 'E-Corp',
-      telephone: "771112233",
-      adresse: "Dakar",
-      email: "ecorp@gmail.com",
-      tauxPEC: 0.5
-    },
-    {
-      nom: 'E-Corp',
-      telephone: "771112233",
-      adresse: "Dakar",
-      email: "ecorp@gmail.com",
-      tauxPEC: 0.5
-    }
-  ]
+  subEntreprise!: Subscription ;
+  entreprises!: any[] ;
 
 
-  constructor() { }
+  constructor(private serviceCollaboration: ServiceCollaborationService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -36,7 +26,15 @@ export class ListeCollaborationComponent implements OnInit {
       autoWidth: true,
       language: { url: 'assets/datatable-French.json' },
     }
+    this.getAllCollaboration() ;
   }
 
-
+  getAllCollaboration() {
+    this.subEntreprise = this.serviceCollaboration.subCollaboration.subscribe(
+      (allEntreprises: any) => {
+        this.entreprises = allEntreprises ;
+      }
+    )
+    this.serviceCollaboration.getAllColaboration() ;
+  }
 }
