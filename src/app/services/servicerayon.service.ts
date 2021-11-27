@@ -28,11 +28,11 @@ export class ServicerayonService {
 
       },
       {
-        libelle: 'pomade',
+        libelle: 'Douleur et Fiévre',
 
       },
       {
-        libelle: 'Deparasitant',
+        libelle: 'Antibiotique',
 
       },
     ]

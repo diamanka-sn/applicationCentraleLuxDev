@@ -11,7 +11,7 @@
                         <form [formGroup]="formGroup" (ngSubmit)="submit()">
                             <div class="row mb-3">
                                 <div class="form-group col-md-6">
-                                    <label>Libelle</label>
+                                    <label>Nom</label>
                                     <input type="text" class="form-control" formControlName="libelle" name="libelle">
                                 </div>
                                 <div class="form-group col-md-6">
@@ -30,6 +30,21 @@
                                     <label>Coefficient</label>
                                     <input type="text" class="form-control" maxlength="10" formControlName="coefficient"
                                         name="coefficient">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Dosage</label>
+                                    <input type="text" class="form-control" formControlName="dosage" name="dosage">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Type </label>
+                                    <select class="form-control" formControlName="type" name="type">
+                                        <option value="">---------selectionner------------</option>
+                                        <option value="comprimé">comprimé</option>
+                                        <option value="sirop">sirop</option>
+                                        <option value="injection">injection</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -58,8 +73,8 @@
                                     <label>Categorie</label>
                                     <select class="form-control" formControlName="categorie" name="categorie">
                                         <option value="">---------selectionner</option>
-                                        <option value="categorie1">categorie 1</option>
-                                        <option value="categorie2">categorie 2</option>
+                                        <option value="{{c.libelle}}" *ngFor="let c of categories">{{c.libelle}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
