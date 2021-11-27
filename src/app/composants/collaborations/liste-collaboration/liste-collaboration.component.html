@@ -22,8 +22,8 @@
                         <th colspan="">details</th>
                     </tr>
                 </thead>
-                <tbody *ngIf="entreprise?.length !=0">
-                    <tr *ngFor="let e of entreprise;let i=index">
+                <tbody *ngIf="entreprises?.length !=0">
+                    <tr *ngFor="let e of entreprises;let i=index">
                         <td>{{ e.nom }}</td>
                         <td>{{ e.adresse }}</td>
                         <td>{{ e.telephone }}</td>

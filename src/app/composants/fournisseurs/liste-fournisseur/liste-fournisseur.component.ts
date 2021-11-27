@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
 
 @Component({
   selector: 'app-liste-fournisseur',
@@ -8,17 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class ListeFournisseurComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  fournisseur: any[] = [
-    {
-      nomStructure: 'Pharma Distribution',
-      telephone: "770001122",
-      adresse: "Ouakam",
-      email: "pharmadist@gmail.com",
 
-    }
-  ]
 
-  constructor() { }
+  subFournisseur!: Subscription ;
+  fournisseurs!: any[] ;
+
+  constructor(private serviceForunisseur: ServicefournisseurService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -28,5 +25,15 @@ export class ListeFournisseurComponent implements OnInit {
       autoWidth: true,
       language: { url: 'assets/datatable-French.json' },
     }
+    this.getALlFournisseurs() ;
+  }
+
+  getALlFournisseurs(){
+    this.subFournisseur = this.serviceForunisseur.subFournisseur.subscribe(
+      (allFournisseurs: any[]) => {
+        this.fournisseurs = allFournisseurs ;
+      }
+    );
+    this.serviceForunisseur.getAllFournisseurs() ;
   }
 }
