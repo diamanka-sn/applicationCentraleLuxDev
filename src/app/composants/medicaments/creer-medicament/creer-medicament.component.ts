@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ServicecategorieService } from 'src/app/services/servicecategorie.service';
 import { ServicemedicamentService } from 'src/app/services/servicemedicament.service';
 
 @Component({
@@ -12,16 +13,25 @@ import { ServicemedicamentService } from 'src/app/services/servicemedicament.ser
 export class CreerMedicamentComponent implements OnInit {
 
   subcribMedoc!: Subscription
+  catSubs!: Subscription
+  categories !: any[];
+
+  $: any
 
   formGroup!: FormGroup
 
-  constructor(private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private routes: Router) {
+  constructor(private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private routes: Router, private sercat: ServicecategorieService) {
 
   }
 
   ngOnInit(): void {
     this.subcribMedoc = this.servicemedoc.medocsubject.subscribe();
+    this.catSubs = this.sercat.categoriesubject.subscribe((cat: any[]) => {
+      this.categories = cat
+    })
+    this.sercat.getCategorie()
     this.iniForm()
+
   }
 
   iniForm() {
@@ -35,7 +45,9 @@ export class CreerMedicamentComponent implements OnInit {
       quantite: ['', [Validators.required]],
       venteLibre: ['', [Validators.required]],
       fournisseur: ['', [Validators.required]],
-      categorie: ['', [Validators.required]]
+      categorie: ['', [Validators.required]],
+      dosage: ['', [Validators.required]],
+      type: ['', [Validators.required]]
     })
   }
 
@@ -47,17 +59,24 @@ export class CreerMedicamentComponent implements OnInit {
     const quantite = this.formGroup.value['quantite']
     const venteLibre = this.formGroup.value['venteLibre']
     const datePeremption = this.formGroup.value['datePeremption']
+    const dosage = this.formGroup.value['dosage']
+    const type = this.formGroup.value['type']
+
+    const lib = libelle + " " + type + " " + dosage
     const med = {
-      libelle: libelle,
+      libelle: lib,
       prixSession: prixSession,
       coefficient: coefficient,
       quantite: quantite,
       venteLibre: venteLibre,
       datePeremption: datePeremption,
-      tva: tva
+      tva: tva,
+
     }
     this.servicemedoc.ajoutMedicament(med)
-    this.routes.navigate(['/medicaments'])
+    this.formGroup.reset()
+
+    this.routes.navigate(['espace/medicaments'])
   }
 
 }

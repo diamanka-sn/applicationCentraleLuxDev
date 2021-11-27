@@ -21,7 +21,8 @@ export class ServicemedicamentService {
   getMedicament() {
     this.medicaments = [
       {
-        libelle: 'paracetamol',
+        id: 1,
+        libelle: 'doliprane comprimé 500mg',
         quantite: 20,
         prixSession: 40.00,
         coefficient: 0.3,
@@ -30,7 +31,8 @@ export class ServicemedicamentService {
         datePeremption: "21/02/2022"
       },
       {
-        libelle: 'paracetamol',
+        id: 2,
+        libelle: 'afferalgan sirop 1000mg',
         quantite: 20,
         prixSession: 40.00,
         coefficient: 0.3,
@@ -39,7 +41,8 @@ export class ServicemedicamentService {
         datePeremption: "21/02/2022"
       },
       {
-        libelle: 'paracetamol',
+        id: 3,
+        libelle: 'paracetamol comprimé 50mg',
         quantite: 20,
         prixSession: 40.00,
         coefficient: 0.3,
@@ -48,7 +51,8 @@ export class ServicemedicamentService {
         datePeremption: "21/02/2022"
       },
       {
-        libelle: 'paracetamol',
+        id: 4,
+        libelle: 'zenset comprimé 20ml',
         quantite: 20,
         prixSession: 40.00,
         coefficient: 0.3,
@@ -65,6 +69,12 @@ export class ServicemedicamentService {
 
     this.medicaments.push(medicament)
     this.emitMedoc()
+
+  }
+
+  getMedicamentDetail(id: number) {
+    const medicament = this.medicaments[id]
+    return medicament;
 
   }
 }
