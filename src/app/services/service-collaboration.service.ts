@@ -17,7 +17,7 @@ export class ServiceCollaborationService {
   getAllColaboration() {
     this.collaboration = [
       {
-        nom: 'E-Corp',
+        nom: 'SENEGAL SERVICE',
         telephone: "77 111 22 33",
         adresse: "Saint Louis",
         email: "ecorp@gmail.com",
@@ -28,6 +28,20 @@ export class ServiceCollaborationService {
         telephone: "33 012 21 23",
         adresse: "Dakar",
         email: "stechp@gmail.com",
+        tauxPEC: 0.5
+      },
+      {
+        nom: 'SGBS',
+        telephone: "33 844 33 58",
+        adresse: "Pikine",
+        email: "sgbs@gmail.com",
+        tauxPEC: 0.5
+      },
+      {
+        nom: 'NDIAYE ET FRERES',
+        telephone: "33 829 11 10",
+        adresse: "Ouakam",
+        email: "ndiayeetfreres@gmail.com",
         tauxPEC: 0.5
       }
     ];

@@ -28,6 +28,11 @@ export class ServicedepenseService {
         montant: "17 400",
         date: "05/11/2021",
       },
+      {
+        description: "Paiement facture d'éléctricité",
+        montant: "17 400",
+        date: "05/11/2021",
+      },
     ];
     this.emitDepenses() ;
   }

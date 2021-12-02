@@ -23,17 +23,17 @@ export class CreerRayonComponent implements OnInit {
   iniForm() {
 
     this.formGroup = this.rayonFormGroup.group({
-      nomRayon: ['', [Validators.required, Validators.maxLength(100)]],
+      rayon: ['', [Validators.required, Validators.maxLength(100)]],
 
     })
   }
 
   submit() {
-    const nomRayon = this.formGroup.value['nomRayon']
+    const nomRayon = this.formGroup.value['rayon']
     const newrayon = {
-      nomRayon: nomRayon,
+      libelle: nomRayon,
     }
     this.servicerayon.ajoutrayon(newrayon)
-    this.routes.navigate(['/rayons'])
+    //this.routes.navigate(['/rayons'])
   }
 }

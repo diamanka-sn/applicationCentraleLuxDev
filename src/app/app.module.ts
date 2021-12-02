@@ -50,6 +50,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceauthentificationService } from './services/serviceauthentification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceutilisateurService } from './services/serviceutilisateur.service';
+import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
+import { AccueilComponentApp } from './accueil/accueil.component';
+import { ServicemedicamentService } from './services/servicemedicament.service';
 import { ServicecategorieService } from './services/servicecategorie.service';
 import { ServicerayonService } from './services/servicerayon.service';
 import { ServicecommandeService } from './services/servicecommande.service';
@@ -60,6 +63,7 @@ import {DashboardModule} from './composants/dashboard/dashboard.module'
 @NgModule({
   declarations: [
     AppComponent,
+    AccueilComponentApp,
     HeaderComponent,
     MenuNavigationComponent,
     AccueilComponent,
@@ -100,7 +104,8 @@ import {DashboardModule} from './composants/dashboard/dashboard.module'
     CreerCommandeComponent,
     ListeCommandeComponent,
     DetailCommandeComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    EspaceAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +118,7 @@ import {DashboardModule} from './composants/dashboard/dashboard.module'
     DashboardModule
   ],
   providers: [
+
     ServiceauthentificationService,
     ServiceutilisateurService,
     ServicecategorieService,

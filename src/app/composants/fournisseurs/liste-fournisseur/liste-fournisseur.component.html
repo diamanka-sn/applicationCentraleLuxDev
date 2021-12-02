@@ -7,13 +7,15 @@
     <div class="card">
         <div class="card-header">
             Liste des fournisseurs
-            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i> fournisseur</a>
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
+                data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i> fournisseur</a>
 
         </div>
         <div class="card-body">
             <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Nom structure</th>
                         <th>Adresse</th>
                         <th>telephone</th>
@@ -28,13 +30,14 @@
                         <td>{{ f.telephone }}</td>
                         <td>{{ f.email }}</td>
                         <td>
-                            <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
+                                    class="fa fa-eye"></i></a>
                             <a class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                 </tbody>
-                </table>
+            </table>
         </div>
     </div>
 </div>

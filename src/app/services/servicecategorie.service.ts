@@ -19,19 +19,27 @@ export class ServicecategorieService {
   getCategorie() {
     this.categorie = [
       {
-        libelle: 'Deparasitant',
+        libelle: 'Médicaments Oraux',
 
       },
       {
-        libelle: 'anti douleur',
+        libelle: 'Médicaments Injectables',
 
       },
       {
-        libelle: 'pomade',
+        libelle: 'Solutés de Perfusion',
 
       },
       {
-        libelle: 'Deparasitant',
+        libelle: 'Médicaments à Usage Externe',
+
+      },
+      {
+        libelle: 'Médicaments OPH à usage externe',
+
+      },
+      {
+        libelle: 'Désinfectants',
 
       },
     ]

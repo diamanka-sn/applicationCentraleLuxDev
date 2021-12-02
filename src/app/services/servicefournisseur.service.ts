@@ -18,24 +18,24 @@ export class ServicefournisseurService {
   getAllFournisseurs() {
     this.fournisseurs = [
       {
-        nomStructure: 'Pharma Distribution',
-        telephone: "77 000 11 22",
-        adresse: "Ouakam",
-        email: "pharmadist@gmail.com",
+        nomStructure: 'DUOPHARM',
+        telephone: "33 869 05 22",
+        adresse: "Dakar",
+        email: "",
   
       },
       {
-        nomStructure: 'Santté Prio',
-        telephone: "76 223 35 18",
-        adresse: "Plâteau",
-        email: "santeprio@gmail.com",
+        nomStructure: 'SODIPHARM',
+        telephone: "33 859 00 00",
+        adresse: "Fann Bel-Air",
+        email: "",
   
       },
       {
-        nomStructure: 'Xelcom',
-        telephone: "77 666 56 33",
-        adresse: "Nord Foire",
-        email: "xelcom@gmail.com",
+        nomStructure: 'LABOREX',
+        telephone: "33 869 02 02",
+        adresse: "Corniche des HLM",
+        email: "",
       }
     ];
     this.emitFournisseurs()

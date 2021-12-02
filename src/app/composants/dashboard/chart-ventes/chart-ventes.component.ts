@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'chart.js';
+import { Chart } from 'chart.js';
 @Component({
   selector: 'app-chart-ventes',
   templateUrl: './chart-ventes.component.html',
@@ -11,7 +11,7 @@ export class ChartVentesComponent implements OnInit {
 
   constructor() {
     this.data = {
-      labels: ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil','Aout','sept','Oct', 'Nov','Dec'],
+      labels: ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'sept', 'Oct', 'Nov', 'Dec'],
       datasets: [{
         data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
         label: 'Ventes',
