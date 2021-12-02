@@ -13,11 +13,11 @@ export class ChartVentesComponent implements OnInit {
     this.data = {
       labels: ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil','Aout','sept','Oct', 'Nov','Dec'],
       datasets: [{
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
         label: 'Ventes',
         backgroundColor: 'blue',
       }, {
-        data: [28, 48, 40, 19, 86, 27, 90],
+        data: [28, 48, 40, 19, 86, 27, 90, 59, 80, 81, 56, 55, 40],
         label: 'Dépenses',
         backgroundColor: 'red',
       }],
