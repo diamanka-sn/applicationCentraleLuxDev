@@ -82,12 +82,13 @@ const routes: Routes = [
       { path: 'utilisateurs', component: ListeUtilisateurComponent },
       { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
       { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
+      {path: 'dashboard', component: DashboardComponent}
     ]
   },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'connexion', component: AuthentificationComponent },
 
-  {path: 'dashboard', component: DashboardComponent},
+ 
   { path: '**', redirectTo: 'not-found' }
 ];
 
