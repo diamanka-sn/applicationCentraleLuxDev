@@ -39,12 +39,8 @@ import { ListeUtilisateurComponent } from './composants/utilisateurs/liste-utili
 import { CreerVenteComponent } from './composants/ventesMedicament/creer-vente/creer-vente.component';
 import { DetailVenteComponent } from './composants/ventesMedicament/detail-vente/detail-vente.component';
 import { ListeVenteComponent } from './composants/ventesMedicament/liste-vente/liste-vente.component';
-<<<<<<< HEAD
 import { DashboardComponent } from './composants/dashboard/dashboard.component'
-=======
-import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
-
->>>>>>> ac683b326f759bf6d7cb4ee1c9df6ec0876e501e
+import {EspaceAdminComponent} from './espace-admin/espace-admin.component'
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
