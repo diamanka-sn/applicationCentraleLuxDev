@@ -55,6 +55,8 @@ import { ServicerayonService } from './services/servicerayon.service';
 import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
+
+import {DashboardModule} from './composants/dashboard/dashboard.module'
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +109,8 @@ import { ServicebonClientService } from './services/ServicebonClientService';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    DashboardModule
   ],
   providers: [
     ServiceauthentificationService,
