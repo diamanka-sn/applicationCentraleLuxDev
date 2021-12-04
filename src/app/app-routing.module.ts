@@ -39,8 +39,8 @@ import { ListeUtilisateurComponent } from './composants/utilisateurs/liste-utili
 import { CreerVenteComponent } from './composants/ventesMedicament/creer-vente/creer-vente.component';
 import { DetailVenteComponent } from './composants/ventesMedicament/detail-vente/detail-vente.component';
 import { ListeVenteComponent } from './composants/ventesMedicament/liste-vente/liste-vente.component';
-import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
-
+import { DashboardComponent } from './composants/dashboard/dashboard.component'
+import {EspaceAdminComponent} from './espace-admin/espace-admin.component'
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -82,10 +82,13 @@ const routes: Routes = [
       { path: 'utilisateurs', component: ListeUtilisateurComponent },
       { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
       { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
+      {path: 'dashboard', component: DashboardComponent}
     ]
   },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'connexion', component: AuthentificationComponent },
+
+ 
   { path: '**', redirectTo: 'not-found' }
 ];
 
