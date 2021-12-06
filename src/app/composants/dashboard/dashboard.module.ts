@@ -5,6 +5,7 @@ import { ChartVentesComponent } from './chart-ventes/chart-ventes.component'
 import { ChartModule } from 'angular2-chartjs';
 import { ChartStockComponent } from './chart-stock/chart-stock.component';
 import { TableauDepensesComponent } from './tableau-depenses/tableau-depenses.component';
+// import { DepenseChartComponent } from './depense-chart/depense-chart.component';
 
 // import { ChartsModule } from 'ng2-charts';
 @NgModule({
@@ -12,7 +13,8 @@ import { TableauDepensesComponent } from './tableau-depenses/tableau-depenses.co
     DashboardComponent,
     ChartVentesComponent,
     ChartStockComponent,
-    TableauDepensesComponent
+    TableauDepensesComponent,
+    // DepenseChartComponent
   ],
   imports: [
     CommonModule,
