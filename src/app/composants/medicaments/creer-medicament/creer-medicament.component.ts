@@ -40,7 +40,7 @@ export class CreerMedicamentComponent implements OnInit {
       libelle: ['', [Validators.required, Validators.maxLength(100)]],
       prixSession: ['', [Validators.required, Validators.min(0)]],
       coefficient: ['', [Validators.required, Validators.min(0)]],
-      tva: ['', [Validators.required]],
+      // tva: ['', [Validators.required]],
       datePeremption: ['', [Validators.required]],
       quantite: ['', [Validators.required]],
       venteLibre: ['', [Validators.required]],
@@ -54,7 +54,7 @@ export class CreerMedicamentComponent implements OnInit {
   submit() {
     const libelle = this.formGroup.value['libelle']
     const prixSession = this.formGroup.value['prixSession']
-    const tva = this.formGroup.value['tva']
+    // const tva = this.formGroup.value['tva']
     const coefficient = this.formGroup.value['coefficient']
     const quantite = this.formGroup.value['quantite']
     const venteLibre = this.formGroup.value['venteLibre']
@@ -70,7 +70,7 @@ export class CreerMedicamentComponent implements OnInit {
       quantite: quantite,
       venteLibre: venteLibre,
       datePeremption: datePeremption,
-      tva: tva,
+      // tva: tva,
 
     }
     this.servicemedoc.ajoutMedicament(med)

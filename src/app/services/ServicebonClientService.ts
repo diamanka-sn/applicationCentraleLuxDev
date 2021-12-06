@@ -24,7 +24,7 @@ export class ServicebonClientService {
         prenom: 'assane',
         adresse: 'dakar',
         email: 'assane@gmail.com',
-        telephone: '77777777',
+        telephone: '77 777 43 23',
         solde: '18000'
       },
       {
@@ -32,7 +32,7 @@ export class ServicebonClientService {
         prenom: 'mouctar',
         adresse: 'dakar',
         email: 'mouctar@gmail.com',
-        telephone: '77777347',
+        telephone: '77 777 34 71',
         solde: '16000'
       },
       {
@@ -40,7 +40,7 @@ export class ServicebonClientService {
         prenom: 'yakhouba',
         adresse: 'dakar',
         email: 'yakhouba@gmail.com',
-        telephone: '72356777',
+        telephone: '78 235 67 77',
         solde: '26000'
       },
       {
@@ -48,7 +48,7 @@ export class ServicebonClientService {
         prenom: 'mouhamaou',
         adresse: 'dakar',
         email: 'mouhamadou@gmail.com',
-        telephone: '7777',
+        telephone: '77 772 34 56',
         solde: '74000'
       },
     ]

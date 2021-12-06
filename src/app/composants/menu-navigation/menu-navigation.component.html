@@ -1,6 +1,6 @@
 <div id="sideBar"
     class="scrollarea relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
-    style="margin-top: 80px; background:#198754;color:white;">
+    style="top: 80px; background:#198754;color:white;position: fixed;bottom: 0px;overflow-y: auto;">
     <!-- sidebar content -->
     <div class="scrollarea flex flex-col">
 
@@ -39,6 +39,31 @@
         <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Medicament</p>
 
         <!-- link -->
+        <!--- menu descendant  -->
+        <!-- <div class="accordion accordion-flush bg-none" id="accordionFlushExample">
+            <div class="">
+                <h6 class="accordion-header" id="flush-headingOne">
+                    <a href="#" class="accordion collapsed" type="" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        medicaments
+                    </a><i class="fixed-left pull-right">b</i>
+                </h6>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body" style="margin-left: -50px;">
+                        <ul>
+                            <li>
+                                Ajouter
+                            </li>
+                            <li>Modifier</li>
+                            <li>lister</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!--- fin menu descendant -->
+
         <a routerLink="medicaments" routerLinkActive="router-link-active"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-envelope-open-text text-xs mr-2"></i>
