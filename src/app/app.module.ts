@@ -59,12 +59,13 @@ import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
 
-import {DashboardModule} from './composants/dashboard/dashboard.module';
+import { DashboardModule } from './composants/dashboard/dashboard.module';
 import { ClientComponent } from './composants/utilisateurs/client/client.component';
 import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
+import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,7 +116,8 @@ import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medica
     VendeurComponent,
     MedicamentDeffectueuxComponent,
     MedicamentPerimesComponent,
-    LotDeMedicamentComponent
+    LotDeMedicamentComponent,
+    QuantiteMedicamentComponent
   ],
   imports: [
     BrowserModule,

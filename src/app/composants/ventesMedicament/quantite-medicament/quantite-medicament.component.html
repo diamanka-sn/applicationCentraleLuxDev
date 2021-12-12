@@ -1,0 +1,29 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered w-100">
+        <div class="modal-content">
+            <div class="modal-header " style="background: #198754;color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter un medicament</h5>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="">
+                        <form [formGroup]="formGroup" (ngSubmit)="submit()">
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Libelle</label>
+                                    <input type="text" class="form-control " formControlName="libelle" name="libelle">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Quantite</label>
+                                    <input type=" number" class="form-control" maxlength="9" formControlName="quantite" name="quantite">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
