@@ -40,7 +40,12 @@ import { CreerVenteComponent } from './composants/ventesMedicament/creer-vente/c
 import { DetailVenteComponent } from './composants/ventesMedicament/detail-vente/detail-vente.component';
 import { ListeVenteComponent } from './composants/ventesMedicament/liste-vente/liste-vente.component';
 import { DashboardComponent } from './composants/dashboard/dashboard.component'
-import {EspaceAdminComponent} from './espace-admin/espace-admin.component'
+import { EspaceAdminComponent } from './espace-admin/espace-admin.component'
+import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
+import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
+import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
+import { ClientComponent } from './composants/utilisateurs/client/client.component';
+import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -82,13 +87,19 @@ const routes: Routes = [
       { path: 'utilisateurs', component: ListeUtilisateurComponent },
       { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
       { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
-      {path: 'dashboard', component: DashboardComponent}
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'medicaments-deffectueux', component: MedicamentDeffectueuxComponent },
+      { path: 'medicaments-perimes', component: MedicamentPerimesComponent },
+      { path: 'vendeurs', component: VendeurComponent },
+      { path: 'clients', component: ClientComponent },
+      { path: 'lot-de-medicament', component: LotDeMedicamentComponent },
+
     ]
   },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'connexion', component: AuthentificationComponent },
 
- 
+
   { path: '**', redirectTo: 'not-found' }
 ];
 
