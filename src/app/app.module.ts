@@ -60,7 +60,16 @@ import { ServicebonClientService } from './services/ServicebonClientService';
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {DashboardModule} from './composants/dashboard/dashboard.module';
+=======
+import { DashboardModule } from './composants/dashboard/dashboard.module';
+import { ClientComponent } from './composants/utilisateurs/client/client.component';
+import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
+import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
+import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
+import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
+>>>>>>> 3f7ed1a40b63924dfeda6818636bbc354fdaf0a4
 import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
 =======
 import { DashboardModule } from './composants/dashboard/dashboard.module'
@@ -118,6 +127,14 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     AuthentificationComponent,
     EspaceAdminComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    ClientComponent,
+    VendeurComponent,
+    MedicamentDeffectueuxComponent,
+    MedicamentPerimesComponent,
+    LotDeMedicamentComponent,
+>>>>>>> 3f7ed1a40b63924dfeda6818636bbc354fdaf0a4
     QuantiteMedicamentComponent
 =======
     ListeClientComponent,

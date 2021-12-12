@@ -1,4 +1,6 @@
-<div id="sideBar" class="scrollarea relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster" style="top: 80px; background:#198754;color:white;position: fixed;bottom: 0px;overflow-y: auto;">
+<div id="sideBar"
+    class="scrollarea relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
+    style="top: 80px; background:#198754;color:white;position: fixed;bottom: 0px;overflow-y: auto;">
     <!-- sidebar content -->
     <div class="scrollarea flex flex-col">
 
@@ -12,18 +14,22 @@
 
         <p class="uppercase text-xs text-white-600 mb-4 tracking-wider">Accueil</p>
         <!-- link -->
-        <a routerLink="/espace" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-dashboard text-xs mr-2"></i> Tableau de bord
+        <a routerLink="/espace" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fa fa-dashboard text-xs mr-2"></i>
+            Tableau de bord
         </a>
 
         <!-- link -->
-        <a routerLink="/espace/dashboard" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="/espace/dashboard" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-chart-pie text-xs mr-2"></i> Statistiques des données
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a routerLink="commander-medicament" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="commander-medicament" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-shopping-cart text-xs mr-2"></i> commandes
         </a>
         <!-- end link -->
@@ -56,37 +62,63 @@
         </div> -->
         <!--- fin menu descendant -->
 
-        <a routerLink="medicaments" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="medicaments" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-envelope-open-text text-xs mr-2"></i> Medicament
         </a>
         <!-- end link -->
-
         <!-- link -->
-        <a routerLink="categories" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="medicaments-perimes" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-comments text-xs mr-2"></i>
+            Medicament perimés
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a routerLink="medicaments-deffectueux" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-comments text-xs mr-2"></i>
+            Medicament deffectueux
+        </a>
+        <!-- link -->
+        <a routerLink="lot-de-medicament" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-comments text-xs mr-2"></i>
+            lot de medicament
+        </a>
+        <!-- end link -->
+        <!-- end link -->
+        <!-- link -->
+        <a routerLink="categories" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-comments text-xs mr-2"></i> Categorie
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a routerLink="rayons" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="rayons" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-shield-check text-xs mr-2"></i> Rayon
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a routerLink="fournisseurs" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="fournisseurs" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-calendar-edit text-xs mr-2"></i> Fournisseur
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a routerLink="collaborations" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="collaborations" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-file-invoice-dollar text-xs mr-2"></i> Collaboration
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a routerLink="depenses" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="depenses" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-folder-open text-xs mr-2"></i> Depense
         </a>
         <!-- end link -->
@@ -102,58 +134,73 @@
         <!-- end link -->
 
         <!-- link -->
+<<<<<<< HEAD
         <a routerLink="client" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-text text-xs mr-2"></i> Client
+=======
+        <a routerLink="utilisateurs" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-text text-xs mr-2"></i> Utilisateur
+>>>>>>> 3f7ed1a40b63924dfeda6818636bbc354fdaf0a4
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a routerLink="bon-client" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-whistle text-xs mr-2"></i> Bon client
-        </a>
-        <!-- end link -->
-
-
-        <!-- link -->
-        <a routerLink="creer-vente" routerLinkActive="router-link-active" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-cricket text-xs mr-2"></i> Ventes
+        <a routerLink="clients" routerLinkActive="router-link-actve"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-users text-xs mr-2"></i>
+            Client
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-box-open text-xs mr-2"></i> Content
+        <a routerLink="vendeurs" routerLinkActive="router-link-actve"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-share text-xs mr-2"></i>
+            Vendeur
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a routerLink="bon-client" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-books text-xs mr-2"></i>
+            Bon client
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-swatchbook text-xs mr-2"></i> colors
-        </a>
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-swatchbook text-xs mr-2"></i>
+            colors
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-atom-alt text-xs mr-2"></i> icons
-        </a>
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-atom-alt text-xs mr-2"></i>
+            icons
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-club text-xs mr-2"></i> card
-        </a>
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-club text-xs mr-2"></i>
+            card
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-cheese-swiss text-xs mr-2"></i> Widgets
-        </a>
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-cheese-swiss text-xs mr-2"></i>
+            Widgets
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-computer-classic text-xs mr-2"></i> Components
-        </a>
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-computer-classic text-xs mr-2"></i>
+            Components
+        </a> -->
         <!-- end link -->
 
 
