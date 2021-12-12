@@ -6,8 +6,9 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            Ajouter une ventes
-            <a routerLink="#" class="btn btn-success" style="position: absolute;right: 30px;"><i class="fa fa-plus mr-2"></i>Liste des ventes</a>
+            Effectuer une ventes
+            <a routerLink="#" class="btn btn-success" style="position: absolute;right: 30px;"><i
+                    class="fa fa-plus mr-2"></i>Liste des ventes</a>
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
 
         </div>
@@ -19,10 +20,11 @@
 
                         <div class="col-md-6 bg-light">
 
-                            <div class="container">
+                            <div class="">
                                 <div class="card card-light">
                                     <div class="card-body table-responsive">
-                                        <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover" [dtOptions]="dtOptions">
+                                        <table datatable class="row-border w-100 table text-center table-collapse
+                                            table-hover" [dtOptions]="dtOptions">
                                             <thead class="" style="background:#198754;color: white;">
                                                 <tr>
                                                     <th>Libelle</th>
@@ -31,26 +33,30 @@
                                                 </tr>
                                             </thead>
                                             <tbody *ngIf="medicaments?.length !=0">
-                                                <tr *ngFor="let m of medicaments;let i=index" (click)="selected(m)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <tr *ngFor="let m of medicaments;let i=index" (click)="selected(m)"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                    class="mb-3 med">
                                                     <td>{{ m.libelle }}</td>
                                                     <td>{{ m.prixSession* m.coefficient }}</td>
                                                 </tr>
 
                                             </tbody>
-                                            </table>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- <app-quantite-medicament></app-quantite-medicament> -->
                         </div>
-                        <div class="col-md-6 bg-success">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h6>Details de la vente</h6>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table" *ngIf="venteMedocs.length != 0">
+                        <div class="card col-md-6">
+                            <div class="card-header">
+                                <h6>Details de la vente</h6>
+                            </div>
+                            <div class="card-body">
+                                <div *ngIf="venteMedocs.length != 0">
+
+
+                                    <table class="table">
                                         <thead>
                                             <th>Médicaments</th>
                                             <th>P.U</th>
@@ -65,31 +71,35 @@
                                                 <!-- <td>{{m.quantite }}</td> -->
                                                 <td>{{m.quantite * m.prixSession * m.coefficient}}</td>
                                             </tr>
-                                            <tr class="bg-success">
-                                                <th colspan="3">Total</th>
-                                                <th>{{total}}</th>
-                                            </tr>
+
                                         </tbody>
-                                        <a href="#" class="btn btn-primary">enregistrer</a>
+
 
                                     </table>
+
+                                    <div class="bg-success mt-4 mb-4" style="color: white;padding: 10px;">
+                                        <h5>Total <span class="pull-right">{{total}}</span></h5>
+
+                                    </div>
+                                    <a href="#" class="btn btn-primary">enregistrer</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
 
-                        <!-- <div class="modal-footer">
+                    <!-- <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                             <button type="button" type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Enregistrer</button>
                         </div> -->
-                    </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
+
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,11 +116,13 @@
                             <div class="row mb-3">
                                 <div class="form-group col-md-6">
                                     <label>Libelle</label>
-                                    <input type="text" [placeholder]="libelle" class="form-control readonly" formControlName="libelle" name="libelle" readonly>
+                                    <input type="text" [placeholder]="libelle" class="form-control readonly"
+                                        formControlName="libelle" name="libelle" readonly>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Quantite</label>
-                                    <input type="number" class="form-control" formControlName="quantite" name="quantite">
+                                    <input type="number" class="form-control" formControlName="quantite"
+                                        name="quantite">
                                 </div>
                             </div>
                         </form>
@@ -120,7 +132,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" type="submit" class="btn btn-primary" (click)='ajouterMedicamentDansVente()'>Ajouter</button>
+                <button type="button" type="submit" class="btn btn-primary"
+                    (click)='ajouterMedicamentDansVente()'>Ajouter</button>
             </div>
         </div>
     </div>
