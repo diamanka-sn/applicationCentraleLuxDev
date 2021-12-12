@@ -59,7 +59,13 @@ import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
 
-import {DashboardModule} from './composants/dashboard/dashboard.module'
+import { DashboardModule } from './composants/dashboard/dashboard.module'
+import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
+import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
+import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
+import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +111,14 @@ import {DashboardModule} from './composants/dashboard/dashboard.module'
     ListeCommandeComponent,
     DetailCommandeComponent,
     AuthentificationComponent,
-    EspaceAdminComponent
+    EspaceAdminComponent,
+    ListeClientComponent,
+    DetailClientComponent,
+    CreerClientComponent,
+    ListeVendeurComponent,
+    DetailVendeurComponent,
+    CreervendeurComponent
+
   ],
   imports: [
     BrowserModule,

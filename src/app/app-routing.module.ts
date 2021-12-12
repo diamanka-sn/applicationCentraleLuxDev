@@ -40,7 +40,13 @@ import { CreerVenteComponent } from './composants/ventesMedicament/creer-vente/c
 import { DetailVenteComponent } from './composants/ventesMedicament/detail-vente/detail-vente.component';
 import { ListeVenteComponent } from './composants/ventesMedicament/liste-vente/liste-vente.component';
 import { DashboardComponent } from './composants/dashboard/dashboard.component'
-import {EspaceAdminComponent} from './espace-admin/espace-admin.component'
+import { EspaceAdminComponent } from './espace-admin/espace-admin.component'
+import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
+import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
+import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
+import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -82,13 +88,19 @@ const routes: Routes = [
       { path: 'utilisateurs', component: ListeUtilisateurComponent },
       { path: 'utilisateurs/:id', component: DetailUtilisateurComponent },
       { path: 'creer-utilisateur', component: CreerUtilisateurComponent },
-      {path: 'dashboard', component: DashboardComponent}
+      { path: 'client', component: ListeClientComponent },
+      { path: 'client/:id', component: DetailClientComponent },
+      { path: 'creer-client', component: CreerClientComponent },
+      { path: 'vendeur', component: ListeVendeurComponent },
+      { path: 'vendeur/:id', component: DetailVendeurComponent },
+      { path: 'creer-vendeur', component: CreervendeurComponent },
+      { path: 'dashboard', component: DashboardComponent }
     ]
   },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'connexion', component: AuthentificationComponent },
 
- 
+
   { path: '**', redirectTo: 'not-found' }
 ];
 
