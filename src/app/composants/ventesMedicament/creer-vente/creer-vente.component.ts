@@ -80,7 +80,6 @@ export class CreerVenteComponent implements OnInit {
 
   ajouterMedicamentDansVente() {
     // const libelle = this.formGroup.value['libelle'] ;
-    console.log(this.libelle);
     const quantite = this.formGroup.value['quantite'];
     console.log(quantite)
     this.total = this.total + (this.prixSession * this.coefficient * quantite);
@@ -109,9 +108,11 @@ export class CreerVenteComponent implements OnInit {
   enlever(m: any) {
     console.log(m)
     this.medicaments.push(m)
+    this.total = this.total - (m.prixSession * m.coefficient * m.quantite);
     this.venteMedocs = this.venteMedocs.filter(v => {
       return v != m
     })
+
 
   }
 
