@@ -59,7 +59,8 @@ import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
 
-import {DashboardModule} from './composants/dashboard/dashboard.module'
+import {DashboardModule} from './composants/dashboard/dashboard.module';
+import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +106,8 @@ import {DashboardModule} from './composants/dashboard/dashboard.module'
     ListeCommandeComponent,
     DetailCommandeComponent,
     AuthentificationComponent,
-    EspaceAdminComponent
+    EspaceAdminComponent,
+    QuantiteMedicamentComponent
   ],
   imports: [
     BrowserModule,
