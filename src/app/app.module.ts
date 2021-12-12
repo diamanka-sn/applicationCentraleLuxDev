@@ -59,8 +59,18 @@ import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
 
+<<<<<<< HEAD
 import {DashboardModule} from './composants/dashboard/dashboard.module';
 import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
+=======
+import { DashboardModule } from './composants/dashboard/dashboard.module'
+import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
+import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
+import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
+import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+>>>>>>> origin/CYC
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +117,17 @@ import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quant
     DetailCommandeComponent,
     AuthentificationComponent,
     EspaceAdminComponent,
+<<<<<<< HEAD
     QuantiteMedicamentComponent
+=======
+    ListeClientComponent,
+    DetailClientComponent,
+    CreerClientComponent,
+    ListeVendeurComponent,
+    DetailVendeurComponent,
+    CreervendeurComponent
+
+>>>>>>> origin/CYC
   ],
   imports: [
     BrowserModule,
