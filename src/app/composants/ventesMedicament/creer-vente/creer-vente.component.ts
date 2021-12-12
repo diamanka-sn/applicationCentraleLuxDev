@@ -106,6 +106,15 @@ export class CreerVenteComponent implements OnInit {
     // this.router.navigate(['espace/creer-vente']);
   }
 
+  enlever(m: any) {
+    console.log(m)
+    this.medicaments.push(m)
+    this.venteMedocs = this.venteMedocs.filter(v => {
+      return v != m
+    })
+
+  }
+
   submit() {
     const libelle = this.formGroup.value['libelle'];
     const quantite = this.formGroup.value['quantite'];
