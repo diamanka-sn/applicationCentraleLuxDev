@@ -11,6 +11,7 @@ import { ServicemedicamentService } from 'src/app/services/servicemedicament.ser
 export class DetailMedicamentComponent implements OnInit {
   medicament!: any
   submedoc!: Subscription
+  lib: any[]=[]
   constructor(private servicem: ServicemedicamentService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -18,6 +19,29 @@ export class DetailMedicamentComponent implements OnInit {
     this.submedoc = this.servicem.medocsubject.subscribe();
     this.medicament = this.servicem.getMedicamentDetail(+id);
     console.log(this.medicament)
+    this.lib = this.medicament.libelle.split(' ');
+    console.log(this.lib);
+  }
+
+  
+  type1 = 'doughnut';
+  data1 = {
+    labels: ["Medicament", "Autres medicaments"],
+    datasets: [
+      {
+        data: [25, 50],
+        backgroundColor: ['#ff0266', '#81c784']
+      }
+    ]
+  };
+
+  
+  options4 = {
+    legend: {
+      display: true
+    },
+    responsive: true,
+    maintainAspectRatio: false,
 
   }
 

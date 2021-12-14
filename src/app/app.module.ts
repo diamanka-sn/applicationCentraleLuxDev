@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChartModule } from 'angular2-chartjs';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './composants/header/header.component';
@@ -127,7 +129,8 @@ import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quant
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    DashboardModule
+    DashboardModule,
+    ChartModule
   ],
   providers: [
 
