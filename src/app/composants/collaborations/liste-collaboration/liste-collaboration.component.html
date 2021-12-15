@@ -15,15 +15,17 @@
             <table datatable class="row-border w-100 table table-striped text-center" [dtOptions]="dtOptions">
                 <thead>
                     <tr>
+                        <td>#</td>
                         <th>Nom</th>
                         <th>Adresse</th>
                         <th>telephone</th>
                         <th>Email</th>
-                        <th colspan="">details</th>
+                        <th>details</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="entreprises?.length !=0">
                     <tr *ngFor="let e of entreprises;let i=index">
+                        <td>{{ i+1 }}</td>
                         <td>{{ e.nom }}</td>
                         <td>{{ e.adresse }}</td>
                         <td>{{ e.telephone }}</td>
