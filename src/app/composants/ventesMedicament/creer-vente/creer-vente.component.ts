@@ -72,16 +72,10 @@ export class CreerVenteComponent implements OnInit {
     this.libelle = m.libelle;
     this.prixSession = m.prixSession;
     this.coefficient = m.coefficient;
-    console.log('******************************       ' + this.libelle);
-    console.log('******************************       ' + this.prixSession);
-    console.log('******************************       ' + this.coefficient);
-    
-
   }
 
   ajouterMedicamentDansVente() {
     // const libelle = this.formGroup.value['libelle'] ;
-    console.log(this.libelle);
     const quantite = this.formGroup.value['quantite'];
     console.log(quantite)
     this.total = this.total + (this.prixSession * this.coefficient * quantite);
@@ -103,6 +97,7 @@ export class CreerVenteComponent implements OnInit {
     this.medicaments = this.medicaments.filter(medicament => {
       return medicament.libelle != m.libelle
     })
+    $("#exampleModal").modal('hide');
     console.log(this.medicaments)
     // this.router.navigate(['espace/creer-vente']);
   }
@@ -110,10 +105,11 @@ export class CreerVenteComponent implements OnInit {
   enlever(m: any) {
     console.log(m)
     this.medicaments.push(m)
-    this.total = this.total - (m.prixSession * m.coefficient * m.quantite) ;
+    this.total = this.total - (m.prixSession * m.coefficient * m.quantite);
     this.venteMedocs = this.venteMedocs.filter(v => {
       return v != m
     })
+
 
   }
 
@@ -128,7 +124,10 @@ export class CreerVenteComponent implements OnInit {
     };
 
     this.servicevente.addVente(vente);
+    $("#exampleModal").modal('hide');
     this.formGroup.reset();
+
+
     // this.router.navigate(['/espace/creer-vente']) ;
 
   }
@@ -139,25 +138,7 @@ export class CreerVenteComponent implements OnInit {
     const quantite = this.formGroup.value['quantite'];
     console.log("$$$$$$$    " + quantite);
   }
-  saveVente() {
-    console.log("£££££££££££££££££££££££££££££££££££££££") ;
-    var totalDeLaVente = 0 ;
-    for(var i=0 ; i < this.venteMedocs.length ; i++) {
-      var prixPublic = this.venteMedocs[i].quantite * this.venteMedocs[i].prixSession * this.venteMedocs[i].coefficient ;
-      totalDeLaVente += prixPublic ; 
-      console.log((i+1) + "#" + this.venteMedocs[i].libelle + " - " + prixPublic) ;
-    };
-    console.log("TOTAL " + totalDeLaVente) ;
-    const v = {
-      idVente: "10",
-      dateVente: "14/10/2021",
-      montant: totalDeLaVente
-    };
-    console.log("£££££££££££££££££££££££££££££££££££££££") ;
-    this.servicevente.addVente(v) ;
-    
-    this.router.navigate(['espace/ventes']) ;
-  }
+
 
 
 }

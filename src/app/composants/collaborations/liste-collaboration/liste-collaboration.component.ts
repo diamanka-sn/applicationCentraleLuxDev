@@ -11,12 +11,12 @@ import { ServiceCollaborationService } from 'src/app/services/service-collaborat
 export class ListeCollaborationComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  subEntreprise!: Subscription ;
-  entreprises!: any[] ;
+  subEntreprise!: Subscription;
+  entreprises!: any[];
 
 
   constructor(private serviceCollaboration: ServiceCollaborationService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -24,17 +24,20 @@ export class ListeCollaborationComponent implements OnInit {
       pageLength: 5,
       lengthMenu: [5, 10, 25, 50, 100],
       autoWidth: true,
+      dom: "<'row mb-4'<'col-sm-12 col-md-8'l><'col-sm-12 col-md-4' f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 pull-right col-md-5' p>>",
       language: { url: 'assets/datatable-French.json' },
     }
-    this.getAllCollaboration() ;
+    this.getAllCollaboration();
   }
 
   getAllCollaboration() {
     this.subEntreprise = this.serviceCollaboration.subCollaboration.subscribe(
       (allEntreprises: any) => {
-        this.entreprises = allEntreprises ;
+        this.entreprises = allEntreprises;
       }
     )
-    this.serviceCollaboration.getAllColaboration() ;
+    this.serviceCollaboration.getAllColaboration();
   }
 }

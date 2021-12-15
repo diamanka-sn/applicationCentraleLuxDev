@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChartModule } from 'angular2-chartjs';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './composants/header/header.component';
@@ -65,7 +67,8 @@ import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.comp
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
-import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
+import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component';
+import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component'
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
@@ -118,13 +121,13 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     DetailCommandeComponent,
     AuthentificationComponent,
     EspaceAdminComponent,
-
     ClientComponent,
     VendeurComponent,
     MedicamentDeffectueuxComponent,
     MedicamentPerimesComponent,
     LotDeMedicamentComponent,
     QuantiteMedicamentComponent,
+    ComptabiliteComponent,
     ListeClientComponent,
     DetailClientComponent,
     CreerClientComponent,
@@ -141,7 +144,8 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    DashboardModule
+    DashboardModule,
+    ChartModule
   ],
   providers: [
 
