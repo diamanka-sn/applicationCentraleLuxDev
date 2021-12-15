@@ -7,7 +7,7 @@ import { ServiceutilisateurService } from 'src/app/services/serviceutilisateur.s
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrls: ['./client.component.css']
+  styleUrls: []
 })
 export class ClientComponent implements OnInit {
   formGroup!: FormGroup

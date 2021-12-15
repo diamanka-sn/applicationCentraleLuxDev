@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChartModule } from 'angular2-chartjs';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './composants/header/header.component';
@@ -67,6 +69,12 @@ import { MedicamentPerimesComponent } from './composants/medicaments/medicament-
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
 import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component';
 import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component'
+import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
+import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
+import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
+import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -119,7 +127,14 @@ import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.co
     MedicamentPerimesComponent,
     LotDeMedicamentComponent,
     QuantiteMedicamentComponent,
-    ComptabiliteComponent
+    ComptabiliteComponent,
+    ListeClientComponent,
+    DetailClientComponent,
+    CreerClientComponent,
+    ListeVendeurComponent,
+    DetailVendeurComponent,
+    CreervendeurComponent
+
   ],
   imports: [
     BrowserModule,
@@ -129,7 +144,8 @@ import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.co
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    DashboardModule
+    DashboardModule,
+    ChartModule
   ],
   providers: [
 

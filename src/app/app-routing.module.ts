@@ -43,10 +43,12 @@ import { DashboardComponent } from './composants/dashboard/dashboard.component'
 import { EspaceAdminComponent } from './espace-admin/espace-admin.component'
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
-import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
-import { ClientComponent } from './composants/utilisateurs/client/client.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component';
 import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component';
+import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
+import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
+import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -91,10 +93,11 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'medicaments-deffectueux', component: MedicamentDeffectueuxComponent },
       { path: 'medicaments-perimes', component: MedicamentPerimesComponent },
-      { path: 'vendeurs', component: VendeurComponent },
-      { path: 'clients', component: ClientComponent },
+      { path: 'vendeurs', component: ListeVendeurComponent },
+      { path: 'vendeurs/:id', component: DetailVendeurComponent },
+      { path: 'clients', component: ListeClientComponent },
+      { path: 'clients/:id', component: DetailClientComponent },
       { path: 'lot-de-medicament', component: LotDeMedicamentComponent },
-
     ]
   },
   { path: 'creer-vente', component: CreerVenteComponent },

@@ -6,9 +6,9 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            Liste des fournisseurs
+            Liste des vendeurs
             <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
-                data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i> fournisseur</a>
+                data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter vendeur</a>
 
         </div>
         <div class="card-body">
@@ -16,31 +16,38 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nom structure</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
                         <th>Adresse</th>
-                        <th>telephone</th>
-                        <th>Email</th>
-                        <th>details</th>
+                        <th>Telephone</th>
+                        <th>E-mail</th>
+                        <th colspan="3">Action</th>
                     </tr>
                 </thead>
-                <tbody *ngIf="fournisseurs?.length !=0">
-                    <tr *ngFor="let f of fournisseurs; let i=index">
+                <tbody *ngIf="vendeurs?.length !=0">
+                    <tr *ngFor="let v of vendeurs;let i=index">
                         <td>{{i+1}}</td>
-                        <td>{{ f.nomStructure }}</td>
-                        <td>{{ f.adresse }}</td>
-                        <td>{{ f.telephone }}</td>
-                        <td>{{ f.email }}</td>
+                        <td>{{ v.prenom }}</td>
+                        <td>{{ v.nom }}</td>
+                        <td>{{ v.adresse }}</td>
+                        <td>{{ v.telephone }}</td>
+                        <td>{{ v.email }}</td>
                         <td>
                             <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
                                     class="fa fa-eye"></i></a>
+
+                        </td>
+                        <td>
                             <a class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
                             <a class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-<app-creer-fournisseur></app-creer-fournisseur>
+<app-creer-vendeur></app-creer-vendeur>

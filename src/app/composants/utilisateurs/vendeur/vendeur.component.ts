@@ -7,7 +7,7 @@ import { ServiceutilisateurService } from 'src/app/services/serviceutilisateur.s
 @Component({
   selector: 'app-vendeur',
   templateUrl: './vendeur.component.html',
-  styleUrls: ['./vendeur.component.css']
+  styleUrls: []
 })
 export class VendeurComponent implements OnInit {
 

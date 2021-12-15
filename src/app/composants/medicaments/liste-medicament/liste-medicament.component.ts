@@ -47,7 +47,6 @@ export class ListeMedicamentComponent implements OnInit {
     this.sercat.getCategorie()
     this.iniForm()
     this.getMedcament()
-
   }
 
   getMedcament() {
