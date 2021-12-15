@@ -52,20 +52,22 @@ export class DetailCollaborationComponent implements OnInit {
   };
 
   mutiLineChartData = {
-    labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Jui', 'Sept', 'Oct', 'Nov', 'Dec'],
+    labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Sept', 'Oct', 'Nov', 'Dec'],
     datasets: [{
-      label: 'Recettes',
+      label: 'Paiement mensuelle',
       borderColor: this.chartColors.green,
       backgroundColor: this.chartColors.green,
-      data: [10, 30, 46, 2, 8, 50, 0],
+      data: [10, 30, 46, 2, 8, 50, 29],
       fill: false,
-    }, {
-      label: 'Pertes',
-      borderColor: this.chartColors.red,
-      backgroundColor: this.chartColors.red,
-      data: [7, 49, 46, 13, 25, 30, 22],
-      fill: false,
-    }]
+    }
+    // , {
+    //   label: 'Pertes',
+    //   borderColor: this.chartColors.red,
+    //   backgroundColor: this.chartColors.red,
+    //   data: [7, 49, 46, 13, 25, 30, 22],
+    //   fill: false,
+    // }
+  ]
   }
   //position = "bottom"
   mutiLineChartDataoptions = {
