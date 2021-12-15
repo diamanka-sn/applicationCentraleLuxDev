@@ -59,27 +59,19 @@ import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import {DashboardModule} from './composants/dashboard/dashboard.module';
-=======
 import { DashboardModule } from './composants/dashboard/dashboard.module';
 import { ClientComponent } from './composants/utilisateurs/client/client.component';
 import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
->>>>>>> 3f7ed1a40b63924dfeda6818636bbc354fdaf0a4
 import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
-=======
-import { DashboardModule } from './composants/dashboard/dashboard.module'
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
 import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
->>>>>>> origin/CYC
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,17 +118,13 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     DetailCommandeComponent,
     AuthentificationComponent,
     EspaceAdminComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
     ClientComponent,
     VendeurComponent,
     MedicamentDeffectueuxComponent,
     MedicamentPerimesComponent,
     LotDeMedicamentComponent,
->>>>>>> 3f7ed1a40b63924dfeda6818636bbc354fdaf0a4
-    QuantiteMedicamentComponent
-=======
+    QuantiteMedicamentComponent,
     ListeClientComponent,
     DetailClientComponent,
     CreerClientComponent,
@@ -144,7 +132,6 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     DetailVendeurComponent,
     CreervendeurComponent
 
->>>>>>> origin/CYC
   ],
   imports: [
     BrowserModule,

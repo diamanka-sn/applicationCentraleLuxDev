@@ -6,8 +6,8 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            Effectuer une ventes
-            <a routerLink="#" class="btn btn-success" style="position: absolute;right: 30px;"><i
+            <h5>Effectuer une vente</h5>
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;"><i
                     class="fa fa-plus mr-2"></i>Liste des ventes</a>
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
 
@@ -16,7 +16,7 @@
             <!-- <h4>Ajouter vente</h4> -->
             <div class="">
                 <div class="">
-                    <div class="row align-items-start justify-content-start">
+                    <div class="row align-items-start justify-content-center">
 
                         <div class="col-md-6 bg-light">
 
@@ -29,19 +29,15 @@
                                                 <tr>
                                                     <th>Libelle</th>
                                                     <th>Prix (FCFA)</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody *ngIf="medicaments?.length !=0">
-                                                <tr *ngFor="let m of medicaments;let i=index" (click)="selected(m)"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    class="mb-3 med">
+                                                <tr *ngFor="let m of medicaments;let i=index" style="height: auto;" (click)="selected(m)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="mb-3 med">
                                                     <td>{{ m.libelle }}</td>
                                                     <td>{{ m.prixSession* m.coefficient }}</td>
                                                 </tr>
-
                                             </tbody>
-                                        </table>
+                                            </table>
                                     </div>
                                 </div>
                             </div>
@@ -69,8 +65,7 @@
                                                 <td>{{m.prixSession * m.coefficient}}</td>
                                                 <td>{{m.quantite}}</td>
                                                 <!-- <td>{{m.quantite }}</td> -->
-                                                <td>{{m.quantite * m.prixSession * m.coefficient}} <button
-                                                        (click)="enlever(m)" class="pull-right"><i class="fa fa-close"
+                                                <td>{{m.quantite * m.prixSession * m.coefficient}} <button (click)="enlever(m)" class="pull-right"><i class="fa fa-close"
                                                             style="color:red;"></i></button></td>
                                             </tr>
 
@@ -83,7 +78,7 @@
                                         <h5>Total <span class="pull-right">{{total}}</span></h5>
 
                                     </div>
-                                    <a href="#" class="btn btn-primary">enregistrer</a>
+                                    <button class="btn btn-primary pull-right" (click)="saveVente()">enregistrer</button>
                                 </div>
                             </div>
                         </div>
@@ -118,13 +113,11 @@
                             <div class="row mb-3">
                                 <div class="form-group col-md-6">
                                     <label>Libelle</label>
-                                    <input type="text" [placeholder]="libelle" class="form-control readonly"
-                                        formControlName="libelle" name="libelle" readonly>
+                                    <input type="text" [placeholder]="libelle" class="form-control readonly" formControlName="libelle" name="libelle" readonly>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Quantite</label>
-                                    <input type="number" class="form-control" formControlName="quantite"
-                                        name="quantite">
+                                    <input type="number" class="form-control" formControlName="quantite" name="quantite">
                                 </div>
                             </div>
                         </form>
@@ -134,8 +127,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" type="submit" class="btn btn-primary"
-                    (click)='ajouterMedicamentDansVente()'>Ajouter</button>
+                <button type="button" type="submit" class="btn btn-primary" (click)='ajouterMedicamentDansVente()'>Ajouter</button>
             </div>
         </div>
     </div>

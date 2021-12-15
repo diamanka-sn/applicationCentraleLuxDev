@@ -75,6 +75,7 @@ export class CreerVenteComponent implements OnInit {
     console.log('******************************       ' + this.libelle);
     console.log('******************************       ' + this.prixSession);
     console.log('******************************       ' + this.coefficient);
+    
 
   }
 
@@ -109,6 +110,7 @@ export class CreerVenteComponent implements OnInit {
   enlever(m: any) {
     console.log(m)
     this.medicaments.push(m)
+    this.total = this.total - (m.prixSession * m.coefficient * m.quantite) ;
     this.venteMedocs = this.venteMedocs.filter(v => {
       return v != m
     })
@@ -137,7 +139,25 @@ export class CreerVenteComponent implements OnInit {
     const quantite = this.formGroup.value['quantite'];
     console.log("$$$$$$$    " + quantite);
   }
-
+  saveVente() {
+    console.log("£££££££££££££££££££££££££££££££££££££££") ;
+    var totalDeLaVente = 0 ;
+    for(var i=0 ; i < this.venteMedocs.length ; i++) {
+      var prixPublic = this.venteMedocs[i].quantite * this.venteMedocs[i].prixSession * this.venteMedocs[i].coefficient ;
+      totalDeLaVente += prixPublic ; 
+      console.log((i+1) + "#" + this.venteMedocs[i].libelle + " - " + prixPublic) ;
+    };
+    console.log("TOTAL " + totalDeLaVente) ;
+    const v = {
+      idVente: "10",
+      dateVente: "14/10/2021",
+      montant: totalDeLaVente
+    };
+    console.log("£££££££££££££££££££££££££££££££££££££££") ;
+    this.servicevente.addVente(v) ;
+    
+    this.router.navigate(['espace/ventes']) ;
+  }
 
 
 }
