@@ -1,11 +1,111 @@
-<div>
-    <h2>Detail medicament</h2>
-    <hr />
-    <div>
-        libelle : {{ medicament.libelle }}
-        prix Session: {{medicament.prixSession}}
-        coefficient : {{medicament.coefficient}}
-        date de peremption : {{ medicament.datePeremption}}
-        vente libre : {{medicament.venteLibre}}
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i
+                                class="material-icons text-success mr-2">Informations</i></h6>
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="mt-3">
+                                <h4>{{lib[0]}}</h4>
+                                <p class="text-secondary mb-1">{{lib[1]}}</p>
+                                <p class="text-muted font-size-sm">{{lib[2]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i
+                                class="material-icons text-success mr-2">Recettes</i></h6>
+                        <chart class="dashchart" [type]="type1" [data]="dataVentes" [options]="options4"></chart>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-success mr-2">Cout du
+                                medicament</i></h6>
+                        <chart class="dashchart" [type]="type1" [data]="dataDepenses" [options]="options4"></chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i
+                                class="material-icons text-success mr-2">Détails</i></h6>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Prix Unitaire</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                TEST
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Coéfficient</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                {{ medicament.coefficient }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Quantité en stock</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                {{medicament.quantite}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Date de peremption</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                {{ medicament.datePeremption}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Vente libre</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                {{medicament.venteLibre}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Lot</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                Lot 221, lot 350
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i
+                                        class="material-icons text-success mr-2">Autres informations </i></h6>
+                                <chart class="dashchart" type="bar" [data]="mutiLineChartData"
+                                    [options]="mutiLineChartDataoptions"></chart>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

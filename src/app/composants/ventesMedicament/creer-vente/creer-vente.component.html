@@ -1,1 +1,205 @@
-<p>creer-vente works!</p>
+<style>
+    .paginate_button {
+        background-color: green;
+    }
+</style>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            Effectuer une ventes
+            <a routerLink="#" class="btn btn-success" style="position: absolute;right: 30px;"><i
+                    class="fa fa-plus mr-2"></i>Liste des ventes</a>
+            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+
+        </div>
+        <div class="card-body">
+            <!-- <h4>Ajouter vente</h4> -->
+            <div class="">
+                <div class="">
+                    <div class="row align-items-start justify-content-start">
+
+                        <div class="col-md-6 bg-light">
+
+                            <div class="">
+                                <div class="card card-light">
+                                    <div class="card-body table-responsive">
+                                        <table datatable class="row-border w-100 table text-center table-collapse
+                                            table-hover" [dtOptions]="dtOptions">
+                                            <thead class="" style="background:#198754;color: white;">
+                                                <tr>
+                                                    <th>Libelle</th>
+                                                    <th>Prix (FCFA)</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngIf="medicaments?.length !=0">
+                                                <tr *ngFor="let m of medicaments;let i=index" (click)="selected(m)"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                    class="mb-3 med">
+                                                    <td>{{ m.libelle }}</td>
+                                                    <td>{{ m.prixSession* m.coefficient }}</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <app-quantite-medicament></app-quantite-medicament> -->
+                        </div>
+                        <div class="card col-md-6">
+                            <div class="card-header">
+                                <h6>Details de la vente</h6>
+                            </div>
+                            <div class="card-body">
+                                <div *ngIf="venteMedocs.length != 0">
+
+
+                                    <table class="table">
+                                        <thead>
+                                            <th>Médicaments</th>
+                                            <th>P.U</th>
+                                            <th>Qté</th>
+                                            <th>Montants</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let m of venteMedocs">
+                                                <td> {{m.libelle}}</td>
+                                                <td>{{m.prixSession * m.coefficient}}</td>
+                                                <td>{{m.quantite}}</td>
+                                                <!-- <td>{{m.quantite }}</td> -->
+                                                <td>{{m.quantite * m.prixSession * m.coefficient}} <button
+                                                        (click)="enlever(m)" class="pull-right"><i class="fa fa-close"
+                                                            style="color:red;"></i></button></td>
+                                            </tr>
+
+                                        </tbody>
+
+
+                                    </table>
+
+                                    <div class="bg-success mt-4 mb-4" style="color: white;padding: 10px;">
+                                        <h5>Total <span class="pull-right">{{total}}</span></h5>
+
+                                    </div>
+                                    <a href="#" class="btn btn-primary">enregistrer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="button" type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Enregistrer</button>
+                        </div> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered w-100">
+        <div class="modal-content">
+            <div class="modal-header " style="background: #198754;color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter un medicament</h5>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="">
+                        <form [formGroup]="formGroup" (ngSubmit)="submit()">
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Libelle</label>
+                                    <input type="text" [placeholder]="libelle" class="form-control readonly"
+                                        formControlName="libelle" name="libelle" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Quantite</label>
+                                    <input type="number" class="form-control" formControlName="quantite"
+                                        name="quantite">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" type="submit" class="btn btn-primary"
+                    (click)='ajouterMedicamentDansVente()'>Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <form [formGroup]="formGroup" (ngSubmit)="addMedoc()" class="row">
+                    <div class="col-md-6">
+                        <label for="exampleDataList" class="form-label">Datalist example</label>
+                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." formControlName="libelle" name="libelle">
+                        <datalist id="datalistOptions">
+                            <option *ngFor="let m of medicaments;let i=index" 
+                                    value="{{m.libelle}}" (click)="selected(m)"
+                                    
+                                    ></option>
+                                    
+                        </datalist>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="exampleFormControlInput1" class="form-label">Quantite</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="quantite" name="quantite">
+                    </div>
+                    <div class="col-md-auto">
+                        <button type="submit" class="btn btn-success" [disabled]="formGroup.invalid">Ajouter</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="col-md-6 bg-success">
+                <div class="card">
+                    <div class="card-header">
+                        Détail de la vente
+                    </div>
+                    <div class="card-body">
+                        <table class="table" *ngIf="venteMedocs.length != 0">
+                            <thead>
+                                <th>Médicaments</th>
+                                <th>P.U</th>
+                                <th>Qté</th>
+                                <th>Montants</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let m of venteMedocs">
+                                    <td> {{m.libelle}}</td>
+                                    <td>{{m.prixSession * m.coefficient}}</td>
+                                    <td>{{m.quantite}}</td>
+                                    <td>{{m.quantite * m.prixSession * m.coefficient}}</td>
+                                </tr>
+                            </tbody>
+                            <a href="#" class="btn btn-primary">enregistrer</a>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

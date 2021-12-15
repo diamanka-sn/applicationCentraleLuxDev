@@ -30,9 +30,7 @@ export class ListeMedicamentComponent implements OnInit {
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
 
     }
-
     this.getMedcament()
-
   }
 
   getMedcament() {
@@ -49,5 +47,5 @@ export class ListeMedicamentComponent implements OnInit {
   afficher() {
     $('#exampleModal').show()
   }
-
+ 
 }
