@@ -65,7 +65,8 @@ import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.comp
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
-import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component'
+import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component';
+import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,7 +118,8 @@ import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quant
     MedicamentDeffectueuxComponent,
     MedicamentPerimesComponent,
     LotDeMedicamentComponent,
-    QuantiteMedicamentComponent
+    QuantiteMedicamentComponent,
+    ComptabiliteComponent
   ],
   imports: [
     BrowserModule,

@@ -46,6 +46,7 @@ import { MedicamentPerimesComponent } from './composants/medicaments/medicament-
 import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { ClientComponent } from './composants/utilisateurs/client/client.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component';
+import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -53,6 +54,7 @@ const routes: Routes = [
 
     path: 'espace', component: EspaceAdminComponent, children: [
       { path: "", component: AccueilComponent },
+      { path: "comptabilite", component: ComptabiliteComponent },
       { path: 'medicaments', component: ListeMedicamentComponent },
       { path: 'medicaments/:id', component: DetailMedicamentComponent },
       { path: 'creer-medicament', component: CreerMedicamentComponent },

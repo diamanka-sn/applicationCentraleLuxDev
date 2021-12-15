@@ -20,11 +20,12 @@
                         <th>Adresse</th>
                         <th>telephone</th>
                         <th>Email</th>
-                        <th colspan="">details</th>
+                        <th>details</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="fournisseurs?.length !=0">
                     <tr *ngFor="let f of fournisseurs; let i=index">
+                        <td>{{ i+1 }}</td>
                         <td>{{ f.nomStructure }}</td>
                         <td>{{ f.adresse }}</td>
                         <td>{{ f.telephone }}</td>

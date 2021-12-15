@@ -72,10 +72,6 @@ export class CreerVenteComponent implements OnInit {
     this.libelle = m.libelle;
     this.prixSession = m.prixSession;
     this.coefficient = m.coefficient;
-    console.log('******************************       ' + this.libelle);
-    console.log('******************************       ' + this.prixSession);
-    console.log('******************************       ' + this.coefficient);
-
   }
 
   ajouterMedicamentDansVente() {
@@ -101,6 +97,7 @@ export class CreerVenteComponent implements OnInit {
     this.medicaments = this.medicaments.filter(medicament => {
       return medicament.libelle != m.libelle
     })
+    $("#exampleModal").modal('hide');
     console.log(this.medicaments)
     // this.router.navigate(['espace/creer-vente']);
   }
@@ -127,7 +124,10 @@ export class CreerVenteComponent implements OnInit {
     };
 
     this.servicevente.addVente(vente);
+    $("#exampleModal").modal('hide');
     this.formGroup.reset();
+
+
     // this.router.navigate(['/espace/creer-vente']) ;
 
   }
