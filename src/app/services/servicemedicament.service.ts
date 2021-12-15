@@ -75,6 +75,5 @@ export class ServicemedicamentService {
   getMedicamentDetail(id: number) {
     const medicament = this.medicaments[id]
     return medicament;
-
   }
 }

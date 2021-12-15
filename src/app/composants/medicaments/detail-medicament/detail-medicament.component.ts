@@ -13,7 +13,7 @@ export class DetailMedicamentComponent implements OnInit {
   submedoc!: Subscription
   lib: any[]=[]
   constructor(private servicem: ServicemedicamentService, private router: ActivatedRoute) { }
-
+ 
   ngOnInit(): void {
     const id = this.router.snapshot.params['id']
     this.submedoc = this.servicem.medocsubject.subscribe();
