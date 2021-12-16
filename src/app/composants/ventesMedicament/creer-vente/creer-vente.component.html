@@ -6,98 +6,80 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            <h4>Espace Vente</h4>
-            <a routerLink="#" class="btn btn-success" style="position: absolute;right: 30px;"><i
+            Espace Vente
+            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;"><i
                     class="fa fa-plus mr-2"></i>Liste des ventes</a>
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
 
         </div>
         <div class="card-body">
             <!-- <h4>Ajouter vente</h4> -->
-            <div class="">
-                <div class="">
-                    <div class="row align-items-start justify-content-start">
 
-                        <div class="col-md-6 bg-light">
+            <div class="row align-items-start justify-content-evenly">
+                <div class="card card-light col-md-6 bg-success bg-opacity-10">
+                    <div class="card-body table-responsive">
+                        <table datatable class="row-border w-100 table text-center table-collapse
+                                    table-hover" [dtOptions]="dtOptions">
+                            <thead class="" style="background:#198754;color: white;">
+                                <tr>
+                                    <th>Libelle</th>
+                                    <th>Prix (FCFA)</th>
 
-                            <div class="">
-                                <div class="card card-light">
-                                    <div class="card-body table-responsive">
-                                        <table datatable class="row-border w-100 table text-center table-collapse
-                                            table-hover" [dtOptions]="dtOptions">
-                                            <thead class="" style="background:#198754;color: white;">
-                                                <tr>
-                                                    <th>Libelle</th>
-                                                    <th>Prix (FCFA)</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="medicaments?.length !=0">
+                                <tr *ngFor="let m of medicaments;let i=index" (click)="selected(m)" style="height: auto;" data-bs-toggle="modal" data-bs-target="#exampleModal" class="mb-3 med">
+                                    <td>{{ m.libelle }}</td>
+                                    <td>{{ m.prixSession* m.coefficient }}</td>
+                                </tr>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody *ngIf="medicaments?.length !=0">
-                                                <tr *ngFor="let m of medicaments;let i=index" (click)="selected(m)"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    class="mb-3 med">
-                                                    <td>{{ m.libelle }}</td>
-                                                    <td>{{ m.prixSession* m.coefficient }}</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <app-quantite-medicament></app-quantite-medicament> -->
+                            </tbody>
+                            </table>
+                    </div>
+                </div>
+                <div class="card col-md-5">
+                    <div class="card-header text-center">
+                        <h6>Details de la vente</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success text-center" role="alert" *ngIf="venteEffectuee == true">
+                            Vente effectuée avec succès !
                         </div>
-                        <div class="card col-md-6">
-                            <div class="card-header text-center">
-                                <h6>Details de la vente</h6>
-                            </div>
-                            <div class="card-body">
-                                <div *ngIf="venteMedocs.length != 0">
+
+                        <div *ngIf="venteMedocs.length != 0">
 
 
-                                    <table class="table">
-                                        <thead>
-                                            <th>Médicaments</th>
-                                            <th>P.U</th>
-                                            <th>Qté</th>
-                                            <th>Montants</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let m of venteMedocs">
-                                                <td> {{m.libelle}}</td>
-                                                <td>{{m.prixSession * m.coefficient}}</td>
-                                                <td>{{m.quantite}}</td>
-                                                <!-- <td>{{m.quantite }}</td> -->
-                                                <td>{{m.quantite * m.prixSession * m.coefficient}} <button
-                                                        (click)="enlever(m)" class="pull-right"><i class="fa fa-close"
+                            <table class="table">
+                                <thead>
+                                    <th>Médicaments</th>
+                                    <th>P.U</th>
+                                    <th>Qté</th>
+                                    <th>Montants</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let m of venteMedocs">
+                                        <td> {{m.libelle}}</td>
+                                        <td>{{m.prixSession * m.coefficient}}</td>
+                                        <td>{{m.quantite}}</td>
+                                        <!-- <td>{{m.quantite }}</td> -->
+                                        <td>{{m.quantite * m.prixSession * m.coefficient}} <button (click)="enlever(m)" class="pull-right"><i class="fa fa-close"
                                                             style="color:red;"></i></button></td>
-                                            </tr>
+                                    </tr>
 
-                                        </tbody>
+                                </tbody>
 
 
-                                    </table>
+                            </table>
 
-                                    <div class="bg-success mt-4 mb-4" style="color: white;padding: 10px;">
-                                        <h5>Total <span class="pull-right">{{total}} Franc CFA</span></h5>
+                            <div class="bg-success mt-4 mb-4" style="color: white;padding: 10px;">
+                                <h5>Total <span class="pull-right">{{total}} Franc CFA</span></h5>
 
-                                    </div>
-                                    <a href="#" class="btn btn-primary">enregistrer</a>
-                                </div>
                             </div>
+                            <button class="btn btn-primary" (click)="saveVente()">enregistrer</button>
                         </div>
                     </div>
-
-
-
-                    <!-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Enregistrer</button>
-                        </div> -->
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -118,15 +100,13 @@
                             <div class="row mb-3">
                                 <div class="form-group">
                                     <label>Libelle</label>
-                                    <input type="text" [placeholder]="libelle" class="form-control readonly"
-                                        formControlName="libelle" name="libelle" readonly>
+                                    <input type="text" [placeholder]="libelle" class="form-control readonly" formControlName="libelle" name="libelle" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group">
                                     <label>Quantite</label>
-                                    <input type="number" class="form-control" formControlName="quantite"
-                                        name="quantite">
+                                    <input type="number" class="form-control" formControlName="quantite" name="quantite">
                                 </div>
 
                             </div>
@@ -137,8 +117,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" type="submit" class="btn btn-primary"
-                    (click)='ajouterMedicamentDansVente()'>Ajouter</button>
+                <button type="button" type="submit" class="btn btn-primary" (click)='ajouterMedicamentDansVente()'>Ajouter</button>
             </div>
         </div>
     </div>

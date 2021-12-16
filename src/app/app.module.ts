@@ -75,6 +75,7 @@ import { CreerClientComponent } from './composants/client/creer-client/creer-cli
 import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -155,6 +156,7 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     ServicerayonService,
     ServicebonClientService,
     ServicecommandeService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

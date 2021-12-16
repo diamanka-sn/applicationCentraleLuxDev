@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class CreerVenteComponent implements OnInit {
   subVente!: Subscription;
 
   venteMedocs: any[] = [];
+  venteEffectuee: boolean = false ;
 
   medicaments!: any[];
   subMedicament!: Subscription;
@@ -31,16 +33,18 @@ export class CreerVenteComponent implements OnInit {
   constructor(private form: FormBuilder,
     private router: Router,
     private servicevente: ServiceventeService,
-    private servicemedicament: ServicemedicamentService) { }
+    private servicemedicament: ServicemedicamentService,
+    private datePipe: DatePipe) { }
 
   ngOnInit(): void {
-
+    this.venteEffectuee = false ;
     this.dtOptions = {
       pagingType: 'numbers',
       pageLength: 5,
       lengthMenu: [5, 10, 25, 50, 100],
       autoWidth: true,
       language: { url: 'assets/datatable-French.json' },
+
       // data: this.personne,
       // search: true,
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
@@ -75,6 +79,7 @@ export class CreerVenteComponent implements OnInit {
   }
 
   ajouterMedicamentDansVente() {
+    if (this.venteEffectuee) {this.venteEffectuee = false } ;
     // const libelle = this.formGroup.value['libelle'] ;
     const quantite = this.formGroup.value['quantite'];
     console.log(quantite)
@@ -84,10 +89,6 @@ export class CreerVenteComponent implements OnInit {
     const isInTab = this.venteMedocs.filter((v) => {
       return v.libelle != this.libelle;
     });
-    if (isInTab.length != 0) {
-      console.log("********isInTab   " + isInTab[0].libelle);
-      // this.venteMedocs.
-    }
 
     const m = { libelle: this.libelle, quantite: quantite, coefficient: this.coefficient, prixSession: this.prixSession };
     this.venteMedocs.push(m);
@@ -137,6 +138,32 @@ export class CreerVenteComponent implements OnInit {
     console.log("$$$$$$       " + libelle);
     const quantite = this.formGroup.value['quantite'];
     console.log("$$$$$$$    " + quantite);
+  }
+
+  saveVente() {
+    console.log("£££££££££££££££££££££££££££££");
+    var totalVente = 0;
+    for (var i = 0; i < this.venteMedocs.length; i++) {
+      const prixPublic = this.venteMedocs[i].prixSession * this.venteMedocs[i].coefficient * this.venteMedocs[i].quantite;
+      totalVente += prixPublic;
+      // Remettre les noms des medocs vendus dans la liste  des médicaments
+      console.log(this.venteMedocs[i].libelle + ' - ' + this.venteMedocs[i].prixPublic);
+      this.medicaments.push(this.venteMedocs[i]) ;
+    }
+    console.log("TOTAL - " + totalVente);
+    console.log("£££££££££££££££££££££££££££££");
+
+    var date = new Date();
+    console.log(this.datePipe.transform(date, "dd/MM/yyyy"));
+
+    const v = {
+      dateVente: this.datePipe.transform(date, "dd/MM/yyyy")?.toString(),
+      montant: totalVente
+    };
+    // this.servicevente.ventes.push(v) ;
+    this.venteEffectuee = true ;
+    this.venteMedocs = [] ;
+    this.router.navigate(['espace/creer-vente']);
   }
 
 
