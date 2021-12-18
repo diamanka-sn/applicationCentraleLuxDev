@@ -45,10 +45,12 @@ import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicam
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component';
 import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component';
-import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
-import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
+import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -93,8 +95,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'medicaments-deffectueux', component: MedicamentDeffectueuxComponent },
       { path: 'medicaments-perimes', component: MedicamentPerimesComponent },
-      { path: 'vendeurs', component: ListeVendeurComponent },
-      { path: 'vendeurs/:id', component: DetailVendeurComponent },
+      { path: 'vendeurs', component: VendeursComponent },
+      // { path: 'vendeurs/:id', component: DetailVendeurComponent },
       { path: 'clients', component: ListeClientComponent },
       { path: 'clients/:id', component: DetailClientComponent },
       { path: 'lot-de-medicament', component: LotDeMedicamentComponent },

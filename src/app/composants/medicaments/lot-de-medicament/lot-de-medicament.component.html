@@ -1,1 +1,43 @@
-<p>lot-de-medicament works!</p>
+<div class="mt-4">
+    <div class="card w-100" style="background:#E8F6F3">
+        <div class="card-header">
+            Liste des Commandes de lot de medicament
+            <!-- <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
+                data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter medicament</a> -->
+
+        </div>
+        <div class="card-body table-responsive w-100">
+            <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
+                [dtOptions]="dtOptions">
+                <thead class="" style="background:#198754;color: white;">
+                    <tr>
+                        <th>#</th>
+                        <th>Libelle</th>
+                        <th>Quantite</th>
+                        <th>Cout (Franc CFA)</th>
+                        <th>Date de peremption</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="medicaments?.length !=0">
+                    <tr *ngFor="let m of medicaments;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{ m.libelle }}</td>
+                        <td>{{ m.quantite }}</td>
+                        <td>{{ m.prixSession* m.coefficient |number:'.2-2' }}</td>
+                        <!-- <td>{{ m.venteLibre }}</td> -->
+                        <td>{{ m.datePeremption }}</td>
+                        <td>
+                            <a class="btn btn-warning mr-2" [routerLink]="[m.libelle.replaceAll(' ','-')]"
+                                routerLinkActive="router-link-active"><i class="fa fa-eye"></i></a>
+                            <button class="btn btn-success" (click)="ajoutLotModal(m)"><i
+                                    class="fa fa-send"></i></button>
+                            <!-- <button class="btn btn-primary ml-1"><i class="fa fa-edit"></i></button> -->
+                            <button class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

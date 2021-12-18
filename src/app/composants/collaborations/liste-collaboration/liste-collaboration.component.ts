@@ -39,14 +39,30 @@ export class ListeCollaborationComponent implements OnInit {
     this.formGroup = this.entrepriseFormGroup.group({
       nom: ['', [Validators.required, Validators.maxLength(100)]],
       adresse: ['', [Validators.required, Validators.maxLength(100)]],
-      telephone: ['', [Validators.required, Validators.min(9), Validators.max(9)]],
+      telephone: ['', [Validators.required, Validators.min(9)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
       tauxPEC: ['', [Validators.required]]
     })
   }
 
   submit() {
-    alert('valider')
+    const nom = this.formGroup.value['nom']
+    const adresse = this.formGroup.value['adresse']
+    const telephone = this.formGroup.value['telephone']
+    const email = this.formGroup.value['email']
+    const tauxPEC = this.formGroup.value['auxPEC']
+
+    const entreprise = {
+      nom: nom,
+      email: email,
+      telephone: telephone,
+      adresse: adresse,
+      tauxPEC: tauxPEC
+    }
+    this.serviceCollaboration.ajouterCollaboration(entreprise)
+    this.formGroup.reset()
+    $('#exampleModal').modal('hide')
+
   }
 
   modifier(e: any) {
@@ -57,7 +73,6 @@ export class ListeCollaborationComponent implements OnInit {
       email: e.email,
       tauxPEC: e.tauxPEC
     });
-
     $('#exampleModal').modal('show')
   }
   getAllCollaboration() {

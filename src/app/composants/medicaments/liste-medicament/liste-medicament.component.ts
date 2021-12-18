@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fromEventPattern, Subscription } from 'rxjs';
 import { ServicecategorieService } from 'src/app/services/servicecategorie.service';
+import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
 import { ServicemedicamentService } from 'src/app/services/servicemedicament.service';
 
 
@@ -15,15 +16,18 @@ export class ListeMedicamentComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   catSubs!: Subscription;
+  fournisseur!: Subscription
+  fournisseurs!: any[]
   formGroup!: FormGroup;
   formLot!: FormGroup
   categories!: any[];
   medicaments!: any[];
   subscribmedoc!: Subscription;
-  constructor(private routes: Router, private sercat: ServicecategorieService, private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService) {
+  constructor(private routes: Router, private sercat: ServicecategorieService, private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private servicefournisseur: ServicefournisseurService) {
 
   }
 
+  methode: string = "submit"
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'numbers',
@@ -33,8 +37,6 @@ export class ListeMedicamentComponent implements OnInit {
       dom: "<'row mb-4'<'col-sm-12 col-md-8'l><'col-sm-12 col-md-4' f>>" +
         "<'row'<'col-sm-12'tr>>" +
         "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 pull-right col-md-5' p>>",
-
-
       language: { url: 'assets/datatable-French.json' },
       // data: this.personne,
       search: true,
@@ -44,8 +46,13 @@ export class ListeMedicamentComponent implements OnInit {
     this.catSubs = this.sercat.categoriesubject.subscribe((cat: any[]) => {
       this.categories = cat
     })
+    this.fournisseur = this.servicefournisseur.subFournisseur.subscribe((f: any[]) => {
+      this.fournisseurs = f
+    })
+    this.servicefournisseur.getAllFournisseurs()
     this.sercat.getCategorie()
     this.iniForm()
+    this.initformLot()
     this.getMedcament()
   }
 
@@ -57,23 +64,24 @@ export class ListeMedicamentComponent implements OnInit {
   }
 
   iniForm() {
-
     this.formGroup = this.medicamentFormGroup.group({
       libelle: ['', [Validators.required, Validators.maxLength(100)]],
-      prixSession: ['', [Validators.required, Validators.min(0)]],
-      coefficient: ['', [Validators.required, Validators.min(0)]],
+      prixSession: [0, [Validators.required, Validators.min(0)]],
+      coefficient: [0, [Validators.required, Validators.min(0)]],
       tva: [0, [Validators.required]],
       code_geographique: ['', [Validators.required]],
-      quantite: ['', [Validators.required]],
+      seuil: [0, [Validators.required]],
       venteLibre: ['', [Validators.required]],
-      liste: ['', [Validators.required]],
+      nombre: [0,],
       categorie: ['', [Validators.required]],
-      dosage: ['', [Validators.required]],
-      forme: ['', [Validators.required]]
+      dosage: ['',],
+      forme: ['', [Validators.required]],
     })
+  }
 
+  initformLot() {
     this.formLot = this.medicamentFormGroup.group({
-      libelle: ['', Validators.required],
+      libelleLot: ['', Validators.required],
       quantite: [1, Validators.required],
       datePeremption: ['', Validators.required],
       fournisseur: ['', Validators.required]
@@ -85,54 +93,79 @@ export class ListeMedicamentComponent implements OnInit {
     const prixSession = this.formGroup.value['prixSession']
     const tva = this.formGroup.value['tva']
     const coefficient = this.formGroup.value['coefficient']
-    const quantite = this.formGroup.value['quantite']
+    const quantite = this.formGroup.value['seuil']
     const venteLibre = this.formGroup.value['venteLibre']
     const code_geographique = this.formGroup.value['code_geographique']
     const dosage = this.formGroup.value['dosage']
-    const form = this.formGroup.value['type']
-    const liste = this.formGroup.value['liste']
+    const forme = this.formGroup.value['forme']
+    const categorie = this.formGroup.value['categorie']
 
-    const lib = libelle + " " + form + " " + dosage
+    const lib = libelle + " " + forme + " " + dosage
     const med = {
       libelle: lib,
       prixSession: prixSession,
       coefficient: coefficient,
+      seuil: quantite,
       quantite: quantite,
       venteLibre: venteLibre,
       code_geographique: code_geographique,
-      forme: form,
+      forme: forme,
       tva: tva,
-      liste: liste
+      categorie: categorie
     }
     this.servicemedoc.ajoutMedicament(med)
     this.formGroup.reset()
+    $('#exampleModal').modal('hide')
   }
 
   ajoutLotModal(m: any) {
-    console.log(m)
+    this.formLot.patchValue({ libelleLot: m.libelle })
     $('#ajoutLotModal').modal('show');
   }
 
   ajoutLot() {
-    alert('ajouter')
+    const libelle = this.formLot.value['libelleLot']
+    const dateDePeremption = this.formLot.value['datePeremption']
+    const quantite = this.formLot.value['quantite']
+    const lot = {
+      libelle: libelle,
+      dateDePeremption: dateDePeremption,
+      quantite: quantite
+    }
+    console.log(lot)
+    this.servicemedoc.ajoutLot(lot)
+
+    $('#ajoutLotModal').modal('hide');
+    this.formLot.reset()
   }
 
   modifier(medicament: any) {
-    // this.formGroup.setValue({
-    //   libelle: medicament.libelle,
-    //   prixSession: medicament.prixSession,
-    //   coefficient: medicament.coefficient,
-    //   quantite: medicament.quantite,
-    //   venteLibre: medicament.venteLibre,
-    //   datePeremption: medicament.datePeremption,
-    //   fournisseur: medicament.fournisseur,
-    //   categorie: medicament.categorie,
-    //   dosage: medicament.dosage,
-    //   type: medicament.type
-    // })
+
+    this.formGroup.patchValue({
+      libelle: medicament.libelle,
+      prixSession: medicament.prixSession,
+      coefficient: medicament.coefficient,
+      quantite: medicament.quantite,
+      venteLibre: medicament.venteLibre,
+      code_geographique: medicament.code_geographique,
+      liste: medicament.liste,
+      categorie: medicament.categorie,
+      dosage: medicament.dosage,
+      forme: medicament.type
+    })
     console.log(medicament)
     $('#exampleModal').modal('show')
 
+  }
+
+  valider() {
+    alert("valider")
+  }
+
+  modif() {
+    this.methode = "modifier"
+    console.log("modifier")
+    $('#exampleModal').modal('hide')
   }
 
 

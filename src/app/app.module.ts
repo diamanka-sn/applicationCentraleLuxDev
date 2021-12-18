@@ -72,9 +72,10 @@ import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.co
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
-import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
-import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
-import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -131,9 +132,10 @@ import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-
     ListeClientComponent,
     DetailClientComponent,
     CreerClientComponent,
-    ListeVendeurComponent,
-    DetailVendeurComponent,
-    CreervendeurComponent
+    VendeursComponent,
+    // ListeVendeurComponent,
+    // DetailVendeurComponent,
+    // CreervendeurComponent
 
   ],
   imports: [

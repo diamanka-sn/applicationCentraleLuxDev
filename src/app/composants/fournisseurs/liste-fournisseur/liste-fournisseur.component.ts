@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
 
@@ -11,11 +12,11 @@ export class ListeFournisseurComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
 
-
+  formGroup!: FormGroup
   subFournisseur!: Subscription;
   fournisseurs!: any[];
 
-  constructor(private serviceForunisseur: ServicefournisseurService) { }
+  constructor(private serviceForunisseur: ServicefournisseurService, private fournisseurFormGroup: FormBuilder) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -28,7 +29,31 @@ export class ListeFournisseurComponent implements OnInit {
         "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 pull-right col-md-5' p>>",
       language: { url: 'assets/datatable-French.json' },
     }
+    this.initForm()
     this.getALlFournisseurs();
+  }
+
+  initForm() {
+    this.formGroup = this.fournisseurFormGroup.group({
+      nomStructure: ['', [Validators.required, Validators.maxLength(100)]],
+      adresse: ['', [Validators.required]],
+      telephone: ['', [Validators.required, Validators.min(9)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+    })
+  }
+
+  submit() {
+    alert('valider')
+  }
+
+  modifier(f: any) {
+    this.formGroup.patchValue({
+      nomStructure: f.nomStructure,
+      adresse: f.adresse,
+      telephone: f.telephone,
+      email: f.email
+    })
+    $('#exampleModal').modal('show')
   }
 
   getALlFournisseurs() {

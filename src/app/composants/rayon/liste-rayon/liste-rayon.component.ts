@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ServicerayonService } from 'src/app/services/servicerayon.service';
@@ -14,7 +15,8 @@ export class ListeRayonComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   rayons!: any[];
   subscribrayon!: Subscription
-  constructor(private routes: Router, private servicerayon: ServicerayonService) {
+  formGroup!: FormGroup
+  constructor(private routes: Router, private servicerayon: ServicerayonService, private rayonFormGroup: FormBuilder) {
 
   }
 
@@ -33,9 +35,25 @@ export class ListeRayonComponent implements OnInit {
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
 
     }
-
+    this.iniForm()
     this.getrayon()
 
+  }
+
+  iniForm() {
+    this.formGroup = this.rayonFormGroup.group({
+      rayon: ['', [Validators.required, Validators.maxLength(100)]],
+    })
+  }
+
+  submit() {
+    const nomRayon = this.formGroup.value['rayon']
+    const newrayon = {
+      libelle: nomRayon,
+    }
+    this.servicerayon.ajoutrayon(newrayon);
+    this.formGroup.reset();
+    $('#exampleModal').modal('hide')
   }
 
   getrayon() {
@@ -43,6 +61,13 @@ export class ListeRayonComponent implements OnInit {
       this.rayons = rayon
     })
     this.servicerayon.getrayon()
+  }
+
+  modifier(r: any) {
+    this.formGroup.patchValue({
+      rayon: r.libelle
+    })
+    $('#exampleModal').modal('show')
   }
 
   ngOnDestroy() {

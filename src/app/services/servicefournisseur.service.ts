@@ -6,13 +6,13 @@ import { Subject } from 'rxjs';
 })
 export class ServicefournisseurService {
 
-  subFournisseur = new Subject<any[]>() ;
-  fournisseurs!: any[] ;
+  subFournisseur = new Subject<any[]>();
+  fournisseurs!: any[];
 
   constructor() { }
 
   emitFournisseurs() {
-    this.subFournisseur.next(this.fournisseurs.slice()) ;
+    this.subFournisseur.next(this.fournisseurs.slice());
   }
 
   getAllFournisseurs() {
@@ -21,21 +21,21 @@ export class ServicefournisseurService {
         nomStructure: 'DUOPHARM',
         telephone: "33 869 05 22",
         adresse: "Dakar",
-        email: "",
-  
+        email: "duapharm@gmail.com",
+
       },
       {
         nomStructure: 'SODIPHARM',
         telephone: "33 859 00 00",
         adresse: "Fann Bel-Air",
-        email: "",
-  
+        email: "sodipharm.@gmail.com",
+
       },
       {
         nomStructure: 'LABOREX',
         telephone: "33 869 02 02",
         adresse: "Corniche des HLM",
-        email: "",
+        email: "laborex@gmail.com",
       }
     ];
     this.emitFournisseurs()
@@ -43,6 +43,6 @@ export class ServicefournisseurService {
 
   addFournisseur(fournisseur: any) {
     this.fournisseurs.push(fournisseur);
-    this.emitFournisseurs() ;
+    this.emitFournisseurs();
   }
 }
