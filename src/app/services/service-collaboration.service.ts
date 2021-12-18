@@ -10,7 +10,7 @@ export class ServiceCollaborationService {
   collaboration!: any[];
 
   constructor() { }
-
+ 
   emitCollaboration() {
     this.subCollaboration.next(this.collaboration.slice());
   }
@@ -51,5 +51,10 @@ export class ServiceCollaborationService {
   ajouterCollaboration(e: any) {
     this.collaboration.push(e)
     this.emitCollaboration()
+  }
+
+  getCollaborationDetail(id: number){
+    const entreprise = this.collaboration[id]
+    return entreprise;
   }
 }

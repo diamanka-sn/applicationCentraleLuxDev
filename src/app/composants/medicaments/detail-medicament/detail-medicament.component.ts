@@ -13,7 +13,7 @@ export class DetailMedicamentComponent implements OnInit, OnDestroy {
   submedoc!: Subscription
   lib: any[] = []
   constructor(private servicem: ServicemedicamentService, private router: ActivatedRoute) { }
-
+ 
   ngOnInit(): void {
     const id = this.router.snapshot.params['id']
     console.log('---------id---------- ' + id)

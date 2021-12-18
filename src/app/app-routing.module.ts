@@ -77,6 +77,7 @@ const routes: Routes = [
       { path: 'factures', component: ListeFactureComponent },
       { path: 'factures/:id', component: DetailFactureComponent },
       { path: 'ventes', component: ListeVenteComponent },
+      { path: 'creer-vente', component: CreerVenteComponent },
       { path: 'ventes/:id', component: DetailVenteComponent },
       { path: 'bon-client', component: ListeBonclientComponent },
       { path: 'bon-client/:id', component: DetailBonclientComponent },
@@ -102,7 +103,6 @@ const routes: Routes = [
       { path: 'lot-de-medicament', component: LotDeMedicamentComponent },
     ]
   },
-  { path: 'creer-vente', component: CreerVenteComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'connexion', component: AuthentificationComponent },
 

@@ -169,7 +169,6 @@ export class ServicemedicamentService {
       return m.libelle === id.split('-').join(' ')
     });
     return medicament;
-
   }
 
   ajoutLot(lot: any) {
