@@ -26,9 +26,13 @@
                         <td>{{ v.montant }}</td>
                         <td>{{ v.dateVente }}</td>
                         <td>
-                            <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
-                                    class="fa fa-eye"></i></a>
-                            <a class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <!-- <a class="btn btn-warning">
+                                <i class="fa fa-eye" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                            </a> -->
+                            <a class="btn btn-primary ml-1" dat><i class="fa fa-edit"></i></a>
                             <a class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></a>
 
                         </td>
@@ -40,4 +44,5 @@
     </div>
 </div>
 
-<app-creer-utilisateur></app-creer-utilisateur>
+<!-- <app-creer-utilisateur></app-creer-utilisateur> -->
+<!-- <app-detail-vente></app-detail-vente> -->
