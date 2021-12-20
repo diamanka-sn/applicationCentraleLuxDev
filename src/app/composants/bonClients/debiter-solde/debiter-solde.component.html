@@ -1,8 +1,8 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered w-100">
         <div class="modal-content">
             <div class="modal-header " style="background: #198754;color: white;">
-                <h5 class="modal-title" id="exampleModalLabel">Ajouter un rayon</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Debiter le compte</h5>
                 <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -11,8 +11,8 @@
                         <form [formGroup]="formGroup" (ngSubmit)="submit()">
                             <div class="row mb-3 t">
                                 <div class="form-group col-md-12">
-                                    <label>Nom rayon</label>
-                                    <input type="text" class="form-control" formControlName="rayon" name="rayon">
+                                    <label>Montant</label>
+                                    <input type="number" class="form-control" formControlName="montant" name="montant">
                                 </div>
                             </div>
 

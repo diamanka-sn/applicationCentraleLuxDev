@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicebonClientService {
+  [x: string]: any;
 
 
   bonClient!: any[];
@@ -61,4 +62,13 @@ export class ServicebonClientService {
     this.emitbonClient()
 
   }
+  crediter(solde: any) {
+    console.log("methode crediter");
+  }
+
+  debiter(solde: any) {
+    console.log("methode crediter");
+  }
+
+
 }
