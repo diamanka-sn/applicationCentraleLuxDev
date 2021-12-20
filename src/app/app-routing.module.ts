@@ -44,10 +44,13 @@ import { EspaceAdminComponent } from './espace-admin/espace-admin.component'
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component';
-import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
-import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
+import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
@@ -55,6 +58,7 @@ const routes: Routes = [
 
     path: 'espace', component: EspaceAdminComponent, children: [
       { path: "", component: AccueilComponent },
+      { path: "comptabilite", component: ComptabiliteComponent },
       { path: 'medicaments', component: ListeMedicamentComponent },
       { path: 'medicaments/:id', component: DetailMedicamentComponent },
       { path: 'creer-medicament', component: CreerMedicamentComponent },
@@ -73,6 +77,7 @@ const routes: Routes = [
       { path: 'factures', component: ListeFactureComponent },
       { path: 'factures/:id', component: DetailFactureComponent },
       { path: 'ventes', component: ListeVenteComponent },
+      { path: 'creer-vente', component: CreerVenteComponent },
       { path: 'ventes/:id', component: DetailVenteComponent },
       { path: 'bon-client', component: ListeBonclientComponent },
       { path: 'bon-client/:id', component: DetailBonclientComponent },
@@ -91,14 +96,13 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'medicaments-deffectueux', component: MedicamentDeffectueuxComponent },
       { path: 'medicaments-perimes', component: MedicamentPerimesComponent },
-      { path: 'vendeurs', component: ListeVendeurComponent },
-      { path: 'vendeurs/:id', component: DetailVendeurComponent },
+      { path: 'vendeurs', component: VendeursComponent },
+      // { path: 'vendeurs/:id', component: DetailVendeurComponent },
       { path: 'clients', component: ListeClientComponent },
       { path: 'clients/:id', component: DetailClientComponent },
       { path: 'lot-de-medicament', component: LotDeMedicamentComponent },
     ]
   },
-  { path: 'creer-vente', component: CreerVenteComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'connexion', component: AuthentificationComponent },
 

@@ -8,9 +8,10 @@
                                 class="material-icons text-success mr-2">Informations</i></h6>
                         <div class="d-flex flex-column align-items-center text-center">
                             <div class="mt-3">
-                                <h4>{{lib[0]}}</h4>
+                                {{medicament.libelle}}
+                                <!-- <h4>{{lib[0]}}</h4>
                                 <p class="text-secondary mb-1">{{lib[1]}}</p>
-                                <p class="text-muted font-size-sm">{{lib[2]}}</p>
+                                <p class="text-muted font-size-sm">{{lib[2]}}</p> -->
                             </div>
                         </div>
                     </div>
@@ -40,7 +41,20 @@
                                 <h6 class="mb-0">Prix Unitaire</h6>
                             </div>
                             <div class="col-sm-7 text-secondary">
-                                TEST
+                                {{ medicament.coefficient * medicament.prixSession |number:'.2-2' }} <span
+                                    class="pull-right">Franc
+                                    CFA</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Prix detail</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                                {{ (medicament.coefficient * medicament.prixSession)/medicament.quantite |number:'.2-2'
+                                }} <span class="pull-right">Franc
+                                    CFA</span>
                             </div>
                         </div>
                         <hr>

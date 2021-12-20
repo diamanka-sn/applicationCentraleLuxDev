@@ -2,35 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ServiceclientService } from 'src/app/services/serviceclient.service';
+import { ServiceutilisateurService } from 'src/app/services/serviceutilisateur.service';
 
 @Component({
-  selector: 'app-liste-client',
-  templateUrl: './liste-client.component.html',
-  styleUrls: ['./liste-client.component.css']
+  selector: 'app-client',
+  templateUrl: './client.component.html',
+  styleUrls: []
 })
-export class ListeClientComponent implements OnInit {
-  formGroup!: FormGroup;
-  clients!: any[]
+export class ClientComponent implements OnInit {
+  formGroup!: FormGroup
+  utilisateurs!: any[]
   dtOptions: DataTables.Settings = {};
-  subsclient!: Subscription
-  constructor(private routes: Router, private serviceclient: ServiceclientService, private form: FormBuilder) { }
+  subsutilisateur!: Subscription
+  constructor(private routes: Router, private serviceuser: ServiceutilisateurService, private form: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
-
+    this.initForm()
+    this.getUser()
     this.dtOptions = {
       pagingType: 'numbers',
       pageLength: 5,
       lengthMenu: [5, 10, 25, 50, 100],
       autoWidth: true,
+      dom: "<'row mb-4'<'col-sm-12 col-md-8'l><'col-sm-12 col-md-4' f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 pull-right col-md-5' p>>",
       language: { url: 'assets/datatable-French.json' },
       // data: this.personne,
       // search: true,
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
 
     }
-    this.initForm()
-    this.getclient()
   }
 
   initForm() {
@@ -40,8 +44,14 @@ export class ListeClientComponent implements OnInit {
       telephone: ['', [Validators.required]],
       adresse: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      // motDePass: ['', [Validators.required]],
     })
+  }
+
+  getUser() {
+    this.subsutilisateur = this.serviceuser.subutilisateur.subscribe((users: any[]) => {
+      this.utilisateurs = users
+    })
+    this.serviceuser.getUtilisateurs()
   }
 
   submit() {
@@ -50,43 +60,18 @@ export class ListeClientComponent implements OnInit {
     const adresse = this.formGroup.value['adresse']
     const telephone = this.formGroup.value['telephone']
     const email = this.formGroup.value['email']
-    // const motDePass = this.formGroup.value['motDePass']
 
-    const client = {
+
+    const user = {
       nom: nom,
       prenom: prenom,
       adresse: adresse,
       telephone: telephone,
       email: email,
-      // motDePass: motDePass
 
     }
-    this.serviceclient.addclient(client)
-    this.formGroup.reset()
-    $('#exampleModal').modal('hide')
+    this.serviceuser.addUser(user)
 
-  }
-
-  modifier(client: any) {
-    this.formGroup.patchValue({
-      nom: client.nom,
-      prenom: client.prenom,
-      email: client.email,
-      telephone: client.telephone,
-      adresse: client.adresse
-    });
-    $('#exampleModal').modal('show')
-  }
-
-  supprimer(client: any) {
-    return confirm("Voulez-vous vraiment ssupprimé ce client")
-  }
-
-  getclient() {
-    this.subsclient = this.serviceclient.subclient.subscribe((clients: any[]) => {
-      this.clients = clients
-    })
-    this.serviceclient.getclients()
   }
 
 }

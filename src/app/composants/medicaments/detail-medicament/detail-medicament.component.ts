@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { ServicemedicamentService } from 'src/app/services/servicemedicament.service';
@@ -8,22 +8,23 @@ import { ServicemedicamentService } from 'src/app/services/servicemedicament.ser
   templateUrl: './detail-medicament.component.html',
   styleUrls: ['./detail-medicament.component.css']
 })
-export class DetailMedicamentComponent implements OnInit {
+export class DetailMedicamentComponent implements OnInit, OnDestroy {
   medicament!: any
   submedoc!: Subscription
-  lib: any[]=[]
+  lib: any[] = []
   constructor(private servicem: ServicemedicamentService, private router: ActivatedRoute) { }
-
+ 
   ngOnInit(): void {
     const id = this.router.snapshot.params['id']
+    console.log('---------id---------- ' + id)
     this.submedoc = this.servicem.medocsubject.subscribe();
-    this.medicament = this.servicem.getMedicamentDetail(+id);
+    this.medicament = this.servicem.getMedicamentDetail(id);
     console.log(this.medicament)
     this.lib = this.medicament.libelle.split(' ');
     console.log(this.lib);
   }
 
-  
+
   type1 = 'doughnut';
   dataVentes = {
     labels: ["Ventes", "Autres"],
@@ -44,7 +45,7 @@ export class DetailMedicamentComponent implements OnInit {
     ]
   };
 
-  
+
   options4 = {
     legend: {
       display: true
@@ -64,7 +65,7 @@ export class DetailMedicamentComponent implements OnInit {
   };
 
   mutiLineChartData = {
-    labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Jui','Sept', 'Oct', 'Nov','Dec'],
+    labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Jui', 'Sept', 'Oct', 'Nov', 'Dec'],
     datasets: [{
       label: 'Recettes',
       borderColor: this.chartColors.green,
@@ -84,7 +85,12 @@ export class DetailMedicamentComponent implements OnInit {
     responsive: true,
     title: {
       display: true,
-     // text: '' + this.position
+      // text: '' + this.position
     }
+  }
+
+  ngOnDestroy() {
+    this.submedoc.unsubscribe()
+
   }
 }

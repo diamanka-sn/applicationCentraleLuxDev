@@ -1,30 +1,23 @@
-<style>
-    .paginate_button {
-        background-color: green;
-    }
-</style>
-<div class="container mt-4">
-    <div class="card card-light">
+<div class="mt-4">
+    <div class="card w-100" style="background:#E8F6F3">
         <div class="card-header">
             Liste des medicaments
             <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
                 data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter medicament</a>
 
         </div>
-        <div class="card-body table-responsive">
+        <div class="card-body table-responsive w-100">
             <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
                 [dtOptions]="dtOptions">
                 <thead class="" style="background:#198754;color: white;">
                     <tr>
                         <th>#</th>
                         <th>Libelle</th>
-                        <th>Quantite en Stock</th>
-                        <th>Prix Unitaire(Franc CFA)</th>
-                        <!-- <th>Coefficient</th> -->
-                        <!-- <th>TVA(%)</th> -->
+                        <th>Quantite</th>
+                        <th>P.U(Franc CFA)</th>
                         <th>Vente libre</th>
-                        <th>Date de peremption</th>
-                        <th colspan="3">Action</th>
+                        <!-- <th>Date de peremption</th> -->
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="medicaments?.length !=0">
@@ -32,28 +25,197 @@
                         <td>{{i+1}}</td>
                         <td>{{ m.libelle }}</td>
                         <td>{{ m.quantite }}</td>
-                        <td>{{ m.prixSession* m.coefficient }}</td>
-                        <!-- <td>{{ m.coefficient }}</td> -->
-                        <!-- <td>{{ m.tva }}</td> -->
+                        <td>{{ m.prixSession* m.coefficient |number:'.2-2' }}</td>
                         <td>{{ m.venteLibre }}</td>
-                        <td>{{ m.datePeremption }}</td>
+                        <!-- <td>{{ m.datePeremption }}</td> -->
                         <td>
-                            <a class="btn btn-warning" [routerLink]="[m.id]" routerLinkActive="router-link-active"><i
-                                    class="fa fa-eye"></i></a>
-
-                        </td>
-                        <td>
-                            <a class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
-                        </td>
-                        <td>
-                            <a class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></a>
+                            <a class="btn btn-warning mr-2" [routerLink]="[m.libelle.replaceAll(' ','-')]"
+                                routerLinkActive="router-link-active"><i class="fa fa-eye"></i></a>
+                            <button class="btn btn-success" (click)="ajoutLotModal(m)"><i
+                                    class="fa fa-plus"></i></button>
+                            <button class="btn btn-primary ml-1" (click)="modifier(m)"><i
+                                    class="fa fa-edit"></i></button>
+                            <button class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<app-creer-medicament></app-creer-medicament>
+<!-- ajout nouveau medicament -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered w-100">
+        <div class="modal-content">
+            <div class="modal-header " style="background: #198754;color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter un medicament</h5>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="">
+                        <form [formGroup]="formGroup" (ngSubmit)="submit()">
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Nom</label>
+                                    <input type="text" class="form-control" formControlName="libelle" name="libelle"
+                                        placeholder="entrez le nom du medicament">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Seuil d'alerte</label>
+                                    <input type="number" class="form-control" maxlength="9" formControlName="seuil"
+                                        name="seuil" placeholder="entrez le seuil d'alert du medicament">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Prix Session</label>
+                                    <input type="text" class="form-control" maxlength="10" formControlName="prixSession"
+                                        name="prixSession" placeholder="entrez le prix session du medicament">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Coefficient</label>
+                                    <input type="text" class="form-control" maxlength="10" formControlName="coefficient"
+                                        name="coefficient" placeholder="entrez le coefficient">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Dosage</label>
+                                    <input type="text" class="form-control" formControlName="dosage" name="dosage"
+                                        placeholder="entrez le dosage du medicament">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Forme </label>
+                                    <select class="form-control" formControlName="forme" name="forme">
+                                        <option value="">---------selectionner-----------</option>
+                                        <option value="comprimé">comprimé</option>
+                                        <option value="sirop">sirop</option>
+                                        <option value="injection">injection</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>TVA</label>
+                                    <input type="text" class="form-control" maxlength="3" formControlName="tva"
+                                        name="tva" placeholder="entrez le tva du medicament">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Vente libre</label>
+                                    <select class="form-control" formControlName="venteLibre" name="venteLibre">
+                                        <option value="">---------selectionner-----------</option>
+                                        <option value="oui">OUI</option>
+                                        <option value="non">NON</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
+                                    <label>Nombre</label>
+                                    <input type="number" class="form-control" formControlName="nombre" name="nombre"
+                                        placeholder="entrer le nombre"
+                                        placeholder="entrez le nombre d'element du medicament" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>code geographique</label>
+                                    <select class="form-control" formControlName="code_geographique"
+                                        name="code_geographique">
+                                        <option value="">---------selectionner-----------</option>
+                                        <option value="antiretroviraux">Antiretroviraux
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Categorie</label>
+                                    <select class="form-control" formControlName="categorie" name="categorie">
+                                        <option value="">---------selectionner-----------</option>
+                                        <option value="{{c.libelle}}" *ngFor="let c of categories">{{c.libelle}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="row mb-3">
+                                <div class="form-group">
+                                    <label>Liste</label>
+                                    <select class="form-control" name="liste" formControlName="liste">
+                                        <option value="">---------selectionner-----------</option>
+                                        <option value="liste1">Liste 1</option>
+                                        <option value="liste2">Liste 2</option>
+                                        <option value="liste3">Liste 3</option>
+                                    </select>
+                                </div>
+                            </div> -->
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" type="submit" class="btn btn-primary"
+                                    [disabled]="formGroup.invalid">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--fin ajout medicament-->
+
+<!--ajout lot de medicament -->
+<div class="modal" id="ajoutLotModal">
+    <div class="modal-dialog modal-md modal-dialog-centered w-100">
+        <div class="modal-content">
+            <div class="modal-header " style="background: #198754;color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter un lot de medicament</h5>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="">
+                        <form [formGroup]="formLot" (ngSubmit)="ajoutLot()">
+                            <div class="row mb-2">
+                                <div class="form-group">
+                                    <label>Libelle</label>
+                                    <input type="text" class="form-control readonly" formControlName="libelleLot"
+                                        name="libelleLot" readonly>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="form-group">
+                                    <label>Quantite</label>
+                                    <input type="number" class="form-control" formControlName="quantite"
+                                        name="quantite">
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="form-group">
+                                    <label>Date de peremption</label>
+                                    <input type="date" class="form-control" formControlName="datePeremption"
+                                        name="datePeremption">
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="form-group">
+                                    <label>fournisseur</label>
+                                    <select class="form-control" name="fournisseur" formControlName="fournisseur">
+                                        <option value="">---------selectionner-----------</option>
+                                        <option value="{{f.email}}" *ngFor="let f of fournisseurs">{{ f.nomStructure }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="formLot.invalid">Ajouter</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--fin ajout lot medicament-->

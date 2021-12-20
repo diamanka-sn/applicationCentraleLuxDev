@@ -40,4 +40,9 @@ export class ListeVenteComponent implements OnInit {
     );
     this.servicevente.getVentes() ;
   }
+
+  newVente() {
+    console.log('#############################') ;
+    this.router.navigate(['/espace/creer-vente']) ;
+  }
 }

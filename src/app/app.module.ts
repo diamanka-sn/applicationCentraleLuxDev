@@ -61,15 +61,33 @@ import { ServicecommandeService } from './services/servicecommande.service';
 import { ServicebonClientService } from './services/ServicebonClientService';
 
 
-import { DashboardModule } from './composants/dashboard/dashboard.module'
+import { DashboardModule } from './composants/dashboard/dashboard.module';
+import { ClientComponent } from './composants/utilisateurs/client/client.component';
+import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
+import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
+import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
+import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
+import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component';
+import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component'
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
+<<<<<<< HEAD
 import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 import { CrediterSoldeComponent } from './composants/bonClients/crediter-solde/crediter-solde.component';
 import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/debiter-solde.component';
+=======
+import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+import { DatePipe } from '@angular/common';
+>>>>>>> master
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,14 +134,28 @@ import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/deb
     DetailCommandeComponent,
     AuthentificationComponent,
     EspaceAdminComponent,
+    ClientComponent,
+    VendeurComponent,
+    MedicamentDeffectueuxComponent,
+    MedicamentPerimesComponent,
+    LotDeMedicamentComponent,
+    QuantiteMedicamentComponent,
+    ComptabiliteComponent,
     ListeClientComponent,
     DetailClientComponent,
     CreerClientComponent,
+<<<<<<< HEAD
     ListeVendeurComponent,
     DetailVendeurComponent,
     CreervendeurComponent,
     CrediterSoldeComponent,
     DebiterSoldeComponent,
+=======
+    VendeursComponent,
+    // ListeVendeurComponent,
+    // DetailVendeurComponent,
+    // CreervendeurComponent
+>>>>>>> master
 
   ],
   imports: [
@@ -145,6 +177,7 @@ import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/deb
     ServicerayonService,
     ServicebonClientService,
     ServicecommandeService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
