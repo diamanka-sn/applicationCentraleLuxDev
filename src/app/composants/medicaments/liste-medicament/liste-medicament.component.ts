@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fromEventPattern, Subscription } from 'rxjs';
 import { ServicecategorieService } from 'src/app/services/servicecategorie.service';
@@ -21,6 +21,7 @@ export class ListeMedicamentComponent implements OnInit {
   formGroup!: FormGroup;
   formLot!: FormGroup
   categories!: any[];
+  recherche!: any
   medicaments!: any[];
   subscribmedoc!: Subscription;
   constructor(private routes: Router, private sercat: ServicecategorieService, private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private servicefournisseur: ServicefournisseurService) {
@@ -29,6 +30,7 @@ export class ListeMedicamentComponent implements OnInit {
 
   methode: string = "submit"
   ngOnInit(): void {
+    this.recherche = new FormControl('')
     this.dtOptions = {
       pagingType: 'numbers',
       pageLength: 5,
@@ -61,6 +63,13 @@ export class ListeMedicamentComponent implements OnInit {
       this.medicaments = medocs
     })
     this.servicemedoc.getMedicament()
+  }
+
+  changer() {
+    this.medicaments = this.medicaments.filter(m => {
+      return m.libelle.includes(this.recherche.value)
+    })
+    console.log(this.recherche.value)
   }
 
   iniForm() {
