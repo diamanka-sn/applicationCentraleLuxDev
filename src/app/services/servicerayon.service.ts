@@ -45,4 +45,8 @@ export class ServicerayonService {
     this.emitrayon()
 
   }
+
+  getRayonById(id: number) {
+    return this.rayon[id - 1] ;
+  }
 }
