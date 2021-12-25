@@ -6,7 +6,8 @@
 <div class="mt-4">
     <div class="card w-100" style="background:#E8F6F3">
         <div class="card-header">
-            Liste des medicaments de la categorie <strong>{{id}}</strong>
+
+            Liste des medicaments de la categorie <strong>{{medicamnetByCategorie[0].nomCategorie}}</strong>
             <span class="float-right">Total: {{medicamnetByCategorie.length}} médicaments</span>
             <!-- <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Détail catégorie - {{id}}</a> -->
 
@@ -17,8 +18,8 @@
                     <tr>
                         <th>#</th>
                         <th>Libelle</th>
-                        <th>Quantite</th>
-                        <th>P.U(Franc CFA)</th>
+                        <th>Quantité en stock</th>
+                        <!-- <th>P.U(Franc CFA)</th> -->
                         <th>Vente libre</th>
                         <!-- <th>Date de peremption</th> -->
                         <th>Action</th>
@@ -29,7 +30,7 @@
                         <td>{{i+1}}</td>
                         <td>{{ m.libelle }}</td>
                         <td>{{ m.quantite }}</td>
-                        <td>{{ m.prixSession* m.coefficient }}</td>
+                        <!-- <td>{{ m.prixSession* m.coefficient }}</td> -->
                         <td>{{ m.venteLibre }}</td>
                         <td>
                             <!-- <a class="btn btn-warning mr-2" [routerLink]="[m.id]" routerLinkActive="router-link-active"><i class="fa fa-eye"></i></a>
@@ -38,6 +39,7 @@
                             <button class="btn btn-primary ml-1" (click)="modifier(m)"><i
                                     class="fa fa-edit"></i></button>
                             <button class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></button> -->
+                            <button class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></button>
 
                         </td>
 

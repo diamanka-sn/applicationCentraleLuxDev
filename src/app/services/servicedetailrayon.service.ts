@@ -23,7 +23,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 2,
-      libelle: 'effaralgan sirop 1000mg',
+      libelle: 'effaralgan 1000mg sirop',
       quantite: 20,
       prixSession: 30.00,
       coefficient: 0.3,
@@ -36,7 +36,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 3,
-      libelle: 'advil 30 comprimés 200mg',
+      libelle: 'advil 200mg 30 comprimés',
       quantite: 20,
       prixSession: 50.00,
       coefficient: 0.3,
@@ -49,7 +49,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 11,
-      libelle: 'advil 14 comprimés 400mg',
+      libelle: 'advil 400mg 14 comprimés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -62,7 +62,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 23,
-      libelle: 'aspirine protect 30 comprimés 100mg',
+      libelle: 'aspirine protect 100mg 30 comprimés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -75,7 +75,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 4,
-      libelle: 'advil sirop comprimé 20ml',
+      libelle: 'advil sirop',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -88,7 +88,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 26,
-      libelle: 'doliprane 8 comprimés 100mg',
+      libelle: 'doliprane 100mg 8 comprimés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -101,7 +101,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 27,
-      libelle: 'doliprane 8 comprimés-effervescents 100mg',
+      libelle: 'doliprane 100mg 8 comprimés-effervescents',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -114,7 +114,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 28,
-      libelle: 'doliprane 10 suppositoires-secables  100mg',
+      libelle: 'doliprane 100mg 10 suppositoires-secables',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -359,7 +359,7 @@ export class ServicedetailrayonService {
     
     {
       id: 24,
-      libelle: 'dafalgan 8 gélules 100mg',
+      libelle: 'dafalgan 100mg 8 gélules',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -372,7 +372,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 25,
-      libelle: 'dafalgan 16 comprimés 500mg',
+      libelle: 'dafalgan 500mg 16 comprimés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -385,7 +385,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 29,
-      libelle: 'flexa 60 comprimés 625mg',
+      libelle: 'flexa 625mg 60 comprimés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -398,7 +398,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 30,
-      libelle: 'nurofenFlash 12 comprimés 400mg',
+      libelle: 'nurofenFlash 400mg 12 comprimés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -411,7 +411,7 @@ export class ServicedetailrayonService {
     },
     {
       id: 31,
-      libelle: 'amikacine 10 ampoules 500mg',
+      libelle: 'amikacine 500mg 10 ampoules',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -423,21 +423,8 @@ export class ServicedetailrayonService {
       numeroEtage: 2  
     },
     {
-      id: 31,
-      libelle: 'amikacine 10 ampoules 500mg',
-      quantite: 10,
-      prixSession: 40.00,
-      coefficient: 0.3,
-      tva: '0.2%',
-      venteLibre: 'OUI',
-      datePeremption: "21/02/2022",
-      idCategorie: 4,
-      idRayon: 4,
-      numeroEtage: 4
-    },
-    {
       id: 32,
-      libelle: 'Amoxicilline Sandoz 20 comprimés péliculés 500mg',
+      libelle: 'Amoxicilline Sandoz 500mg 20 comprimés péliculés',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,
@@ -449,21 +436,8 @@ export class ServicedetailrayonService {
       numeroEtage: 3
     },
     {
-      id: 32,
-      libelle: 'Amoxicilline Sandoz 20 comprimés péliculés 500mg',
-      quantite: 10,
-      prixSession: 40.00,
-      coefficient: 0.3,
-      tva: '0.2%',
-      venteLibre: 'OUI',
-      datePeremption: "21/02/2022",
-      idCategorie: 4,
-      idRayon: 4,
-      numeroEtage: 2
-    },
-    {
       id: 33,
-      libelle: 'Amoxicilline 10x10 gélules 500mg',
+      libelle: 'Amoxicilline 500mg 10 gélules',
       quantite: 10,
       prixSession: 40.00,
       coefficient: 0.3,

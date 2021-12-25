@@ -17,7 +17,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 2,
@@ -28,7 +29,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 3,
@@ -39,7 +41,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 11,
@@ -50,7 +53,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 4,
@@ -61,7 +65,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     //  injectables
     {
@@ -73,7 +78,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 5,
@@ -84,7 +90,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 6,
@@ -95,7 +102,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 7,
@@ -106,7 +114,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 8,
@@ -117,7 +126,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 9,
@@ -128,7 +138,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 10,
@@ -139,7 +150,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 2
+      idCategorie: 2,
+      nomCategorie: "Médicaments Injectables"
     },
     {
       id: 12,
@@ -150,7 +162,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 13,
@@ -161,7 +174,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 14,
@@ -172,7 +186,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 15,
@@ -183,7 +198,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 15,
@@ -194,7 +210,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
     {
       id: 16,
@@ -205,7 +222,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 1
+      idCategorie: 1,
+      nomCategorie: "Médicaments Oraux"
     },
 
     // solutés de perfusion
@@ -218,7 +236,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 3
+      idCategorie: 3,
+      nomCategorie: "Solutés De Perfusion"
     },
     {
       id: 18,
@@ -229,7 +248,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 3
+      idCategorie: 3,
+      nomCategorie: "Solutés De Perfusion"
     },
     {
       id: 19,
@@ -240,7 +260,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 3
+      idCategorie: 3,
+      nomCategorie: "Solutés De Perfusion"
     },
     {
       id: 20,
@@ -251,7 +272,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 3
+      idCategorie: 3,
+      nomCategorie: "Solutés De Perfusion"
     },
     {
       id: 21,
@@ -262,7 +284,8 @@ export class ServicedetailcategorieService {
       tva: '0.2%',
       venteLibre: 'OUI',
       datePeremption: "21/02/2022",
-      idCategorie: 3
+      idCategorie: 3,
+      nomCategorie: "Solutés De Perfusion"
     },
   ];
 
