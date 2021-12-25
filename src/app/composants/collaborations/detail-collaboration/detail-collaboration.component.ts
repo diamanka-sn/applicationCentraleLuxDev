@@ -60,14 +60,14 @@ export class DetailCollaborationComponent implements OnInit {
       data: [10, 30, 46, 2, 8, 50, 29],
       fill: false,
     }
-    // , {
-    //   label: 'Pertes',
-    //   borderColor: this.chartColors.red,
-    //   backgroundColor: this.chartColors.red,
-    //   data: [7, 49, 46, 13, 25, 30, 22],
-    //   fill: false,
-    // }
-  ]
+      // , {
+      //   label: 'Pertes',
+      //   borderColor: this.chartColors.red,
+      //   backgroundColor: this.chartColors.red,
+      //   data: [7, 49, 46, 13, 25, 30, 22],
+      //   fill: false,
+      // }
+    ]
   }
   //position = "bottom"
   mutiLineChartDataoptions = {
