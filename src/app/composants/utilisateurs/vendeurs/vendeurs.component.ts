@@ -53,9 +53,10 @@ export class VendeursComponent implements OnInit {
   }
 
   getUser() {
-    this.subsutilisateur = this.serviceuser.subutilisateur.subscribe((users: any[]) => {
-      this.utilisateurs = users
-    })
+    this.subsutilisateur = this.serviceuser.subutilisateur.subscribe(
+      (users: any[]) => {
+        this.utilisateurs = users
+      })
     this.serviceuser.getUtilisateurs()
   }
 

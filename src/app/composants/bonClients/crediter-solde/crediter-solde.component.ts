@@ -17,7 +17,7 @@ export class CrediterSoldeComponent implements OnInit {
   constructor(private crediterFormGroup: FormBuilder, private serviceBonClient: ServicebonClientService, private routes: Router) { }
 
   ngOnInit(): void {
-    this.subcribcrediter = this.serviceBonClient.subcribcrediter.subscribe();
+    this.subcribcrediter = this.serviceBonClient.bonClientsubject.subscribe();
     this.iniForm()
   }
   iniForm() {
@@ -29,9 +29,10 @@ export class CrediterSoldeComponent implements OnInit {
   }
 
   submit() {
-    const montant = this.formGroup.value['montant']
-    console.log(montant);
-    this.serviceBonClient.crediter(montant)
+    console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+    // const montant = this.formGroup.value['montant']
+    // console.log(montant);
+    // this.serviceBonClient.crediter(montant)
 
   }
 

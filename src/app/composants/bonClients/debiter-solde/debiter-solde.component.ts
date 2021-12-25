@@ -17,7 +17,7 @@ export class DebiterSoldeComponent implements OnInit {
   constructor(private debiterFormGroup: FormBuilder, private serviceBonClient: ServicebonClientService, private routes: Router) { }
 
   ngOnInit(): void {
-    this.subcribdebiter = this.serviceBonClient.subcribdebiter.subscribe();
+    this.subcribdebiter = this.serviceBonClient.bonClientsubject.subscribe();
     this.iniForm()
   }
   iniForm() {
