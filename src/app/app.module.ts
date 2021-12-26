@@ -80,6 +80,7 @@ import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.c
 // import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 // import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 import { DatePipe } from '@angular/common';
+// import { DetailVendeurComponent } from './composants/utilisateur/vendeur/detail-vendeur/detail-vendeur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,6 +138,7 @@ import { DatePipe } from '@angular/common';
     DetailClientComponent,
     CreerClientComponent,
     VendeursComponent,
+    // DetailVendeurComponent,
     // ListeVendeurComponent,
     // DetailVendeurComponent,
     // CreervendeurComponent

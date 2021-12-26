@@ -50,7 +50,7 @@ import { ListeClientComponent } from './composants/client/liste-client/liste-cli
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
-// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },

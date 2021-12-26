@@ -11,7 +11,7 @@ import { ServicemedicamentService } from 'src/app/services/servicemedicament.ser
 export class DetailMedicamentComponent implements OnInit, OnDestroy {
   medicament!: any
   submedoc!: Subscription
-  lib: any[] = []
+  // lib: any[] = []
   constructor(private servicem: ServicemedicamentService, private router: ActivatedRoute) { }
  
   ngOnInit(): void {
@@ -20,8 +20,8 @@ export class DetailMedicamentComponent implements OnInit, OnDestroy {
     this.submedoc = this.servicem.medocsubject.subscribe();
     this.medicament = this.servicem.getMedicamentDetail(id);
     console.log(this.medicament)
-    this.lib = this.medicament.libelle.split(' ');
-    console.log(this.lib);
+    // this.lib = this.medicament.libelle.split(' ');
+    // console.log(this.lib);
   }
 
 
