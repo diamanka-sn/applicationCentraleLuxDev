@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { BonClient } from 'src/models/BonClient.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicebonClientService {
+
 
 
   bonClient!: any[];
@@ -20,6 +22,7 @@ export class ServicebonClientService {
   getbonClient() {
     this.bonClient = [
       {
+        id: '1',
         nom: 'diallo',
         prenom: 'assane',
         adresse: 'dakar',
@@ -28,6 +31,7 @@ export class ServicebonClientService {
         solde: '18000'
       },
       {
+        id: '2',
         nom: 'gueye',
         prenom: 'mouctar',
         adresse: 'dakar',
@@ -36,6 +40,7 @@ export class ServicebonClientService {
         solde: '16000'
       },
       {
+        id: '3',
         nom: 'cisse',
         prenom: 'yakhouba',
         adresse: 'dakar',
@@ -44,6 +49,7 @@ export class ServicebonClientService {
         solde: '26000'
       },
       {
+        id: '4',
         nom: 'diamanka',
         prenom: 'mouhamaou',
         adresse: 'dakar',
@@ -55,10 +61,32 @@ export class ServicebonClientService {
     this.emitbonClient();
   }
 
+
+  getSingleBonClient(id: number) {
+    console.log("ddddddddddd");
+    const bonClient = this.bonClient.find(
+      (_bon: any) => {
+        return _bon.id === id;
+      }
+    );
+    return bonClient;
+  }
+
   ajoutbonClient(bonClient: any) {
 
     this.bonClient.push(bonClient)
     this.emitbonClient()
 
   }
+
+  crediter(solde: any) {
+    console.log("++++++++++++methode crediter++++++++++");
+    console.log(solde);
+  }
+
+  debiter(solde: any) {
+    console.log("+++++++++++methode debiter+++++++++++");
+    console.log(solde);
+  }
+
 }

@@ -63,7 +63,6 @@ import { ServicebonClientService } from './services/ServicebonClientService';
 
 import { DashboardModule } from './composants/dashboard/dashboard.module';
 import { ClientComponent } from './composants/utilisateurs/client/client.component';
-import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
 import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
 import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
@@ -72,7 +71,6 @@ import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.co
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
-import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 // import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 // import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 // import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
@@ -80,7 +78,13 @@ import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.c
 // import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 // import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 import { DatePipe } from '@angular/common';
+<<<<<<< HEAD
 // import { DetailVendeurComponent } from './composants/utilisateur/vendeur/detail-vendeur/detail-vendeur.component';
+=======
+import { CrediterSoldeComponent } from './composants/bonClients/crediter-solde/crediter-solde.component';
+import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/debiter-solde.component';
+import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+>>>>>>> 5891b7ad76bc8d0bd7b8ce634b5f79e98b4c5085
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,7 +132,7 @@ import { DatePipe } from '@angular/common';
     AuthentificationComponent,
     EspaceAdminComponent,
     ClientComponent,
-    VendeurComponent,
+    VendeursComponent,
     MedicamentDeffectueuxComponent,
     MedicamentPerimesComponent,
     LotDeMedicamentComponent,
@@ -138,7 +142,12 @@ import { DatePipe } from '@angular/common';
     DetailClientComponent,
     CreerClientComponent,
     VendeursComponent,
+<<<<<<< HEAD
     // DetailVendeurComponent,
+=======
+    CrediterSoldeComponent,
+    DebiterSoldeComponent,
+>>>>>>> 5891b7ad76bc8d0bd7b8ce634b5f79e98b4c5085
     // ListeVendeurComponent,
     // DetailVendeurComponent,
     // CreervendeurComponent

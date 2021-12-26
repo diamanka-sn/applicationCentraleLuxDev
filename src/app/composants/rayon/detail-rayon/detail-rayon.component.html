@@ -1,1 +1,93 @@
-<p>detail-rayon works!</p>
+<style>
+    .paginate_button {
+        background-color: green;
+    }
+</style>
+<div class="mt-4">
+    <div class="card w-100" style="background:#E8F6F3">
+        <div class="card-header">
+            Rayon <strong>{{ rayon.libelle | uppercase}}</strong>
+            <span class="float-right">Total: {{medicamentByRayon.length}} médicaments</span>
+            <!-- <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Détail catégorie - {{id}}</a> -->
+
+        </div>
+        <div class="card-body table-responsive w-100">
+            <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover" [dtOptions]="dtOptions">
+                <thead class="" style="background:#198754;color: white;">
+                    <tr>
+                        <th>#</th>
+                        <th>Libelle</th>
+                        <th>Quantite</th>
+                        <th>Etage</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="medicamentByRayon?.length !=0">
+                    <tr *ngFor="let m of medicamentByRayon;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{ m.libelle }}</td>
+                        <td>{{ m.quantite }}</td>
+                        <td>{{ m.numeroEtage }}</td>
+                        <td>
+                            <!-- <a class="btn btn-warning mr-2" [routerLink]="[m.id]" routerLinkActive="router-link-active"><i class="fa fa-eye"></i></a> -->
+                            <button class="btn btn-success" (click)="ajouterMedicamentAuRayonModal(m, 'ajouter')"><i
+                                    class="fa fa-plus"></i></button>
+                            <button class="btn btn-primary ml-1" (click)="ajouterMedicamentAuRayonModal(m, 'retirer')"><i
+                                    class="fa fa-minus"></i></button>
+                            <button class="btn btn-danger ml-1" (click)="retirerMedicamentAuRayon(m)"><i class="fa fa-trash-o"></i></button>
+                            <!-- data-bs-toggle="modal" data-bs-target="#ajouterMedicamentAuRayon" -->
+                        </td>
+
+                    </tr>
+
+                </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ajouterMedicamentAuRayon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered w-100">
+        <div class="modal-content">
+            <div class="modal-header " style="background: #198754;color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">{{ action }} médicament dans un rayon</h5>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="" *ngIf="mOfModal?.libelle != undefined">
+                        <form [formGroup]="formGroupAddMedocRayon" (ngSubmit)="submitAdd()">
+                            <div class="row mb-3">
+                                <div class="form-group col-md-12">
+                                    <label for="quantite">Libellé</label>
+                                    <input type="text" class="form-control" name="quantite" [value]="mOfModal?.libelle" disabled>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-12">
+                                    <label for="quantite">Numéro étage:</label>
+                                    <input type="text" class="form-control" name="numeroEtage" [value]="mOfModal?.numeroEtage" disabled>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-12">
+                                    <label>Quantité</label>
+                                    <input type="number" class="form-control" formControlName="quantite" name="quantite">
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" type="submit" class="btn btn-primary" [disabled]="formGroupAddMedocRayon.invalid">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="" *ngIf="mOfModal?.libelle == undefined">
+                        <div class="alert alert-success">
+                            <h4>{{ action }} au rayon avec succees</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
