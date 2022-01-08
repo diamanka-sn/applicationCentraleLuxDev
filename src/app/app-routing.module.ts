@@ -50,13 +50,14 @@ import { ListeClientComponent } from './composants/client/liste-client/liste-cli
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+import { AuthmiddlewareService } from './middleware/authmiddleware.service';
 // import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
   {
 
-    path: 'espace', component: EspaceAdminComponent, children: [
+    path: 'espace', component: EspaceAdminComponent, canActivate: [AuthmiddlewareService], children: [
       { path: "", component: AccueilComponent },
       { path: "comptabilite", component: ComptabiliteComponent },
       { path: 'medicaments', component: ListeMedicamentComponent },
