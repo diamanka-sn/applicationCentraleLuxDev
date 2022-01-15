@@ -23,7 +23,11 @@ export class ListeMedicamentComponent implements OnInit {
   categories!: any[];
   recherche!: any
   medicaments!: any[];
+  totalLength!: number
+  page: number = 1
   meds!: any[];
+  tailles = [5, 10, 25, 100]
+  taille = 5;
   subscribmedoc!: Subscription;
   constructor(private routes: Router, private sercat: ServicecategorieService, private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private servicefournisseur: ServicefournisseurService) {
 
@@ -63,12 +67,24 @@ export class ListeMedicamentComponent implements OnInit {
   getMedcament() {
     this.subscribmedoc = this.servicemedoc.medocsubject.subscribe((medocs: any[]) => {
       this.meds = medocs
+      this.totalLength = medocs.length
     })
     this.servicemedoc.getMedicament()
   }
 
+  changerPage(event: number) {
+    alert(event)
+    this.page = event
+  }
+
+  changerTaille(event: any) {
+    this.taille = event.target.value
+    this.page = 1
+  }
+
   changer() {
     console.log(this.recherche.value)
+    this.page = 1
     return this.medicaments = this.meds.filter(m => m.libelle.toLowerCase().indexOf(this.recherche.value.toLowerCase()) > -1)
 
   }

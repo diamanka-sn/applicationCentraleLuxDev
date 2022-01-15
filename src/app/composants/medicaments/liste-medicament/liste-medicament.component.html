@@ -5,7 +5,7 @@
     }
 </style>
 <div class="mt-4">
-    <div class="card w-100" style="background:#E8F6F3">
+    <div class="card w-100" style="">
         <div class="card-header">
             Liste des medicaments
             <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
@@ -13,11 +13,41 @@
 
         </div>
         <div class="card-body table-responsive w-100">
-            <div>
-                <input type="text" name="recherche" (input)="changer()" [formControl]="recherche" />
+            <div class="mb-4">
+                <div class="row mt-4 mb-4">
+                    <div class="align-items-center col-md-4 col-sm-12 pull-left">
+                        <div class="row g-3 ">
+                            <div class="col-auto">
+                                <label for="afficherElement" class="col-form-label">Afficher</label>
+                            </div>
+                            <div class="col-auto">
+                                <select (change)="changerTaille($event)" class="form-select" id="afficherElement">
+                                    <option *ngFor="let size of tailles" [ngValue]="size">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <span id="passwordHelpInline" class="form-text">
+                                    Elements
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 pull-right mr-3 col-sm-12" style="position: absolute;right:0px">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <label for="recherche">Rechercher</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="recherche" name="recherche" class="form-control"
+                                    (input)="changer()" [formControl]="recherche" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
-                [dtOptions]="dtOptions">
+            <table class="row-border w-100 table table-striped text-center table-collapse table-hover">
                 <thead class="" style="background:#198754;color: white;">
                     <tr>
                         <th>#</th>
@@ -30,7 +60,11 @@
                     </tr>
                 </thead>
                 <tbody *ngIf="medicaments?.length !=0">
-                    <tr *ngFor="let m of medicaments;let i=index">
+                    <tr *ngFor="let m of medicaments | 
+                    paginate:{itemsPerPage:taille,
+                                currentPage:page,
+                                totalItems :medicaments.length
+                            };let i=index ">
                         <td>{{i+1}}</td>
                         <td>{{ m.libelle }}</td>
                         <td>{{ m.quantite }}</td>
@@ -48,7 +82,12 @@
                         </td>
                     </tr>
                 </tbody>
+                <tbody *ngIf="medicaments.length <1">
+                    Aucun resultats
+                </tbody>
             </table>
+            <pagination-controls (pageChange)="changerPage($event)" previousLabel="precedent" nextLabel="suivant"
+                [responsive]="true"></pagination-controls>
         </div>
     </div>
 </div>
