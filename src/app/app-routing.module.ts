@@ -48,10 +48,10 @@ import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.co
 // import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
-import { VendeurComponent } from './composants/utilisateurs/vendeur/vendeur.component';
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 import { AuthmiddlewareService } from './middleware/authmiddleware.service';
 // import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: '', component: AccueilComponentApp },
