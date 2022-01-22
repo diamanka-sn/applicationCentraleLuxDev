@@ -78,13 +78,10 @@ import { CreerClientComponent } from './composants/client/creer-client/creer-cli
 // import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 // import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
 import { DatePipe } from '@angular/common';
-<<<<<<< HEAD
 // import { DetailVendeurComponent } from './composants/utilisateur/vendeur/detail-vendeur/detail-vendeur.component';
-=======
 import { CrediterSoldeComponent } from './composants/bonClients/crediter-solde/crediter-solde.component';
 import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/debiter-solde.component';
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
->>>>>>> 5891b7ad76bc8d0bd7b8ce634b5f79e98b4c5085
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,12 +139,9 @@ import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.c
     DetailClientComponent,
     CreerClientComponent,
     VendeursComponent,
-<<<<<<< HEAD
     // DetailVendeurComponent,
-=======
     CrediterSoldeComponent,
     DebiterSoldeComponent,
->>>>>>> 5891b7ad76bc8d0bd7b8ce634b5f79e98b4c5085
     // ListeVendeurComponent,
     // DetailVendeurComponent,
     // CreervendeurComponent

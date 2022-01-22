@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fromEventPattern, Subscription } from 'rxjs';
 import { ServicecategorieService } from 'src/app/services/servicecategorie.service';
@@ -21,7 +21,13 @@ export class ListeMedicamentComponent implements OnInit {
   formGroup!: FormGroup;
   formLot!: FormGroup
   categories!: any[];
+  recherche!: any
   medicaments!: any[];
+  totalLength!: number
+  page: number = 1
+  meds!: any[];
+  tailles = [5, 10, 25, 100]
+  taille = 5;
   subscribmedoc!: Subscription;
   constructor(private routes: Router, private sercat: ServicecategorieService, private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private servicefournisseur: ServicefournisseurService) {
 
@@ -29,6 +35,7 @@ export class ListeMedicamentComponent implements OnInit {
 
   methode: string = "submit"
   ngOnInit(): void {
+    this.recherche = new FormControl('')
     this.dtOptions = {
       pagingType: 'numbers',
       pageLength: 5,
@@ -54,13 +61,32 @@ export class ListeMedicamentComponent implements OnInit {
     this.iniForm()
     this.initformLot()
     this.getMedcament()
+    this.medicaments = this.meds
   }
 
   getMedcament() {
     this.subscribmedoc = this.servicemedoc.medocsubject.subscribe((medocs: any[]) => {
-      this.medicaments = medocs
+      this.meds = medocs
+      this.totalLength = medocs.length
     })
     this.servicemedoc.getMedicament()
+  }
+
+  changerPage(event: number) {
+    alert(event)
+    this.page = event
+  }
+
+  changerTaille(event: any) {
+    this.taille = event.target.value
+    this.page = 1
+  }
+
+  changer() {
+    console.log(this.recherche.value)
+    this.page = 1
+    return this.medicaments = this.meds.filter(m => m.libelle.toLowerCase().indexOf(this.recherche.value.toLowerCase()) > -1)
+
   }
 
   iniForm() {

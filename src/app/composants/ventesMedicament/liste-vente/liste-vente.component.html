@@ -7,7 +7,8 @@
     <div class="card">
         <div class="card-header">
             Liste des Ventes
-            <a routerLink="/espace/creer-vente" class="btn btn-success" style="position: absolute;right: 30px;"><i class="fa fa-plus mr-2"></i>Ajouter vente</a>
+            <a routerLink="/espace/creer-vente" class="btn btn-success" style="position: absolute;right: 30px;"><i
+                    class="fa fa-plus mr-2"></i>Ajouter vente</a>
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
         </div>
         <div class="card-body">
@@ -17,7 +18,7 @@
                         <th>#</th>
                         <th>Montant (FCFA)</th>
                         <th>Date</th>
-                        <th colspan="3">Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="ventes?.length !=0">
@@ -39,7 +40,7 @@
                     </tr>
 
                 </tbody>
-                </table>
+            </table>
         </div>
     </div>
 </div>
