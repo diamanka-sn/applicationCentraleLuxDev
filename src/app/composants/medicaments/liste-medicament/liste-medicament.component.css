@@ -1,3 +1,7 @@
 .dataTables_paginate .paging_full_numbers{
     background-color: red;
 }
+div.dataTables_length select{
+    width: 75px;
+    border:1px solid black;
+}

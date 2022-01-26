@@ -139,12 +139,13 @@ import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/detai
     DetailClientComponent,
     CreerClientComponent,
     VendeursComponent,
+    // DetailVendeurComponent,
     CrediterSoldeComponent,
     DebiterSoldeComponent,
-    DetailVendeurComponent,
     // ListeVendeurComponent,
     // DetailVendeurComponent,
     // CreervendeurComponent
+    DetailVendeurComponent
 
   ],
   imports: [
