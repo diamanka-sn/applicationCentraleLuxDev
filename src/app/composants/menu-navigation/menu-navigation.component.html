@@ -1,8 +1,8 @@
 <div id="sideBar"
-    class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
-    style="margin-top: 80px;">
+    class="scrollarea relative flex flex-col flex-wrap border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
+    style="top: 80px; background:#198754;color:white;position: fixed;bottom: 0px;overflow-y: auto;">
     <!-- sidebar content -->
-    <div class="flex flex-col">
+    <div class="scrollarea flex flex-col">
 
         <!-- sidebar toggle -->
         <div class="text-right hidden md:block mb-4">
@@ -12,133 +12,175 @@
         </div>
         <!-- end sidebar toggle -->
 
-        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
-
+        <p class="uppercase text-xs text-white-600 mb-4 tracking-wider">Accueil</p>
         <!-- link -->
-        <a href="https://therichpost.com/best-angular-ecommerce-templates-free/" target="_blank"
+        <a routerLink="/espace" routerLinkActive="router-link-active"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-chart-pie text-xs mr-2"></i>
-            Analytics dashboard
+            <i class="fa fa-dashboard text-xs mr-2"></i> Tableau de bord
         </a>
-        <!-- end link -->
-
         <!-- link -->
-        <a href="https://therichpost.com/best-angular-ecommerce-templates-free/" target="_blank"
+        <a routerLink="/espace/comptabilite" routerLinkActive="router-link-active"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-shopping-cart text-xs mr-2"></i>
-            ecommerce dashboard
+            <i class="fas fa-balance-scale-left text-xs mr-2"></i> Comptabilité
         </a>
         <!-- end link -->
-
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">apps</p>
-
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-envelope-open-text text-xs mr-2"></i>
-            email
+        <a routerLink="/espace/dashboard" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-chart-pie text-xs mr-2"></i> Statistiques des données
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a routerLink="commander-medicament" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-shopping-cart text-xs mr-2"></i> commandes
+        </a>
+        <!-- end link -->
+
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Medicament</p>
+
+        <!-- link -->
+        <!--- menu descendant  -->
+        <!-- <div class="accordion accordion-flush bg-none" id="accordionFlushExample">
+            <div class="">
+                <h6 class="accordion-header" id="flush-headingOne">
+                    <a href="#" class="accordion collapsed" type="" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        medicaments
+                    </a><i class="fixed-left pull-right">b</i>
+                </h6>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body" style="margin-left: -50px;">
+                        <ul>
+                            <li>
+                                Ajouter
+                            </li>
+                            <li>Modifier</li>
+                            <li>lister</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!--- fin menu descendant -->
+
+        <a routerLink="medicaments" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-pills text-xs mr-2"></i> Medicament
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a routerLink="medicaments-perimes" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-comments text-xs mr-2"></i> Medicament perimés
+        </a>
+        <!-- end link -->
+        <!-- link -->
+        <a routerLink="medicaments-deffectueux" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-comments text-xs mr-2"></i> Medicament deffectueux
+        </a>
+        <!-- link -->
+        <a routerLink="lot-de-medicament" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-comments text-xs mr-2"></i>
-            chat
+            commande medicament
+        </a>
+        <!-- end link -->
+        <!-- end link -->
+        <!-- link -->
+        <a routerLink="categories" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-comments text-xs mr-2"></i> Categorie
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-shield-check text-xs mr-2"></i>
-            todo
+        <a routerLink="rayons" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-shield-check text-xs mr-2"></i> Rayon
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-calendar-edit text-xs mr-2"></i>
-            calendar
+        <a routerLink="fournisseurs" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-calendar-edit text-xs mr-2"></i> Fournisseur
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
-            invoice
+        <a routerLink="collaborations" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-file-invoice-dollar text-xs mr-2"></i> Collaboration
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-folder-open text-xs mr-2"></i>
-            file manager
+        <a routerLink="depenses" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-folder-open text-xs mr-2"></i> Depense
         </a>
         <!-- end link -->
 
 
-        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">UI Elements</p>
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Utilisateurs</p>
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-text text-xs mr-2"></i>
-            typography
+        <a routerLink="clients" routerLinkActive="router-link-actve"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-users text-xs mr-2"></i> Client
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-whistle text-xs mr-2"></i>
-            alerts
+        <a routerLink="vendeurs" routerLinkActive="router-link-actve"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-share text-xs mr-2"></i> Vendeur
         </a>
         <!-- end link -->
-
-
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-cricket text-xs mr-2"></i>
-            buttons
-        </a>
-        <!-- end link -->
-
-        <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-box-open text-xs mr-2"></i>
-            Content
+        <a routerLink="bon-client" routerLinkActive="router-link-active"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-books text-xs mr-2"></i> Bon client
         </a>
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-swatchbook text-xs mr-2"></i>
             colors
-        </a>
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-atom-alt text-xs mr-2"></i>
             icons
-        </a>
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-club text-xs mr-2"></i>
             card
-        </a>
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-cheese-swiss text-xs mr-2"></i>
             Widgets
-        </a>
+        </a> -->
         <!-- end link -->
 
         <!-- link -->
-        <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <!-- <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-computer-classic text-xs mr-2"></i>
             Components
-        </a>
+        </a> -->
         <!-- end link -->
 
 

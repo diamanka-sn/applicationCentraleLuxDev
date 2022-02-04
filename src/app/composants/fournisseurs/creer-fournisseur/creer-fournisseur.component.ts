@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-creer-fournisseur',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreerFournisseurComponent implements OnInit {
 
-  constructor() { }
+  formGroup!: FormGroup
+
+  
+  constructor(private fournisseurFormGroup: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm()
+  }
+
+  initForm() {
+    this.formGroup = this.fournisseurFormGroup.group({
+      nomStructure: ['', [Validators.required, Validators.maxLength(100)]],
+      adresse: ['', [Validators.required]],
+      telephone: ['', [Validators.required, Validators.min(9), Validators.max(10)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+    })
+  }
+
+  submit() {
+    alert('valider')
   }
 
 }

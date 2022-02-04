@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChartModule } from 'angular2-chartjs';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './composants/header/header.component';
@@ -44,10 +46,45 @@ import { CreerCommandeComponent } from './composants/commandeDeMedicaments/creer
 import { ListeCommandeComponent } from './composants/commandeDeMedicaments/liste-commande/liste-commande.component';
 import { DetailCommandeComponent } from './composants/commandeDeMedicaments/detail-commande/detail-commande.component';
 import { AuthentificationComponent } from './composants/authentification/authentification.component';
+import { DataTablesModule } from 'angular-datatables';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceauthentificationService } from './services/serviceauthentification.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceutilisateurService } from './services/serviceutilisateur.service';
+import { EspaceAdminComponent } from './espace-admin/espace-admin.component';
+import { AccueilComponentApp } from './accueil/accueil.component';
+import { ServicemedicamentService } from './services/servicemedicament.service';
+import { ServicecategorieService } from './services/servicecategorie.service';
+import { ServicerayonService } from './services/servicerayon.service';
+import { ServicecommandeService } from './services/servicecommande.service';
+import { ServicebonClientService } from './services/ServicebonClientService';
 
+
+import { DashboardModule } from './composants/dashboard/dashboard.module';
+import { ClientComponent } from './composants/utilisateurs/client/client.component';
+import { MedicamentDeffectueuxComponent } from './composants/medicaments/medicament-deffectueux/medicament-deffectueux.component';
+import { MedicamentPerimesComponent } from './composants/medicaments/medicament-perimes/medicament-perimes.component';
+import { LotDeMedicamentComponent } from './composants/medicaments/lot-de-medicament/lot-de-medicament.component'
+import { QuantiteMedicamentComponent } from './composants/ventesMedicament/quantite-medicament/quantite-medicament.component';
+import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.component'
+import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
+import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
+import { CreerClientComponent } from './composants/client/creer-client/creer-client.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+// import { ListeVendeurComponent } from './composants/vendeur/liste-vendeur/liste-vendeur.component';
+// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
+// import { CreervendeurComponent } from './composants/vendeur/creer-vendeur/creer-vendeur.component';
+import { DatePipe } from '@angular/common';
+import { CrediterSoldeComponent } from './composants/bonClients/crediter-solde/crediter-solde.component';
+import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/debiter-solde.component';
+import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AccueilComponentApp,
     HeaderComponent,
     MenuNavigationComponent,
     AccueilComponent,
@@ -88,13 +125,47 @@ import { AuthentificationComponent } from './composants/authentification/authent
     CreerCommandeComponent,
     ListeCommandeComponent,
     DetailCommandeComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    EspaceAdminComponent,
+    ClientComponent,
+    VendeursComponent,
+    MedicamentDeffectueuxComponent,
+    MedicamentPerimesComponent,
+    LotDeMedicamentComponent,
+    QuantiteMedicamentComponent,
+    ComptabiliteComponent,
+    ListeClientComponent,
+    DetailClientComponent,
+    CreerClientComponent,
+    VendeursComponent,
+    CrediterSoldeComponent,
+    DebiterSoldeComponent,
+    // ListeVendeurComponent,
+    // DetailVendeurComponent,
+    // CreervendeurComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DataTablesModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    DashboardModule,
+    ChartModule
   ],
-  providers: [],
+  providers: [
+
+    ServiceauthentificationService,
+    ServiceutilisateurService,
+    ServicecategorieService,
+    ServicerayonService,
+    ServicebonClientService,
+    ServicecommandeService,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
