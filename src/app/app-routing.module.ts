@@ -49,8 +49,8 @@ import { ComptabiliteComponent } from './composants/comptabilite/comptabilite.co
 import { ListeClientComponent } from './composants/client/liste-client/liste-client.component';
 import { DetailClientComponent } from './composants/client/detail-client/detail-client.component';
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
+import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/detail-vendeur/detail-vendeur.component';
 import { AuthmiddlewareService } from './middleware/authmiddleware.service';
-// import { DetailVendeurComponent } from './composants/vendeur/detail-vendeur/detail-vendeur.component';
 // import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
@@ -98,7 +98,7 @@ const routes: Routes = [
       { path: 'medicaments-deffectueux', component: MedicamentDeffectueuxComponent },
       { path: 'medicaments-perimes', component: MedicamentPerimesComponent },
       { path: 'vendeurs', component: VendeursComponent },
-      // { path: 'vendeurs/:id', component: DetailVendeurComponent },
+      { path: 'vendeurs/:id', component: DetailVendeurComponent },
       { path: 'clients', component: ListeClientComponent },
       { path: 'clients/:id', component: DetailClientComponent },
       { path: 'lot-de-medicament', component: LotDeMedicamentComponent },

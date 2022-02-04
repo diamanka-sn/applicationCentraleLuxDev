@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+export interface Vendeur {
+  id:number;
+  nom: string
+  prenom: string
+  adresse: string
+  email: string
+  telephone: string
+  profil: string
+}
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServicevendeurService {
   subvendeur = new Subject<any[]>()
   vendeurs!: any[]
@@ -59,5 +69,10 @@ export class ServicevendeurService {
   addvendeur(vendeur: any) {
     this.vendeurs.push(vendeur)
     this.emitvendeurs()
+  }
+
+  getDetailVendeur(id: number) {
+    const vendeur = this.vendeurs[id]
+    return vendeur;
   }
 }

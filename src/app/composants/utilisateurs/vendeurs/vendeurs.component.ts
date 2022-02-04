@@ -67,14 +67,12 @@ export class VendeursComponent implements OnInit {
     const telephone = this.formGroup.value['telephone']
     const email = this.formGroup.value['email']
 
-
     const user = {
       nom: nom,
       prenom: prenom,
       adresse: adresse,
       telephone: telephone,
       email: email,
-
     }
     this.serviceuser.addUser(user);
     ($('#exampleModal') as any).modal('hide')
