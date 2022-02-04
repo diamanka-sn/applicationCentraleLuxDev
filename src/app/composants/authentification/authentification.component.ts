@@ -24,7 +24,7 @@ export class AuthentificationComponent implements OnInit {
 
   initForm() {
     this.formGroup = this.form.group({
-      login: ['', [Validators.required]],
+      login: ['', [Validators.required,]],
       motDePasse: ['', [Validators.required]]
     })
 

@@ -73,7 +73,6 @@ export class ListeMedicamentComponent implements OnInit {
   }
 
   changerPage(event: number) {
-    alert(event)
     this.page = event
   }
 

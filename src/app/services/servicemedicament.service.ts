@@ -154,7 +154,19 @@ export class ServicemedicamentService {
 
     ]
 
+
+    // this.http.get<any[]>("http://localhost:3000/medicaments")
+    //   .subscribe(medicaments => {
+    //     this.medicaments = medicaments
+    //     console.log(medicaments)
+    //     this.emitMedoc()
+    //   },
+    //     (error) => {
+    //       return error
+    //     }
+    //   )
     this.emitMedoc()
+
   }
 
   ajoutMedicament(medicament: any) {
