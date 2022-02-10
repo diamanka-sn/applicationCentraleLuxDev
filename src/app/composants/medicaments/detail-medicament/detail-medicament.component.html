@@ -52,7 +52,7 @@
                                 <h6 class="mb-0">Prix detail</h6>
                             </div>
                             <div class="col-sm-7 text-secondary">
-                                {{ (medicament.coefficient * medicament.prixSession)/medicament.quantite |number:'.2-2'
+                                {{ (medicament.coefficient * medicament.prixSession)/medicament.nombre |number:'.2-2'
                                 }} <span class="pull-right">Franc
                                     CFA</span>
                             </div>
@@ -90,7 +90,7 @@
                                 <h6 class="mb-0">Vente libre</h6>
                             </div>
                             <div class="col-sm-7 text-secondary">
-                                {{medicament.venteLibre}}
+                                {{medicament.venteLibre?"oui":"non"}}
                             </div>
                         </div>
                         <hr>

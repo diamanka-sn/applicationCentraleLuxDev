@@ -17,39 +17,58 @@ export class ServicecategorieService {
   }
 
   getCategorie() {
-    this.categorie = [
-      {
-        libelle: 'Médicaments Oraux',
+    // this.categorie = [
+    //   {
+    //     libelle: 'Médicaments Oraux',
 
-      },
-      {
-        libelle: 'Médicaments Injectables',
+    //   },
+    //   {
+    //     libelle: 'Médicaments Injectables',
 
-      },
-      {
-        libelle: 'Solutés de Perfusion',
+    //   },
+    //   {
+    //     libelle: 'Solutés de Perfusion',
 
-      },
-      {
-        libelle: 'Médicaments à Usage Externe',
+    //   },
+    //   {
+    //     libelle: 'Médicaments à Usage Externe',
 
-      },
-      {
-        libelle: 'Médicaments OPH à usage externe',
+    //   },
+    //   {
+    //     libelle: 'Médicaments OPH à usage externe',
 
-      },
-      {
-        libelle: 'Désinfectants',
+    //   },
+    //   {
+    //     libelle: 'Désinfectants',
 
-      },
-    ]
-    this.emitCategorie();
+    //   },
+    // ]
+
+    this.http.get<any[]>("http://localhost:3000/categories").subscribe(categories => {
+      this.categorie = categories
+      this.emitCategorie();
+    },
+      err => {
+        console.log(err)
+      })
+
+
   }
 
   ajoutCategorie(categorie: any) {
 
-    this.categorie.push(categorie)
-    this.emitCategorie()
+    return new Promise((resolve, reject) => {
+      this.http.post("http://localhost:3000/categories", categorie).subscribe(message => {
+        resolve(message)
+        this.getCategorie()
+      },
+        err => {
+          reject(err)
+        })
+    })
+
+    // this.categorie.push(categorie)
+    // this.emitCategorie()
 
   }
 

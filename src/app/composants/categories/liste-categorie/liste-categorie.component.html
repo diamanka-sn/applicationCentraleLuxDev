@@ -3,41 +3,49 @@
         background-color: green;
     }
 </style>
-<div class="container mt-4">
-    <div class="card card-light">
-        <div class="card-header">
-            Liste des Categories
-            <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
-                data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter categorie</a>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card card-light">
+            <div class="card-header">
+                Liste des Categories
+                <a href="#" class="btn btn-success" style="position: absolute;right: 30px;" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="fa fa-plus mr-2"></i>Ajouter</a>
 
-        </div>
-        <div class="card-body table-responsive">
-            <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
-                [dtOptions]="dtOptions">
-                <thead class="" style="background:#198754;color: white;">
-                    <tr>
-                        <th>#</th>
-                        <th>Libelle</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody *ngIf="categories?.length !=0">
-                    <tr *ngFor="let c of categories;let i=index">
-                        <td>{{i+1}}</td>
-                        <td>{{ c.libelle }}</td>
-                        <td>
-                            <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
-                                    class="fa fa-eye"></i></a>
-                            <button class="btn btn-primary ml-4" (click)="modifier(c)"><i
-                                    class="fa fa-edit"></i></button>
-                            <a class="btn btn-danger ml-4"><i class="fa fa-trash-o"></i></a>
+            </div>
+            <div class="card-body table-responsive">
+                <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
+                    [dtOptions]="dtOptions">
+                    <thead class="" style="background:#198754;color: white;">
+                        <tr>
+                            <th>#</th>
+                            <th>Libelle</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="categories?.length !=0">
+                        <tr *ngFor="let c of categories;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{ c.libelle }}</td>
+                            <td>
+                                <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
+                                        class="fa fa-eye"></i></a>
+                                <a class="btn btn-primary ml-4" (click)="modifier(c)"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger ml-4"><i class="fa fa-trash-o"></i></a>
 
-                    </tr>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                    <tbody *ngIf="categories.length<1">
+                        pas de categories
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <app-codegoegraphique></app-codegoegraphique>
+    </div>
+
 </div>
 <!--ajout categorie-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

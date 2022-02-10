@@ -2,6 +2,7 @@
     <div class="card">
         <div class="card-header text-center">
             <strong>Détail de la vente n° 12</strong>
+            <span class="pull-right">{{ vente.dateVente|date:'dd/MM/yyyy à hh:mm:ss' }}</span>
             <!-- <a routerLink="/espace/creer-vente" class="btn btn-success" style="position: absolute;right: 30px;"><i class="fa fa-plus mr-2"></i>Ajouter vente</a> -->
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
         </div>
@@ -24,21 +25,21 @@
                         <th class="text-center texte-white">P.U * Qte (franc cfa)</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody *ngIf="vente.Medicaments?.length!=0">
+                    <tr *ngFor="let medicament of vente.Medicaments">
 
                         <td>
                             <img src="assets/img/efferalgan.jpg" style="height: 80px; width: 80px;" alt="toff">
                         </td>
                         <th class="align-middle">
-                            Efferalgan 1000mg 8 Comprimés
+                            {{medicament.libelle}}
                         </th>
-                        <td class="text-center align-middle">1 098.50</td>
+                        <td class="text-center align-middle">{{medicament.prixPublic}}</td>
                         <td class="text-center align-middle"><span class="badge bg-primary text-dark fs-6">01</span>
                         </td>
                         <td class="text-center align-middle">1 098.50</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>
                             <img src="assets/img/Doliprane 1000mg 8 Gélules.jpg" style="height: 80px; width: 80px;"
                                 alt="toff">
@@ -76,12 +77,12 @@
                         <td class="text-center align-middle"><span class="badge bg-primary text-dark fs-6">01</span>
                         </td>
                         <td class="text-center align-middle">1 527.50</td>
-                    </tr>
+                    </tr> -->
 
                 </tbody>
                 <tfoot class="" style="background:#198754;color: white;">
                     <th class="fs-4 fw-bold" colspan="4">TOTAL (FCFA)</th>
-                    <th class="text-center text-white fs-3 fw-bold">4 643,3</th>
+                    <th class="text-center text-white fs-3 fw-bold">{{vente.cout}}</th>
                 </tfoot>
             </div>
         </div>

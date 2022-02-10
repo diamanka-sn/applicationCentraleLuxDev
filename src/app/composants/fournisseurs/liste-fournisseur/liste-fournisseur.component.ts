@@ -14,7 +14,7 @@ export class ListeFournisseurComponent implements OnInit {
 
   formGroup!: FormGroup
   subFournisseur!: Subscription;
-  fournisseurs!: any[];
+  fournisseurs: any[] = [];
 
   constructor(private serviceForunisseur: ServicefournisseurService, private fournisseurFormGroup: FormBuilder) { }
 
@@ -43,7 +43,21 @@ export class ListeFournisseurComponent implements OnInit {
   }
 
   submit() {
-    alert('valider')
+    const fournisseur = {
+      nomStructure: this.formGroup.value['nomStructure'],
+      adresse: this.formGroup.value['adresse'],
+      telephone: this.formGroup.value['telephone'],
+      email: this.formGroup.value['email'],
+    }
+
+    this.serviceForunisseur.addFournisseur(fournisseur).then(() => {
+      $('#exampleModal').modal('hide');
+      this.serviceForunisseur.getAllFournisseurs()
+    },
+      err => {
+        console.log(err)
+      })
+
   }
 
   modifier(f: any) {

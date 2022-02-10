@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ServiceventeService } from 'src/app/services/servicevente.service';
@@ -10,15 +10,15 @@ import { ServiceventeService } from 'src/app/services/servicevente.service';
 })
 export class ListeVenteComponent implements OnInit {
 
-  ventes!: any[] ;
-  subVente!: Subscription ;
+  ventes: any[] = [];
+  subVente!: Subscription;
 
   dtOptions: DataTables.Settings = {}
 
-  constructor(private router: Router, private servicevente: ServiceventeService) { }
+  constructor(private servicevente: ServiceventeService) { }
 
   ngOnInit(): void {
-    this.getAllVentes() ;
+    this.getAllVentes();
     this.dtOptions = {
       pagingType: 'numbers',
       pageLength: 5,
@@ -31,18 +31,23 @@ export class ListeVenteComponent implements OnInit {
 
     }
   }
-  
+
   getAllVentes() {
     this.subVente = this.servicevente.subvente.subscribe(
       (allVentes: any[]) => {
-        this.ventes = allVentes ;
+        this.ventes = allVentes;
       }
     );
-    this.servicevente.getVentes() ;
+    this.servicevente.getVentes();
   }
 
   newVente() {
-    console.log('#############################') ;
-    this.router.navigate(['/espace/creer-vente']) ;
+    console.log('#############################');
+    //this.router.navigate(['/espace/creer-vente']);
+  }
+
+  ngOnDestroy(): void {
+    this.subVente.unsubscribe()
+
   }
 }

@@ -85,7 +85,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="bg-success"
+    <!-- <div class="bg-success"
         style="width: 500px; height: 200px;position: absolute;margin-top: -150px;margin-left: 200px;color: white;padding: 2rem;">
         <div>
             <h4><i class="fa fa-location"></i> Bambey université </h4>
@@ -96,10 +96,38 @@
         <div>
             <h4><i class="fa fa-envelope-open-text"></i> luxdevmedicament@gmail.com </h4>
         </div>
-    </div>
+    </div> -->
     <!-- Marketing messaging and featurettes
   ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div class="bg-success" style="height: 80px;margin-top: -50px;">
+
+    </div>
+    <div class="container">
+
+        <div class="row row-cols-2 row-cols-lg-5 g-3 g-lg-3" *ngIf="medicaments?.length !=0" style="margin-top: 20px;">
+
+            <div class="card col-md-3 med" style="" style="color:white;"
+                *ngFor="let medicament of medicaments;let i = index">
+                <img src="{{medicament.image}}" class="w-100" style="height: 200px;" />
+                <div class="card-body">
+                    <p class="card-text">{{medicament.libelle}}</p>
+                    <div class="badge rounded-pill badge-success text-white">
+                        {{medicament.Categorie.libelle}}
+
+                    </div>
+                    <div class="pull-right text-black" style="position: absolute;bottom: 0px;right: 5px;">
+                        <strong>{{medicament.prixPublic}} Franc CFA</strong>
+                    </div>
+                </div>
+
+                <a href="#" class="stretched-link" style="text-decoration: none;color: white;"></a>
+                <div class="clearfix" *ngIf="i % 3==0"></div>
+            </div>
+
+
+        </div>
+    </div>
 
     <div class="container marketing" style="margin-top:100px;">
 

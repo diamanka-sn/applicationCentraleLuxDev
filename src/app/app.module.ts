@@ -82,6 +82,9 @@ import { CrediterSoldeComponent } from './composants/bonClients/crediter-solde/c
 import { DebiterSoldeComponent } from './composants/bonClients/debiter-solde/debiter-solde.component';
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/detail-vendeur/detail-vendeur.component';
+import { CodegoegraphiqueComponent } from './composants/codegoegraphique/codegoegraphique.component';
+import { ListecodegeographiqueComponent } from './composants/codegoegraphique/listecodegeographique/listecodegeographique.component';
+import { DetailcodegeographiqueComponent } from './composants/codegoegraphique/detailcodegeographique/detailcodegeographique.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -145,7 +148,10 @@ import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/detai
     // ListeVendeurComponent,
     // DetailVendeurComponent,
     // CreervendeurComponent
-    DetailVendeurComponent
+    DetailVendeurComponent,
+    CodegoegraphiqueComponent,
+    ListecodegeographiqueComponent,
+    DetailcodegeographiqueComponent
 
   ],
   imports: [

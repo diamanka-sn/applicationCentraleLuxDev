@@ -13,7 +13,7 @@ export class ListeCategorieComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   formGroup!: FormGroup;
-  categories!: any[];
+  categories: any[] = [];
   subscribCategorie!: Subscription
   constructor(private routes: Router, private servicecategorie: ServicecategorieService, private form: FormBuilder) {
 
@@ -66,9 +66,14 @@ export class ListeCategorieComponent implements OnInit {
     const newcategorie = {
       libelle: libelle,
     }
-    this.servicecategorie.ajoutCategorie(newcategorie)
-    this.formGroup.reset()
-    $('#exampleModal').modal('hide')
+    this.servicecategorie.ajoutCategorie(newcategorie).then(message => {
+      this.formGroup.reset()
+      $('#exampleModal').modal('hide')
+    })
+      .catch(err => {
+        console.log(err)
+      })
+
   }
 
   getCategorie() {

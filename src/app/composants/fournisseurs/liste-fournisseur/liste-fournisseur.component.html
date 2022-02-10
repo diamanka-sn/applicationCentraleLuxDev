@@ -20,7 +20,7 @@
                         <th>Adresse</th>
                         <th>telephone</th>
                         <th>Email</th>
-                        <th>details</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="fournisseurs?.length !=0">
@@ -38,6 +38,9 @@
                             <a class="btn btn-danger ml-1"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
+                </tbody>
+                <tbody *ngIf="fournisseurs.length <1">
+                    Pas de fournisseurs
                 </tbody>
             </table>
         </div>

@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fromEventPattern, Subscription } from 'rxjs';
+import { CodegeographiqueService } from 'src/app/services/codegeographique.service';
 import { ServicecategorieService } from 'src/app/services/servicecategorie.service';
+import { ServiceformeService } from 'src/app/services/serviceforme.service';
 import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
 import { ServicemedicamentService } from 'src/app/services/servicemedicament.service';
 
@@ -21,55 +23,70 @@ export class ListeMedicamentComponent implements OnInit {
   formGroup!: FormGroup;
   formLot!: FormGroup
   categories!: any[];
+  codeGeographique!: any[]
+  code!: Subscription
   recherche!: any
-  medicaments!: any[];
+  medicaments: any[] = [];
+  formes!: any[]
+  formesub!: Subscription
   totalLength!: number
   page: number = 1
-  meds!: any[];
+  meds: any[] = [];
   tailles = [5, 10, 25, 100]
   taille = 5;
+  file!: File
+  imgFile!: String;
+  // lien
   subscribmedoc!: Subscription;
-  constructor(private routes: Router, private sercat: ServicecategorieService, private medicamentFormGroup: FormBuilder, private servicemedoc: ServicemedicamentService, private servicefournisseur: ServicefournisseurService) {
+  constructor(private routes: Router,
+    private sercat: ServicecategorieService,
+    private medicamentFormGroup: FormBuilder,
+    private servicemedoc: ServicemedicamentService,
+    private servicefournisseur: ServicefournisseurService,
+    private serviceCodeG: CodegeographiqueService,
+    private servicefrome: ServiceformeService) {
 
   }
 
   methode: string = "submit"
   ngOnInit(): void {
     this.recherche = new FormControl('')
-    this.dtOptions = {
-      pagingType: 'numbers',
-      pageLength: 5,
-      lengthMenu: [5, 10, 25, 50, 100],
-      autoWidth: true,
-      dom: "<'row mb-4'<'col-sm-12 col-md-8'l><'col-sm-12 col-md-4' f>>" +
-        "<'row'<'col-sm-12'tr>>" +
-        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 pull-right col-md-5' p>>",
-      language: { url: 'assets/datatable-French.json' },
-      // data: this.personne,
-      search: true,
-      // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
-
-    }
     this.catSubs = this.sercat.categoriesubject.subscribe((cat: any[]) => {
       this.categories = cat
     })
     this.fournisseur = this.servicefournisseur.subFournisseur.subscribe((f: any[]) => {
       this.fournisseurs = f
     })
+    this.code = this.serviceCodeG.subcode.subscribe((code: any[]) => {
+      this.codeGeographique = code
+    })
+    this.formesub = this.servicefrome.subforme.subscribe((formes: any[]) => {
+      this.formes = formes
+    })
+
     this.servicefournisseur.getAllFournisseurs()
     this.sercat.getCategorie()
+    this.serviceCodeG.getCode()
+    this.servicefrome.getFormes()
     this.iniForm()
     this.initformLot()
-    this.getMedcament()
     this.medicaments = this.meds
+    this.getMedcament()
+
+    console.log("taille medicmanets", this.medicaments)
   }
 
   getMedcament() {
     this.subscribmedoc = this.servicemedoc.medocsubject.subscribe((medocs: any[]) => {
+      console.log("recupration medicament")
+      console.log(medocs)
       this.meds = medocs
+      this.medicaments = this.meds
+      console.log(this.meds)
       this.totalLength = medocs.length
     })
     this.servicemedoc.getMedicament()
+
   }
 
   changerPage(event: number) {
@@ -101,6 +118,8 @@ export class ListeMedicamentComponent implements OnInit {
       categorie: ['', [Validators.required]],
       dosage: ['',],
       forme: ['', [Validators.required]],
+      image: ['', Validators.required],
+      // imgFile: ['', [Validators.required]]
     })
   }
 
@@ -114,33 +133,61 @@ export class ListeMedicamentComponent implements OnInit {
   }
 
   submit() {
+    const formData = new FormData();
+    formData.append('image', this.formGroup.value['image']);
+    const f = this.formGroup.value['forme'].split(" ")
     const libelle = this.formGroup.value['libelle']
     const prixSession = this.formGroup.value['prixSession']
     const tva = this.formGroup.value['tva']
     const coefficient = this.formGroup.value['coefficient']
     const quantite = this.formGroup.value['seuil']
     const venteLibre = this.formGroup.value['venteLibre']
-    const code_geographique = this.formGroup.value['code_geographique']
+    const code = this.formGroup.value['code_geographique']
     const dosage = this.formGroup.value['dosage']
-    const forme = this.formGroup.value['forme']
+    const forme = f[1]
     const categorie = this.formGroup.value['categorie']
+    const nombre = this.formGroup.value['nombre']
 
-    const lib = libelle + " " + forme + " " + dosage
+    const lib = libelle + " " + dosage + " " + nombre + " " + f[0]
     const med = {
       libelle: lib,
       prixSession: prixSession,
       coefficient: coefficient,
       seuil: quantite,
-      quantite: quantite,
+      nombre: nombre,
+      dosage: dosage,
       venteLibre: venteLibre,
-      code_geographique: code_geographique,
-      forme: forme,
+      prixPublic: prixSession * coefficient,
+      codeGeographiqueId: code,
+      formeId: forme,
       tva: tva,
-      categorie: categorie
+      categorieId: categorie,
+      image: formData
     }
-    this.servicemedoc.ajoutMedicament(med)
-    this.formGroup.reset()
-    $('#exampleModal').modal('hide')
+    // 
+    formData.append('libelle', lib);
+    formData.append('nom', libelle);
+    formData.append('nombre', nombre);
+    formData.append('prixSession', prixSession);
+    formData.append('coefficient', coefficient);
+    formData.append('seuil', quantite);
+    formData.append('dosage', dosage);
+    formData.append('venteLibre', venteLibre);
+    formData.append('prixPublic', (prixSession * coefficient).toString());
+    formData.append('formeId', forme)
+    formData.append('categorieId', categorie)
+    formData.append('tva', tva)
+    formData.append('codeGeographiqueId', code)
+
+    this.servicemedoc.ajoutMedicament(formData).then(() => {
+      this.formGroup.reset()
+      $('#exampleModal').modal('hide')
+      this.servicemedoc.getMedicament()
+    },
+      error => {
+        console.log(error)
+      })
+
   }
 
   ajoutLotModal(m: any) {
@@ -196,10 +243,32 @@ export class ListeMedicamentComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscribmedoc.unsubscribe()
+    this.catSubs.unsubscribe()
+    this.formesub.unsubscribe()
+    this.code.unsubscribe()
+    this.fournisseur.unsubscribe()
+
   }
 
   afficher() {
     $('#exampleModal').show()
+  }
+
+
+  changerImg(event: any) {
+    const reader = new FileReader();
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imgFile = reader.result as string;
+        this.formGroup.patchValue({
+          image: file
+        });
+
+      };
+    }
+    // this.formGroup.patchValue({ image: event.target.files[0] })
   }
 
 }

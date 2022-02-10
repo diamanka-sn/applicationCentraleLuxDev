@@ -52,7 +52,7 @@
                     <tr>
                         <th>#</th>
                         <th>Libelle</th>
-                        <th>Quantite</th>
+                        <th>Quantite en Stock</th>
                         <th>P.U(Franc CFA)</th>
                         <th>Vente libre</th>
                         <!-- <th>Date de peremption</th> -->
@@ -67,9 +67,9 @@
                             };let i=index ">
                         <td>{{i+1}}</td>
                         <td>{{ m.libelle }}</td>
-                        <td>{{ m.quantite }}</td>
+                        <td>{{ m.nombre }}</td>
                         <td>{{ m.prixSession* m.coefficient |number:'.2-2' }}</td>
-                        <td>{{ m.venteLibre }}</td>
+                        <td>{{ m.venteLibre?"oui":"non" }}</td>
                         <!-- <td>{{ m.datePeremption }}</td> -->
                         <td>
                             <a class="btn btn-warning mr-2" [routerLink]="[m.libelle.replaceAll(' ','-')]"
@@ -106,6 +106,16 @@
                         <form [formGroup]="formGroup" (ngSubmit)="submit()">
                             <div class="row mb-3">
                                 <div class="form-group col-md-6">
+                                    <label>image</label>
+                                    <input type="file" class="form-control" name="image" formControlName="image"
+                                        (change)="changerImg($event)" placeholder="selectionner une image">
+                                </div>
+                                <div class="form-group col-md-6 justify-content-center">
+                                    <img [src]="imgFile" alt="image" *ngIf="imgFile" height="100" width="100" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group col-md-6">
                                     <label>Nom</label>
                                     <input type="text" class="form-control" formControlName="libelle" name="libelle"
                                         placeholder="entrez le nom du medicament">
@@ -138,9 +148,11 @@
                                     <label>Forme </label>
                                     <select class="form-control" formControlName="forme" name="forme">
                                         <option value="">---------selectionner-----------</option>
-                                        <option value="comprimé">comprimé</option>
-                                        <option value="sirop">sirop</option>
-                                        <option value="injection">injection</option>
+                                        <option value="{{ forme.libelle}} {{forme.id}}" *ngFor="let forme of formes">
+                                            {{forme.libelle}}
+                                        </option>
+                                        <!-- <option value="2">sirop</option>
+                                        <option value="3">injection</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -154,8 +166,8 @@
                                     <label>Vente libre</label>
                                     <select class="form-control" formControlName="venteLibre" name="venteLibre">
                                         <option value="">---------selectionner-----------</option>
-                                        <option value="oui">OUI</option>
-                                        <option value="non">NON</option>
+                                        <option value="1">OUI</option>
+                                        <option value="0">NON</option>
                                     </select>
 
                                 </div>
@@ -172,7 +184,8 @@
                                     <select class="form-control" formControlName="code_geographique"
                                         name="code_geographique">
                                         <option value="">---------selectionner-----------</option>
-                                        <option value="antiretroviraux">Antiretroviraux
+                                        <option value="{{code.id}}" *ngFor="let code of codeGeographique">
+                                            {{code.libelle}}
                                         </option>
                                     </select>
                                 </div>
@@ -180,7 +193,7 @@
                                     <label>Categorie</label>
                                     <select class="form-control" formControlName="categorie" name="categorie">
                                         <option value="">---------selectionner-----------</option>
-                                        <option value="{{c.libelle}}" *ngFor="let c of categories">{{c.libelle}}
+                                        <option value="{{i+1}}" *ngFor="let c of categories;let i=index">{{c.libelle}}
                                         </option>
                                     </select>
                                 </div>

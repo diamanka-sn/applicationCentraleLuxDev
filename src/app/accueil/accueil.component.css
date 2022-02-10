@@ -18,3 +18,8 @@ li a{
         font-size: 3.5rem;
     }
 }
+
+.med:hover{
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.3));
+    border: 1px solid black;
+}
