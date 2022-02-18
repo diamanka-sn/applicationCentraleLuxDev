@@ -1,8 +1,8 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header text-center">
-            <strong>Détail de la vente n° 12</strong>
-            <span class="pull-right">{{ vente.dateVente|date:'dd/MM/yyyy à hh:mm:ss' }}</span>
+            <strong>Détail de la vente {{vente.id}}</strong>
+            <span class="pull-right">{{ vente.dateVente|date:'dd/MM/yyyy à HH:mm:ss' }}</span>
             <!-- <a routerLink="/espace/creer-vente" class="btn btn-success" style="position: absolute;right: 30px;"><i class="fa fa-plus mr-2"></i>Ajouter vente</a> -->
             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
         </div>
@@ -29,15 +29,19 @@
                     <tr *ngFor="let medicament of vente.Medicaments">
 
                         <td>
-                            <img src="assets/img/efferalgan.jpg" style="height: 80px; width: 80px;" alt="toff">
+                            <img src="{{medicament.image}}" style="height: 80px; width: 80px;" alt="toff">
                         </td>
                         <th class="align-middle">
                             {{medicament.libelle}}
                         </th>
                         <td class="text-center align-middle">{{medicament.prixPublic}}</td>
-                        <td class="text-center align-middle"><span class="badge bg-primary text-dark fs-6">01</span>
+                        <td class="text-center align-middle">
+                            <span class="badge bg-primary text-dark fs-6">
+                                {{ medicament.LigneVentes.quantite}}
+                            </span>
                         </td>
-                        <td class="text-center align-middle">1 098.50</td>
+                        <td class="text-center align-middle">{{ medicament.prixPublic *
+                            medicament.LigneVentes.quantite}}</td>
                     </tr>
                     <!-- <tr>
                         <td>

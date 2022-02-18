@@ -19,6 +19,7 @@ export class DetailMedicamentComponent implements OnInit, OnDestroy {
     console.log('---------id---------- ' + id)
     this.submedoc = this.servicem.medocsubject.subscribe();
     this.servicem.getMedicamentDetail(id).then((medicament) => {
+      console.log(medicament)
       this.medicament = medicament
     },
       error => {

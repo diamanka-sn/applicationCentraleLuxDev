@@ -181,6 +181,7 @@ export class ListeMedicamentComponent implements OnInit {
 
     this.servicemedoc.ajoutMedicament(formData).then(() => {
       this.formGroup.reset()
+      this.imgFile = ""
       $('#exampleModal').modal('hide')
       this.servicemedoc.getMedicament()
     },

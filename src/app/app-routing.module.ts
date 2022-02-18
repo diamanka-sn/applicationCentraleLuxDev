@@ -51,6 +51,7 @@ import { DetailClientComponent } from './composants/client/detail-client/detail-
 import { VendeursComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/detail-vendeur/detail-vendeur.component';
 import { AuthmiddlewareService } from './middleware/authmiddleware.service';
+import { TypepaiementComponent } from './composants/typepaiement/typepaiement.component';
 // import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/vendeurs.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
@@ -102,6 +103,7 @@ const routes: Routes = [
       { path: 'clients', component: ListeClientComponent },
       { path: 'clients/:id', component: DetailClientComponent },
       { path: 'lot-de-medicament', component: LotDeMedicamentComponent },
+      { path: 'type-paiements', component: TypepaiementComponent },
     ]
   },
   { path: 'not-found', component: NotFoundComponent },
