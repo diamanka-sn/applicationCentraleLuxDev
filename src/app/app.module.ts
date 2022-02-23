@@ -86,6 +86,8 @@ import { CodegoegraphiqueComponent } from './composants/codegoegraphique/codegoe
 import { ListecodegeographiqueComponent } from './composants/codegoegraphique/listecodegeographique/listecodegeographique.component';
 import { DetailcodegeographiqueComponent } from './composants/codegoegraphique/detailcodegeographique/detailcodegeographique.component';
 import { CreerVendeurComponent } from './composants/utilisateurs/vendeurs/creer-vendeur/creer-vendeur.component';
+import { FormeComponent } from './composants/forme/forme.component';
+import { TypepaiementComponent } from './composants/typepaiement/typepaiement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -154,7 +156,8 @@ import { CreerVendeurComponent } from './composants/utilisateurs/vendeurs/creer-
     ListecodegeographiqueComponent,
     DetailcodegeographiqueComponent,
     CreerVendeurComponent,
-    
+    FormeComponent,
+    TypepaiementComponent
 
   ],
   imports: [
