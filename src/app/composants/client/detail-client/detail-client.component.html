@@ -10,9 +10,9 @@
             <div class="row">
                 <div class="col-md">
                     <div class="police1">
-                        Cheikh Yakhouba Cisse
+                        {{client.prenom}} {{client.nom}}
                     </div>
-                    <div class="police2">Senegal, Rufisque</div>
+                    <div class="police2">adresse: {{client.adresse}}</div>
 
                 </div>
             </div>
@@ -37,28 +37,23 @@
                 <div class="text-center alert alert-success police2">INFORMATIONS</div>
                 <div class="card-body">
                     <div class="police2">
-                        <i class="fad fa-share text-xs mr-2"></i>
-                        Prenom : <em class="police3"> cheikh</em>
+                        <i class="fad fa-share text-xs mr-2"></i> Prenom : <em class="police3"> {{client.prenom}}</em>
                     </div>
                     <hr>
                     <div class="police2">
-                        <i class="fad fa-share text-xs mr-2"></i>
-                        Nom :<em class="police3"> Cisse</em>
+                        <i class="fad fa-share text-xs mr-2"></i> Nom :<em class="police3"> {{client.nom}}</em>
                     </div>
                     <hr>
                     <div class="police2">
-                        <i class="fad fa-share text-xs mr-2"></i>
-                        Adresse :<em class="police3"> Rufisque</em>
+                        <i class="fad fa-share text-xs mr-2"></i> Adresse :<em class="police3"> {{client.adresse}}</em>
                     </div>
                     <hr>
                     <div class="police2">
-                        <i class="fad fa-share text-xs mr-2"></i>
-                        Telephone :<em class="police3"> 784672317</em>
+                        <i class="fad fa-share text-xs mr-2"></i> Telephone :<em class="police3"> {{client.telephone}}</em>
                     </div>
                     <hr>
                     <div class="police2">
-                        <i class="fad fa-share text-xs mr-2"></i>
-                        Email :<em class="police3"> cheikh97@gmail.com</em>
+                        <i class="fad fa-share text-xs mr-2"></i> Email :<em class="police3"> {{client.adresse}}</em>
                     </div>
                 </div>
             </div>
@@ -145,13 +140,12 @@
         <div class="container mt-4">
             <div class="card card-light">
                 <div class="card-header">
-                    <h5 class="mb-0 text-success font-weight-bold">Historique Achat<span
-                            class=" float-end text-secondary">Total: <span class="text-success">50 590 F</span>
-                        </span></h5>
+                    <h5 class="mb-0 text-success font-weight-bold">Historique Achat<span class=" float-end text-secondary">Total: <span class="text-success">50 590 F</span>
+                        </span>
+                    </h5>
                 </div>
                 <div class="card-body table-responsive">
-                    <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover"
-                        [dtOptions]="dtOptions">
+                    <table datatable class="row-border w-100 table table-striped text-center table-collapse table-hover" [dtOptions]="dtOptions">
                         <thead class="" style="background:#198754;color: white;">
                             <tr>
                                 <th>#</th>
@@ -197,7 +191,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                        </table>
                 </div>
             </div>
         </div>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -18,57 +19,71 @@ export class ServicevendeurService {
   subvendeur = new Subject<any[]>()
   vendeurs!: any[]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   emitvendeurs() {
     this.subvendeur.next(this.vendeurs.slice())
   }
 
   getvendeurs() {
-    this.vendeurs = [
-      {
-        nom: 'diallo',
-        prenom: 'assane',
-        adresse: 'dakar',
-        email: 'assane@gmail.com',
-        telephone: '773670972',
-        profil: 'vendeur',
-        motDePass: ''
-      },
-      {
-        nom: 'gueye',
-        prenom: 'mouctar',
-        adresse: 'dakar',
-        email: 'mouctar@gmail.com',
-        telephone: '763457789',
-        profil: 'vendeur',
-        motDePass: ''
-      },
-      {
-        nom: 'cisse',
-        prenom: 'yakhouba',
-        adresse: 'dakar',
-        email: 'yakhouba@gmail.com',
-        telephone: '707892507',
-        profil: 'vendeur',
-        motDePass: ''
-      },
-      {
-        nom: 'diamanka',
-        prenom: 'mouhamaou',
-        adresse: 'dakar',
-        email: 'mouhamadou@gmail.com',
-        telephone: '765429081',
-        profil: 'vendeur',
-        motDePass: ''
-      },
-    ]
-    this.emitvendeurs()
+    this.http.get<any[]>("http://localhost:3000/vendeur").subscribe(
+      (allVendeur) => {
+        this.vendeurs = allVendeur ;
+        this.emitvendeurs()
+        console.log(this.vendeurs)
+      }
+    )
   }
 
   addvendeur(vendeur: any) {
-    this.vendeurs.push(vendeur)
-    this.emitvendeurs()
+    return new Promise(
+      (resolve, reject) => {
+        this.http.post("http://localhost:3000/auth/signup", vendeur).subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response);
+          },
+          (error) => {
+            console.log(error);
+            reject(error);
+          }
+        )
+      }
+    )
+  }
+
+  modifyVendeur(id: number, vendeur: any) {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.put("http://localhost:3000/vendeur/" + id, vendeur).subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response);
+          },
+          (error) => {
+            console.log(error);
+            reject(error)
+          }
+        )
+      }
+    )
+  }
+
+  deleteVendeur(id: number) {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.delete("http://localhost:3000/vendeur/" + id).subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response)
+          },
+          (error) => {
+            console.log(error);
+            reject(error);
+          }
+        )
+      }
+    )
   }
 
   getDetailVendeur(id: number) {
