@@ -17,7 +17,7 @@
                 <tbody *ngIf="rayons?.length !=0">
                     <tr *ngFor="let c of rayons;let i=index">
                         <td>{{i+1}}</td>
-                        <td>{{ c.libelle }}</td>
+                        <td>{{ c.nom }}</td>
                         <td>
                             <a class="btn btn-warning" [routerLink]="[i+1]" routerLinkActive="router-link-active"><i
                                     class="fa fa-eye"></i></a>

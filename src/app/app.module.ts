@@ -85,6 +85,7 @@ import { DetailVendeurComponent } from './composants/utilisateurs/vendeurs/detai
 import { CodegoegraphiqueComponent } from './composants/codegoegraphique/codegoegraphique.component';
 import { ListecodegeographiqueComponent } from './composants/codegoegraphique/listecodegeographique/listecodegeographique.component';
 import { DetailcodegeographiqueComponent } from './composants/codegoegraphique/detailcodegeographique/detailcodegeographique.component';
+import { CreerVendeurComponent } from './composants/utilisateurs/vendeurs/creer-vendeur/creer-vendeur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -151,7 +152,9 @@ import { DetailcodegeographiqueComponent } from './composants/codegoegraphique/d
     DetailVendeurComponent,
     CodegoegraphiqueComponent,
     ListecodegeographiqueComponent,
-    DetailcodegeographiqueComponent
+    DetailcodegeographiqueComponent,
+    CreerVendeurComponent,
+    
 
   ],
   imports: [

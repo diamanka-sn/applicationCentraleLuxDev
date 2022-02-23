@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -9,48 +10,72 @@ export class ServiceCollaborationService {
   subCollaboration = new Subject<any[]>();
   collaboration!: any[];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
  
   emitCollaboration() {
     this.subCollaboration.next(this.collaboration.slice());
   }
   getAllColaboration() {
-    this.collaboration = [
-      {
-        nom: 'SENEGAL SERVICE',
-        telephone: "771112233",
-        adresse: "Saint Louis",
-        email: "ecorp@gmail.com",
-        tauxPEC: 0.5
+    this.http.get<any[]>("http://localhost:3000/entreprise").subscribe(
+      (allCollaborations) => {
+        this.collaboration = allCollaborations;
+        this.emitCollaboration();
       },
-      {
-        nom: 'Senegal-TECH',
-        telephone: "330122123",
-        adresse: "Dakar",
-        email: "stechp@gmail.com",
-        tauxPEC: 0.5
-      },
-      {
-        nom: 'SGBS',
-        telephone: "338443358",
-        adresse: "Pikine",
-        email: "sgbs@gmail.com",
-        tauxPEC: 0.5
-      },
-      {
-        nom: 'NDIAYE ET FRERES',
-        telephone: "338291110",
-        adresse: "Ouakam",
-        email: "ndiayeetfreres@gmail.com",
-        tauxPEC: 0.5
+      (error) => {
+        console.log(error);
       }
-    ];
-    this.emitCollaboration();
+    )
   }
 
-  ajouterCollaboration(e: any) {
-    this.collaboration.push(e)
-    this.emitCollaboration()
+  addCollaboration(collaboration: any) {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.post("http://localhost:3000/entreprise", collaboration).subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response);
+          },
+          (error) =>{
+            console.log(error);
+            reject(error);
+          }
+        )
+      }
+    )
+  }
+
+  modifyCollaboration(id:number, collaboration: any) {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.put("http://localhost:3000/entreprise/" + id, collaboration).subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response);
+          },
+          (error) => {
+            console.log(error);
+            reject(error);
+          }
+        )
+      }
+    )
+  }
+
+  deleteCollaboration(id: number)  {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.delete("http://localhost:3000/entreprise/" + id).subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response);
+          },
+          (error) => {
+            console.log(error);
+            reject(error);
+          }
+        )
+      }
+    )
   }
 
   getCollaborationDetail(id: number){

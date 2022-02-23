@@ -38,6 +38,8 @@ export class CreerClientComponent implements OnInit {
     const adresse = this.formGroup.value['adresse']
     const telephone = this.formGroup.value['telephone']
     const email = this.formGroup.value['email']
+    const profil = "client"
+    const motDePasse = "luxdev"
     // const motDePass = this.formGroup.value['motDePass']
 
     const client = {
@@ -46,10 +48,22 @@ export class CreerClientComponent implements OnInit {
       adresse: adresse,
       telephone: telephone,
       email: email,
+      profil: profil,
+      motDePasse: motDePasse
       // motDePass: motDePass
-
     }
-    this.serviceclient.addclient(client)
+    console.log(nom);
+    console.log(prenom);
+    console.log(adresse);
+    console.log(telephone);
+    console.log(email);
+    console.log(profil)
+    console.log(motDePasse)
+
+
+    // this.serviceclient.addclient(client)
+    this.formGroup.reset() ;
+    this.routes.navigate(['espace/clients'])
 
   }
 

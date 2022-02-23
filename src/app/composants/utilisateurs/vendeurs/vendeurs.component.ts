@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ServiceutilisateurService } from 'src/app/services/serviceutilisateur.service';
+import { ServicevendeurService } from 'src/app/services/servicevendeur.service';
 
 @Component({
   selector: 'app-vendeurs',
@@ -11,11 +11,17 @@ import { ServiceutilisateurService } from 'src/app/services/serviceutilisateur.s
 })
 export class VendeursComponent implements OnInit {
 
-  formGroup!: FormGroup
-  utilisateurs!: any[]
+  formGroup!: FormGroup;
+  vendeurs: any[] = [];
   dtOptions: DataTables.Settings = {};
   subsutilisateur!: Subscription
-  constructor(private routes: Router, private serviceuser: ServiceutilisateurService, private form: FormBuilder) { }
+
+  isModify!: boolean ;
+  vendeurId!: number ;
+
+
+  constructor(private routes: Router,
+               private servicevendeur: ServicevendeurService, private form: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -33,13 +39,18 @@ export class VendeursComponent implements OnInit {
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
 
     }
-    this.initForm()
-    this.getUser()
+    this.initForm();
+    this.getUser();
+    this.isModify = false ;
   }
 
   ajout() {
 
     $('#exampleModal').modal('show')
+  }
+
+  afficherButtonSave() {
+    this.isModify = false ;
   }
 
   initForm() {
@@ -53,11 +64,12 @@ export class VendeursComponent implements OnInit {
   }
 
   getUser() {
-    this.subsutilisateur = this.serviceuser.subutilisateur.subscribe(
+    this.subsutilisateur = this.servicevendeur.subvendeur.subscribe(
       (users: any[]) => {
-        this.utilisateurs = users
+        this.vendeurs = users;
       })
-    this.serviceuser.getUtilisateurs()
+    this.servicevendeur.getvendeurs() ;
+    console.log(this.vendeurs) ;
   }
 
   submit() {
@@ -67,27 +79,68 @@ export class VendeursComponent implements OnInit {
     const telephone = this.formGroup.value['telephone']
     const email = this.formGroup.value['email']
 
-    const user = {
+    const vendeur = {
       nom: nom,
       prenom: prenom,
       adresse: adresse,
       telephone: telephone,
       email: email,
+      motDePasse: 'luxdev',
+      profil: 'vendeur'
     }
-    this.serviceuser.addUser(user);
-    ($('#exampleModal') as any).modal('hide')
-    this.formGroup.reset()
+
+    if(!this.isModify){
+      this.servicevendeur.addvendeur(vendeur).then(
+        () => {
+          this.formGroup.reset();
+          $('#exampleModal').modal('hide');
+          // this.servicevendeur.getvendeurs();
+          this.getUser();
+        }
+      );
+      
+    }else if(this.isModify){
+      this.servicevendeur.modifyVendeur(this.vendeurId, vendeur).then(
+        () => {
+          this.formGroup.reset();
+          this.isModify = false ;
+          $('#exampleModal').modal('hide');
+          // this.servicevendeur.getvendeurs();
+          this.getUser()
+        },
+        (error) => {
+          console.log("#######################################")
+          console.log(error)
+          console.log("#######################################")
+        }
+      );      
+    }
+
   }
 
-  modifier(u: any) {
+  modifier(vendeur: any) {
+    this.vendeurId = vendeur.id;
+    this.isModify = true ;
     this.formGroup.patchValue({
-      nom: u.nom,
-      prenom: u.prenom,
-      adresse: u.adresse,
-      telephone: u.telephone,
-      email: u.email
+      nom: vendeur.nom,
+      prenom: vendeur.prenom,
+      adresse: vendeur.adresse,
+      telephone: vendeur.telephone,
+      email: vendeur.email
     })
     $('#exampleModal').modal('show')
   }
 
+  supprimer(vendeur: any) {
+    console.log(vendeur.id)
+    this.servicevendeur.deleteVendeur(vendeur.id).then(
+      () => {
+         this.servicevendeur.getvendeurs();
+      },
+      (error) => {
+        console.log('Erreur de suppression')
+      }
+    )
+    // return confirm("Voulez-vous vraiment ssupprimé ce client")
+  }
 }

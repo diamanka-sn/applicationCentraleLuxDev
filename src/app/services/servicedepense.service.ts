@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -10,35 +11,39 @@ export class ServicedepenseService {
   depenses!: any[] ;
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   emitDepenses() {
     this.subDepense.next(this.depenses.slice())
   }
 
   getAllDepenses() {
-    this.depenses = [
-      {
-        description: 'frais de service',
-        montant: "25 000",
-        date: "19/11/2021",
+    this.http.get<any[]>("http://localhost:3000/depense").subscribe(
+      (allDepense) => {
+        this.depenses = allDepense ;
+        console.log(this.depenses)
+        this.emitDepenses() ;
       },
-      {
-        description: "Paiement facture d'eau",
-        montant: "17 400",
-        date: "05/11/2021",
-      },
-      {
-        description: "Paiement facture d'éléctricité",
-        montant: "17 400",
-        date: "05/11/2021",
-      },
-    ];
-    this.emitDepenses() ;
+      (err) => {
+        console.log(err)
+      }
+    )
   }
-  // addDepense(user:any) {
-  //   this.depenses.push(); 
-  //   this.emitDepenses() ;
-  // }
+  addDepense(depense:any) {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.post("http://localhost:3000/depense", depense).subscribe(
+          (dep) => {
+            console.log(dep);
+            resolve(dep)
+          },
+          (error) => {
+            console.log(error);
+            reject(error)
+          }
+        )
+      }
+    )
+  }
 
 }
