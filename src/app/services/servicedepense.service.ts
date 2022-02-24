@@ -1,21 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { config } from 'src/models/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicedepenseService {
 
-  subDepense = new Subject<any[]>() ;
-  depenses!: any[] ;
+  subDepense = new Subject<any[]>();
+  depenses!: any[];
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   emitDepenses() {
     this.subDepense.next(this.depenses.slice())
   }
-
+  getDepenseAnnuelle() {
+    return this.http.get<any[]>(`${config.apiUrl}/depense/depenses`)
+  }
   getAllDepenses() {
     this.depenses = [
       {
@@ -34,7 +38,7 @@ export class ServicedepenseService {
         date: "05/11/2021",
       },
     ];
-    this.emitDepenses() ;
+    this.emitDepenses();
   }
   // addDepense(user:any) {
   //   this.depenses.push(); 

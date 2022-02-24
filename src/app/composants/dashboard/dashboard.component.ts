@@ -5,6 +5,7 @@ import { Chart } from 'chart.js'
 import { ServiceCollaborationService } from 'src/app/services/service-collaboration.service';
 import { ServiceclientService } from 'src/app/services/serviceclient.service';
 import { ServicecommandeService } from 'src/app/services/servicecommande.service';
+import { ServicedepenseService } from 'src/app/services/servicedepense.service';
 import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
 import { ServiceventeService } from 'src/app/services/servicevente.service';
 import { CreerCollaborationComponent } from '../collaborations/creer-collaboration/creer-collaboration.component';
@@ -22,11 +23,13 @@ export class DashboardComponent implements OnInit {
 
   dates!: Date
   venteAnnuelle: number | undefined
+  depenseAnnuelle: number | undefined
   constructor(private fournisseur: ServicefournisseurService,
     private collaborateur: ServiceCollaborationService,
     private client: ServiceclientService,
     private commande: ServicecommandeService,
-    private vente: ServiceventeService
+    private vente: ServiceventeService,
+    private depense: ServicedepenseService
   ) { }
 
   ngOnInit() {
@@ -47,10 +50,12 @@ export class DashboardComponent implements OnInit {
     })
 
     this.vente.getTotalVente().subscribe(res => {
-      const r = AnneeCours(res[0].annee)
-      console.log(r)
       this.venteAnnuelle = res[0].total
-      console.log(this.venteAnnuelle)
+    })
+
+    this.depense.getDepenseAnnuelle().subscribe(res => {
+      this.depenseAnnuelle = res[0].total
+      console.log(this.depenseAnnuelle)
     })
   }
 
@@ -154,10 +159,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 }
-function AnneeCours(date: String){
+function AnneeCours(date: String) {
   var dates = new Date();
   var d = dates.getUTCFullYear().toString();
-  if(d == date){
+  if (d == date) {
     return 0
   } else {
     return 1
