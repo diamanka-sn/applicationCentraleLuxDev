@@ -10,7 +10,7 @@ export class ServicedepenseService {
 
   subDepense = new Subject<any[]>();
   depenses!: any[];
-
+ 
 
   constructor(private http: HttpClient) { }
 
