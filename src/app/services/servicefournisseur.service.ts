@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { config } from 'src/models/config';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,9 @@ export class ServicefournisseurService {
         }
       )
     })
+  }
+
+  getNombreFournisseur() {
+    return this.http.get(`${config.apiUrl}/fournisseurs/nombre`)
   }
 }

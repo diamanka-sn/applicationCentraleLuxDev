@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { config } from 'src/models/config';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,10 @@ export class ServiceclientService {
   subclient = new Subject<any[]>()
   clients!: any[]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  getNombreClient() {
+    return this.http.get(`${config.apiUrl}/client/nombre`)
+  }
 
   emitclients() {
     this.subclient.next(this.clients.slice())

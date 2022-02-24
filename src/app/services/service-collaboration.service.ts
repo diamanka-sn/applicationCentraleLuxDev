@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { config } from 'src/models/config';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,11 @@ export class ServiceCollaborationService {
   subCollaboration = new Subject<any[]>();
   collaboration!: any[];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
  
+  getNombreCollaborateur(){
+    return this.http.get(`${config.apiUrl}/entreprise/nombre`)
+  }
   emitCollaboration() {
     this.subCollaboration.next(this.collaboration.slice());
   }

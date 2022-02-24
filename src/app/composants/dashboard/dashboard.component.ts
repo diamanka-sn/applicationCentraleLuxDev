@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Chart } from 'chart.js'
+import { ServiceCollaborationService } from 'src/app/services/service-collaboration.service';
+import { ServiceclientService } from 'src/app/services/serviceclient.service';
+import { ServicecommandeService } from 'src/app/services/servicecommande.service';
+import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
+import { CreerCollaborationComponent } from '../collaborations/creer-collaboration/creer-collaboration.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,6 +14,33 @@ import { Chart } from 'chart.js'
 })
 export class DashboardComponent implements OnInit {
 
+  nbFournisseur: any
+  nbCollaboration: any
+  nbClient: any
+  nbCommande: any
+  constructor(private fournisseur: ServicefournisseurService,
+    private collaborateur: ServiceCollaborationService,
+    private client: ServiceclientService,
+    private commande: ServicecommandeService
+  ) { }
+
+  ngOnInit() {
+    this.fournisseur.getNombreFournisseur().subscribe(res => {
+      this.nbFournisseur = res
+    })
+
+    this.collaborateur.getNombreCollaborateur().subscribe(res => {
+      this.nbCollaboration = res
+    })
+
+    this.client.getNombreClient().subscribe(res => {
+      this.nbClient = res
+    })
+
+    this.commande.getNombreCommande().subscribe(res  => {
+      this.nbCommande = res
+    })
+  }
 
   type1 = 'doughnut';
   data1 = {
@@ -42,7 +74,7 @@ export class DashboardComponent implements OnInit {
       }]
     }
   }
- 
+
 
   options2 = {
     legend: {
@@ -74,10 +106,6 @@ export class DashboardComponent implements OnInit {
     maintainAspectRatio: false,
 
   }
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -90,7 +118,7 @@ export class DashboardComponent implements OnInit {
   };
 
   mutiLineChartData = {
-    labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Jui','Sept', 'Oct', 'Nov','Dec'],
+    labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Jui', 'Sept', 'Oct', 'Nov', 'Dec'],
     datasets: [{
       label: 'Dépenses',
       borderColor: this.chartColors.red,
@@ -110,7 +138,7 @@ export class DashboardComponent implements OnInit {
     responsive: true,
     title: {
       display: true,
-     // text: '' + this.position
+      // text: '' + this.position
     }
   }
 }
