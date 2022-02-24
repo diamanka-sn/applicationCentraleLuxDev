@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServiceclientService } from 'src/app/services/serviceclient.service';
 
 @Component({
   selector: 'app-detail-client',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailClientComponent implements OnInit {
 
+  client: any ;
+
   dtOptions: DataTables.Settings = {};
-  constructor() { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private serviceclient: ServiceclientService) { }
 
   ngOnInit(): void {
+
     this.dtOptions = {
       pagingType: 'numbers',
       pageLength: 5,
@@ -25,6 +32,21 @@ export class DetailClientComponent implements OnInit {
       // columns: [{ data: 'nom' }, { data: 'adresse' }, { data: 'ville' }, { data: 'age' }]
 
     }
+
+    this.route.params.subscribe(
+      (params: any) => {
+        this.serviceclient.getDetailClient(params.id).then(
+          (c: any) => {
+            this.client = c ;
+            console.log(this)
+            console.log(c)
+          }
+        )
+      }
+    )
+
+
+
   }
 
 }

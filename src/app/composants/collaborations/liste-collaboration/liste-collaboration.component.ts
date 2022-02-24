@@ -15,6 +15,8 @@ export class ListeCollaborationComponent implements OnInit {
   subEntreprise!: Subscription;
   formGroup!: FormGroup
   entreprises!: any[];
+  isModify!: boolean ;
+  collaborationId!: number;
 
 
   constructor(private serviceCollaboration: ServiceCollaborationService,
@@ -33,6 +35,7 @@ export class ListeCollaborationComponent implements OnInit {
     }
     this.initForm()
     this.getAllCollaboration();
+    this.isModify = false ;
   }
 
   initForm() {
@@ -45,12 +48,15 @@ export class ListeCollaborationComponent implements OnInit {
     })
   }
 
+  afficherButtonSave() {
+    this.isModify = false ;
+  }
   submit() {
     const nom = this.formGroup.value['nom']
     const adresse = this.formGroup.value['adresse']
     const telephone = this.formGroup.value['telephone']
     const email = this.formGroup.value['email']
-    const tauxPEC = this.formGroup.value['auxPEC']
+    const tauxPEC = this.formGroup.value['tauxPEC']
 
     const entreprise = {
       nom: nom,
@@ -59,13 +65,39 @@ export class ListeCollaborationComponent implements OnInit {
       adresse: adresse,
       tauxPEC: tauxPEC
     }
-    this.serviceCollaboration.ajouterCollaboration(entreprise)
-    this.formGroup.reset()
-    $('#exampleModal').modal('hide')
+    if(!this.isModify) {
+      this.serviceCollaboration.addCollaboration(entreprise).then(
+        () => {
+          this.formGroup.reset();
+          $('#exampleModal').modal('hide');
+          this.getAllCollaboration();
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    }else{
+      this.serviceCollaboration.modifyCollaboration(this.collaborationId, entreprise).then(
+        () => {
+          this.formGroup.reset() ;
+          this.isModify = false ;
+          $('#exampleModal').modal('hide');
+          this.getAllCollaboration();
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    }
+    
+    
+    
 
   }
 
   modifier(e: any) {
+    this.collaborationId = e.id;
+    this.isModify = true ;
     this.formGroup.patchValue({
       nom: e.nom,
       adresse: e.adresse,
@@ -75,6 +107,18 @@ export class ListeCollaborationComponent implements OnInit {
     });
     $('#exampleModal').modal('show')
   }
+
+  supprimer(e: any) {
+    this.serviceCollaboration.deleteCollaboration(e.id).then(
+      () => {
+        this.getAllCollaboration();
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
   getAllCollaboration() {
     this.subEntreprise = this.serviceCollaboration.subCollaboration.subscribe(
       (allEntreprises: any) => {

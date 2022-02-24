@@ -48,17 +48,24 @@ export class ListeRayonComponent implements OnInit {
 
   submit() {
     const nomRayon = this.formGroup.value['rayon']
+    console.log(nomRayon) ;
     const newrayon = {
-      libelle: nomRayon,
+      nom: nomRayon,
     }
-    this.servicerayon.ajoutrayon(newrayon);
-    this.formGroup.reset();
-    $('#exampleModal').modal('hide')
+    this.servicerayon.ajoutrayon(newrayon).then(
+      () => {
+        this.formGroup.reset()
+        $('#exampleModal').modal('hide')
+        this.getrayon();
+      }
+    )
+    
   }
 
   getrayon() {
     this.subscribrayon = this.servicerayon.rayonsubject.subscribe((rayon: any[]) => {
       this.rayons = rayon
+      console.log(this.rayons)
     })
     this.servicerayon.getrayon()
   }

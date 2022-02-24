@@ -10,7 +10,7 @@ li a{
 }
 
 #myCarousel {
-    height: 400px;
+    /* height: 400px; */
 }
 
 @media (min-width: 768px) {

@@ -10,7 +10,7 @@ import { ServicedepenseService } from 'src/app/services/servicedepense.service';
 })
 export class ListeDepenseComponent implements OnInit, OnDestroy {
 
-  depenses!: any[];
+  depenses: any[] = [];
   subDepenses!: Subscription;
 
   dtOptions: DataTables.Settings = {};
