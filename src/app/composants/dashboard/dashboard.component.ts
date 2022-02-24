@@ -6,6 +6,7 @@ import { ServiceCollaborationService } from 'src/app/services/service-collaborat
 import { ServiceclientService } from 'src/app/services/serviceclient.service';
 import { ServicecommandeService } from 'src/app/services/servicecommande.service';
 import { ServicefournisseurService } from 'src/app/services/servicefournisseur.service';
+import { ServiceventeService } from 'src/app/services/servicevente.service';
 import { CreerCollaborationComponent } from '../collaborations/creer-collaboration/creer-collaboration.component';
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +19,14 @@ export class DashboardComponent implements OnInit {
   nbCollaboration: any
   nbClient: any
   nbCommande: any
+
+  dates!: Date
+  venteAnnuelle: number | undefined
   constructor(private fournisseur: ServicefournisseurService,
     private collaborateur: ServiceCollaborationService,
     private client: ServiceclientService,
-    private commande: ServicecommandeService
+    private commande: ServicecommandeService,
+    private vente: ServiceventeService
   ) { }
 
   ngOnInit() {
@@ -37,8 +42,15 @@ export class DashboardComponent implements OnInit {
       this.nbClient = res
     })
 
-    this.commande.getNombreCommande().subscribe(res  => {
+    this.commande.getNombreCommande().subscribe(res => {
       this.nbCommande = res
+    })
+
+    this.vente.getTotalVente().subscribe(res => {
+      const r = AnneeCours(res[0].annee)
+      console.log(r)
+      this.venteAnnuelle = res[0].total
+      console.log(this.venteAnnuelle)
     })
   }
 
@@ -142,3 +154,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 }
+function AnneeCours(date: String){
+  var dates = new Date();
+  var d = dates.getUTCFullYear().toString();
+  if(d == date){
+    return 0
+  } else {
+    return 1
+  }
+}
+

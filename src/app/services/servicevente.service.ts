@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { config } from 'src/models/config';
+import { venteAnnuelle } from 'src/models/vente';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +47,6 @@ export class ServiceventeService {
     }, err => {
       console.log(err)
     })
-
-
   }
 
   getVente(id: number) {
@@ -64,5 +64,7 @@ export class ServiceventeService {
     this.emitVentes();
   }
 
-
+  getTotalVente() {
+    return this.http.get<venteAnnuelle[]>(`${config.apiUrl}/ventesimples/total`) 
+  }
 }
