@@ -70,4 +70,5 @@ export class ServiceventeService {
   getTotalVente() {
     return this.http.get<venteAnnuelle[]>(`${config.apiUrl}/ventesimples/total`)
   }
+  
 }
