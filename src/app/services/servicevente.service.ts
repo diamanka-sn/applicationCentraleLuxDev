@@ -48,6 +48,9 @@ export class ServiceventeService {
       console.log(err)
     })
   }
+  getVenteMensuelle() {
+    return this.http.get<any[]>(`${config.apiUrl}/ventesimples/vente_mensuelle`)
+  }
 
   getVente(id: number) {
     return new Promise((resolve, reject) => {
@@ -65,6 +68,6 @@ export class ServiceventeService {
   }
 
   getTotalVente() {
-    return this.http.get<venteAnnuelle[]>(`${config.apiUrl}/ventesimples/total`) 
+    return this.http.get<venteAnnuelle[]>(`${config.apiUrl}/ventesimples/total`)
   }
 }

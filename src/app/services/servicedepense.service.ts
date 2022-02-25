@@ -10,7 +10,7 @@ export class ServicedepenseService {
 
   subDepense = new Subject<any[]>();
   depenses!: any[];
- 
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,19 +20,22 @@ export class ServicedepenseService {
   getDepenseAnnuelle() {
     return this.http.get<any[]>(`${config.apiUrl}/depense/depenses`)
   }
+  getDepenseMensuelle() {
+    return this.http.get<any[]>(`${config.apiUrl}/depense/depensemensuelle`)
+  }
   getAllDepenses() {
     this.http.get<any[]>("http://localhost:3000/depense").subscribe(
       (allDepense) => {
-        this.depenses = allDepense ;
+        this.depenses = allDepense;
         console.log(this.depenses)
-        this.emitDepenses() ;
+        this.emitDepenses();
       },
       (err) => {
         console.log(err)
       }
     )
   }
-  addDepense(depense:any) {
+  addDepense(depense: any) {
     return new Promise(
       (resolve, reject) => {
         this.http.post("http://localhost:3000/depense", depense).subscribe(

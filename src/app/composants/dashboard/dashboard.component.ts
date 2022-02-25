@@ -15,7 +15,9 @@ import { CreerCollaborationComponent } from '../collaborations/creer-collaborati
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  options: any = {};
+  themeSubscription: any;
+  
   nbFournisseur: any
   nbCollaboration: any
   nbClient: any
@@ -56,6 +58,10 @@ export class DashboardComponent implements OnInit {
     this.depense.getDepenseAnnuelle().subscribe(res => {
       this.depenseAnnuelle = res[0].total
       console.log(this.depenseAnnuelle)
+    })
+
+    this.depense.getDepenseMensuelle().subscribe(res => {
+      console.log(res)
     })
   }
 

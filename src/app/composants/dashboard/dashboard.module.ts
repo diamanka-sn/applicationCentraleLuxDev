@@ -19,7 +19,6 @@ import { TableauDepensesComponent } from './tableau-depenses/tableau-depenses.co
   imports: [
     CommonModule,
     ChartModule,
-  
   ]
 })
 export class DashboardModule { }
